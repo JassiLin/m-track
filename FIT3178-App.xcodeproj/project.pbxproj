@@ -14,6 +14,9 @@
 		04523C6D24699E1F00E1230C /* FIT3178_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */; };
 		04523C6F24699E2300E1230C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04523C6E24699E2300E1230C /* Assets.xcassets */; };
 		04523C7224699E2300E1230C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04523C7024699E2300E1230C /* LaunchScreen.storyboard */; };
+		045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248A4246A7DB300BE68CC /* HomeViewController.swift */; };
+		045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */; };
+		045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		04523C6E24699E2300E1230C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04523C7124699E2300E1230C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04523C7324699E2300E1230C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045248A4246A7DB300BE68CC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListTableViewController.swift; sourceTree = "<group>"; };
+		045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				04523C7024699E2300E1230C /* LaunchScreen.storyboard */,
 				04523C7324699E2300E1230C /* Info.plist */,
 				04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */,
+				045248A4246A7DB300BE68CC /* HomeViewController.swift */,
+				045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */,
+				045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */,
 			);
 			path = "FIT3178-App";
 			sourceTree = "<group>";
@@ -141,9 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
 				04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */,
 				04523C6D24699E1F00E1230C /* FIT3178_App.xcdatamodeld in Sources */,
+				045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */,
+				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
 				04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
