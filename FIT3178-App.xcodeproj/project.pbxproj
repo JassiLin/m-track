@@ -17,6 +17,12 @@
 		045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248A4246A7DB300BE68CC /* HomeViewController.swift */; };
 		045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */; };
 		045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */; };
+		045248AE246AC6B100BE68CC /* M-Track.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 045248AC246AC6B100BE68CC /* M-Track.xcdatamodeld */; };
+		045248B1246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248AF246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift */; };
+		045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B0246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift */; };
+		045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */; };
+		045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B6246AD10100BE68CC /* MulticastDelegate.swift */; };
+		045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B8246AD14200BE68CC /* CoreDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		045248A4246A7DB300BE68CC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListTableViewController.swift; sourceTree = "<group>"; };
 		045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingListTableViewCell.swift; sourceTree = "<group>"; };
+		045248AD246AC6B100BE68CC /* M-Track.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "M-Track.xcdatamodel"; sourceTree = "<group>"; };
+		045248AF246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		045248B0246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackingRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		045248B6246AD10100BE68CC /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		045248B8246AD14200BE68CC /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,9 @@
 		04523C6124699E1F00E1230C /* FIT3178-App */ = {
 			isa = PBXGroup;
 			children = (
+				045248B3246ACB0500BE68CC /* Database */,
+				045248AB246AC65900BE68CC /* DataModel */,
+				045248AA246AC1A100BE68CC /* TableViewCell */,
 				04523C6224699E1F00E1230C /* AppDelegate.swift */,
 				04523C6424699E1F00E1230C /* SceneDelegate.swift */,
 				04523C6624699E1F00E1230C /* ViewController.swift */,
@@ -74,9 +89,36 @@
 				04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */,
 				045248A4246A7DB300BE68CC /* HomeViewController.swift */,
 				045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */,
-				045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */,
+				045248AC246AC6B100BE68CC /* M-Track.xcdatamodeld */,
 			);
 			path = "FIT3178-App";
+			sourceTree = "<group>";
+		};
+		045248AA246AC1A100BE68CC /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		045248AB246AC65900BE68CC /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				045248AF246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift */,
+				045248B0246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		045248B3246ACB0500BE68CC /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */,
+				045248B6246AD10100BE68CC /* MulticastDelegate.swift */,
+				045248B8246AD14200BE68CC /* CoreDataController.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,10 +195,16 @@
 				045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
 				04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */,
+				045248B1246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift in Sources */,
+				045248AE246AC6B100BE68CC /* M-Track.xcdatamodeld in Sources */,
+				045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */,
 				04523C6D24699E1F00E1230C /* FIT3178_App.xcdatamodeld in Sources */,
 				045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */,
+				045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */,
+				045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */,
 				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
 				04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */,
+				045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +409,16 @@
 			);
 			currentVersion = 04523C6C24699E1F00E1230C /* FIT3178_App.xcdatamodel */;
 			path = FIT3178_App.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		045248AC246AC6B100BE68CC /* M-Track.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				045248AD246AC6B100BE68CC /* M-Track.xcdatamodel */,
+			);
+			currentVersion = 045248AD246AC6B100BE68CC /* M-Track.xcdatamodel */;
+			path = "M-Track.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
