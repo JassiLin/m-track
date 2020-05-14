@@ -74,7 +74,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     
     
-    func addRecord(trackingNo: String, carrier: String, name: String, date: String) -> TrackingRecord {
+    func addRecord(trackingNo: String, carrier: String, name: String, date: String, location:String, details:String) -> TrackingRecord {
         let record = NSEntityDescription.insertNewObject(forEntityName: "TrackingRecord", into: persistentContainer.viewContext) as! TrackingRecord
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -82,6 +82,8 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         record.trackingNo = trackingNo
         record.carrier = carrier
         record.name = name
+        record.location = location
+        record.details = details
         record.date = convertedDate
         
         return record
@@ -128,6 +130,6 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     // MARK: - add default record
     
     func createDefaultRecord() {
-        let _ = addRecord(trackingNo: "N00005", carrier: "AusPost", name: "Test Record", date: "05/05/2020")
+        let _ = addRecord(trackingNo: "N00005", carrier: "AusPost", name: "Test Record", date: "05/05/2020", location:"Melbourne", details:"No details")
     }
 }

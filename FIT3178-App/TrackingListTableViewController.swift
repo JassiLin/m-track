@@ -7,19 +7,43 @@
 //
 
 import UIKit
+import CoreData
 
-class TrackingListTableViewController: UITableViewController {
-
+class TrackingListTableViewController: UITableViewController, DatabaseListener {
+    
+    var listenerType: ListenerType = .record
+    
+    let CELL_RECORD = "recordCell"
+    
+    var records: [TrackingRecord] = []
+//    var recordList: [NSManagedObject]!
+    weak var databaseController: DatabaseProtocol?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 151
+        
+        databaseController = appDelegate.databaseController
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+        tableView.reloadData()
+        print(records)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    func onRecordChange(change: DatabaseChange, record: [TrackingRecord]) {
+        records = record
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,18 +53,21 @@ class TrackingListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return records.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_RECORD, for: indexPath) as! TrackingListTableViewCell
+        let record = records[indexPath.row]
+        cell.nameLabel.text = record.value(forKey: "name") as? String ?? "[empty]"
+        cell.dateLabel.text = record.value(forKey: "date") as? String ?? "N/A"
+        cell.detailsLabel.text = record.value(forKey: "details") as? String ?? "No details"
+        cell.locationLabel.text = record.value(forKey: "location") as? String ?? "No location available"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
