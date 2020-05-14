@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Floaty
 
 class TrackingListTableViewController: UITableViewController, DatabaseListener {
     
@@ -25,15 +26,23 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 151
         
-        databaseController = appDelegate.databaseController
+
+        // set navigation title
+        self.navigationItem.title = "M-TRACK"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: UIFont.Weight.bold)]
         
+        // set float button
+        databaseController = appDelegate.databaseController
+        let floatyBtn = Floaty()
+        floatyBtn.addItem(title: "Hello, World!")
+        floatyBtn.paddingY = 100
+        self.view.addSubview(floatyBtn)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
         tableView.reloadData()
-        print(records)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
