@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044D7D55246FDE6800E0BDFC /* orderTrackingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D54246FDE6700E0BDFC /* orderTrackingApi.swift */; };
 		04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6224699E1F00E1230C /* AppDelegate.swift */; };
 		04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6424699E1F00E1230C /* SceneDelegate.swift */; };
 		04523C6724699E1F00E1230C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6624699E1F00E1230C /* ViewController.swift */; };
@@ -24,9 +25,11 @@
 		045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B6246AD10100BE68CC /* MulticastDelegate.swift */; };
 		045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B8246AD14200BE68CC /* CoreDataController.swift */; };
 		0460343B246D84AC00799E25 /* Pods_FIT3178_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E68B2216BEEAB76FF936A1 /* Pods_FIT3178_App.framework */; };
+		0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460343E246E11E600799E25 /* AddTrackingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044D7D54246FDE6700E0BDFC /* orderTrackingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTrackingApi.swift; sourceTree = "<group>"; };
 		04523C5F24699E1F00E1230C /* FIT3178-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FIT3178-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04523C6224699E1F00E1230C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04523C6424699E1F00E1230C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 		045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		045248B6246AD10100BE68CC /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		045248B8246AD14200BE68CC /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		0460343E246E11E600799E25 /* AddTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackingViewController.swift; sourceTree = "<group>"; };
 		44BA9831C929A5FEC34A3FC9 /* Pods-FIT3178-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT3178-App.debug.xcconfig"; path = "Target Support Files/Pods-FIT3178-App/Pods-FIT3178-App.debug.xcconfig"; sourceTree = "<group>"; };
 		A27DC1CE1879B98333E10C46 /* Pods-FIT3178-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT3178-App.release.xcconfig"; path = "Target Support Files/Pods-FIT3178-App/Pods-FIT3178-App.release.xcconfig"; sourceTree = "<group>"; };
 		E9E68B2216BEEAB76FF936A1 /* Pods_FIT3178_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIT3178_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +99,7 @@
 				04523C6624699E1F00E1230C /* ViewController.swift */,
 				04523C7324699E2300E1230C /* Info.plist */,
 				04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */,
+				044D7D54246FDE6700E0BDFC /* orderTrackingApi.swift */,
 			);
 			path = "FIT3178-App";
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 			children = (
 				045248A4246A7DB300BE68CC /* HomeViewController.swift */,
 				045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */,
+				0460343E246E11E600799E25 /* AddTrackingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -269,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */,
+				0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
 				04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */,
 				045248B1246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift in Sources */,
@@ -279,6 +286,7 @@
 				045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */,
 				045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */,
 				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
+				044D7D55246FDE6800E0BDFC /* orderTrackingApi.swift in Sources */,
 				04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */,
 				045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */,
 			);

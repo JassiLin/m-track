@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 import Floaty
 
-class TrackingListTableViewController: UITableViewController, DatabaseListener {
+class TrackingListTableViewController: UITableViewController, DatabaseListener, FloatyDelegate {
     
     var listenerType: ListenerType = .record
     
     let CELL_RECORD = "recordCell"
-    
+   
     var records: [TrackingRecord] = []
 //    var recordList: [NSManagedObject]!
     weak var databaseController: DatabaseProtocol?
@@ -31,11 +31,15 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener {
         self.navigationItem.title = "M-TRACK"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: UIFont.Weight.bold)]
         
-        // set float button
         databaseController = appDelegate.databaseController
+        
+        // set float button
         let floatyBtn = Floaty()
-        floatyBtn.addItem(title: "Hello, World!")
-        floatyBtn.paddingY = 100
+        floatyBtn.addItem("Add tracking", icon: UIImage(named: "track")!, handler: {
+            _ in
+            self.performSegue(withIdentifier: "ListToAddSegue", sender: self)
+        })
+        floatyBtn.paddingY = 200
         self.view.addSubview(floatyBtn)
     }
 
@@ -49,8 +53,11 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
     }
+    
+    // DB listener function
     func onRecordChange(change: DatabaseChange, record: [TrackingRecord]) {
         records = record
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source

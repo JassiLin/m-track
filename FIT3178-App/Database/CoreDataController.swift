@@ -84,7 +84,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         record.name = name
         record.location = location
         record.details = details
-        record.date = convertedDate
+//        record.date = convertedDate
         
         return record
     }

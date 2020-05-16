@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="132.58928571428572"/>
         </scene>
-        <!--Tracking List Table View Controller-->
+        <!--Track-->
         <scene sceneID="bmR-kg-ZSx">
             <objects>
                 <tableViewController id="sso-fo-PDI" customClass="TrackingListTableViewController" customModule="FIT3178_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -146,46 +146,96 @@
                             <outlet property="delegate" destination="sso-fo-PDI" id="fhg-rA-umm"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Track" selectedImage="doc.text.magnifyingglass" catalog="system" id="kaK-8U-H8h"/>
                     <navigationItem key="navigationItem" id="Kxg-IB-sHS"/>
+                    <connections>
+                        <segue destination="LjC-qJ-Q2h" kind="show" identifier="ListToAddSegue" id="g1Z-UZ-v7s"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maE-Ch-G0N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2892.753623188406" y="132.58928571428572"/>
+            <point key="canvasLocation" x="3802.898550724638" y="132.58928571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Tracking View Controller-->
         <scene sceneID="shb-yz-ynP">
             <objects>
-                <viewController id="LjC-qJ-Q2h" sceneMemberID="viewController">
+                <viewController id="LjC-qJ-Q2h" customClass="AddTrackingViewController" customModule="FIT3178_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JqP-51-izy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MBE-3l-mZ0">
-                                <rect key="frame" x="159" y="191" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Carrier" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iht-uU-5PY">
+                                <rect key="frame" x="40" y="288" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Xxn-9s-JZu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iht-uU-5PY">
-                                <rect key="frame" x="159" y="273" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jgp-C8-Geo">
+                                <rect key="frame" x="40" y="388" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Exv-lU-nWF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jgp-C8-Geo">
-                                <rect key="frame" x="159" y="374" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zee-ec-71P">
+                                <rect key="frame" x="40" y="722" width="334" height="40"/>
+                                <color key="backgroundColor" red="0.84705882352941175" green="0.68235294117647061" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Q2C-1l-8IW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" red="0.84705882349999995" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <state key="normal" title="ADD TRACKING">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addTracking:" destination="LjC-qJ-Q2h" eventType="touchUpInside" id="lWQ-bX-GJK"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tracking number" textAlignment="natural" minimumFontSize="17" background="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MBE-3l-mZ0">
+                                <rect key="frame" x="40" y="188" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lZV-ff-ngd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Iht-uU-5PY" firstAttribute="top" secondItem="MBE-3l-mZ0" secondAttribute="bottom" constant="50" id="1qa-gr-TeE"/>
+                            <constraint firstItem="qN7-Eg-Ogy" firstAttribute="bottom" secondItem="zee-ec-71P" secondAttribute="bottom" constant="100" id="BeN-uo-L3C"/>
+                            <constraint firstItem="MBE-3l-mZ0" firstAttribute="top" secondItem="qN7-Eg-Ogy" secondAttribute="top" constant="100" id="EeI-Cd-AJ9"/>
+                            <constraint firstItem="qN7-Eg-Ogy" firstAttribute="trailing" secondItem="MBE-3l-mZ0" secondAttribute="trailing" constant="40" id="Kd9-rJ-Qh1"/>
+                            <constraint firstItem="Jgp-C8-Geo" firstAttribute="leading" secondItem="qN7-Eg-Ogy" secondAttribute="leading" constant="40" id="KvB-bi-ICb"/>
+                            <constraint firstItem="Iht-uU-5PY" firstAttribute="leading" secondItem="qN7-Eg-Ogy" secondAttribute="leading" constant="40" id="OcW-hy-yhj"/>
+                            <constraint firstItem="qN7-Eg-Ogy" firstAttribute="trailing" secondItem="Iht-uU-5PY" secondAttribute="trailing" constant="40" id="QOC-Zd-5NX"/>
+                            <constraint firstItem="qN7-Eg-Ogy" firstAttribute="trailing" secondItem="zee-ec-71P" secondAttribute="trailing" constant="40" id="YaV-SD-o87"/>
+                            <constraint firstItem="MBE-3l-mZ0" firstAttribute="leading" secondItem="qN7-Eg-Ogy" secondAttribute="leading" constant="40" id="g32-Yh-5ZQ"/>
+                            <constraint firstItem="zee-ec-71P" firstAttribute="leading" secondItem="qN7-Eg-Ogy" secondAttribute="leading" constant="40" id="j9Q-r7-KVO"/>
+                            <constraint firstItem="Jgp-C8-Geo" firstAttribute="top" secondItem="Iht-uU-5PY" secondAttribute="bottom" constant="50" id="jsF-fl-tPh"/>
+                            <constraint firstItem="qN7-Eg-Ogy" firstAttribute="trailing" secondItem="Jgp-C8-Geo" secondAttribute="trailing" constant="40" id="mZI-Nf-Saz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qN7-Eg-Ogy"/>
                     </view>
+                    <navigationItem key="navigationItem" id="MQS-IJ-XuE"/>
+                    <connections>
+                        <outlet property="carrierTF" destination="Iht-uU-5PY" id="BMc-Xf-nXe"/>
+                        <outlet property="nameTF" destination="Jgp-C8-Geo" id="8WP-Yb-lgh"/>
+                        <outlet property="trackingNoTF" destination="MBE-3l-mZ0" id="kJu-8n-gJI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECs-wr-1IX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4501.449275362319" y="130.58035714285714"/>
+            <point key="canvasLocation" x="4639" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mWE-oL-egB">
@@ -198,16 +248,37 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="sso-fo-PDI" kind="relationship" relationship="rootViewController" id="VmS-0I-FAs"/>
+                        <segue destination="icQ-3S-BQS" kind="relationship" relationship="rootViewController" id="VmS-0I-FAs"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rsg-OD-Vqg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1982.608695652174" y="132.58928571428572"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="TqS-Nd-wyb">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="icQ-3S-BQS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="nz3-k8-xwj"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M4p-tN-LRL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="sso-fo-PDI" kind="relationship" relationship="viewControllers" id="Gaf-70-9Pa"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LD5-Ol-hwY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2892.753623188406" y="132.58928571428572"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="doc.text.magnifyingglass" catalog="system" width="116" height="128"/>
         <image name="headerImage" width="2400" height="1600"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
 </document>
