@@ -35,7 +35,7 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         // Create a default record in this case
         
         if fetchAllRecords().count == 0 {
-            createDefaultRecord()
+//            createDefaultRecord()
         }
 
     }
@@ -77,14 +77,15 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     func addRecord(trackingNo: String, carrier: String, name: String, date: String, location:String, details:String) -> TrackingRecord {
         let record = NSEntityDescription.insertNewObject(forEntityName: "TrackingRecord", into: persistentContainer.viewContext) as! TrackingRecord
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         let convertedDate = dateFormatter.date(from: date)!
         record.trackingNo = trackingNo
         record.carrier = carrier
         record.name = name
         record.location = location
         record.details = details
-//        record.date = convertedDate
+        record.date = convertedDate
+        cleanup()
         
         return record
     }

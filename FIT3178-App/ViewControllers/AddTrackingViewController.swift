@@ -40,8 +40,8 @@ class AddTrackingViewController: UIViewController {
 
 //            let _ = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!)
 //            CoreDataController().cleanup()
-            navigationController?.popViewController(animated: true)
-            return
+//            navigationController?.popViewController(animated: true)
+//            return
         }
     }
     
@@ -51,14 +51,24 @@ class AddTrackingViewController: UIViewController {
         let name = nameTF?.text
         let trackingNo = trackingNoTF?.text
         let carrier = carrierTF?.text
+        
         newRecord.name = name
         newRecord.carrier = carrier
         newRecord.trackingNo = trackingNo
         newRecord.location = location
         newRecord.details = details
+        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        print(date!)
+//        let convertedDate = dateFormatter.date(from: date!)
+//        print(convertedDate!)
+//        newRecord.date = convertedDate
+        
         do {
             try context.save()
             print("Added sucessfully: \(newRecord)")
+            navigationController?.popViewController(animated: true)
         }
         catch {
             print("Cannot add record")
@@ -104,7 +114,9 @@ class AddTrackingViewController: UIViewController {
                         self.date = listTracking.lastUpdateTime
                         self.details = listTracking.lastEvent
                         self.location = listTracking.destinationCountry
-                        self.saveRecord()
+                        DispatchQueue.main.async{
+                            self.saveRecord()
+                        }
                     }
                     
                 } catch let err {
