@@ -35,29 +35,10 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         // Create a default record in this case
         
         if fetchAllRecords().count == 0 {
-//            createDefaultRecord()
         }
 
     }
-    
-//    lazy var defaultRecord: TrackingRecord = {
-//        var records = [TrackingRecord]()
-//        let request: NSFetchRequest<TrackingRecord> = TrackingRecord.fetchRequest()
-//        let predicate = NSPredicate(format: "name = %@", DEFAULT_RECORD_NAME)
-//        request.predicate = predicate
-//        
-//        do {
-//            try records = persistentContainer.viewContext.fetch(request)
-//        } catch {
-//            print("Fetch request failed: \(error)")
-//        }
-//        
-//        if records.count == 0 {
-//            return addRecord(trackingNo: <#T##String#>, carrier: <#T##String#>, name: <#T##String#>, date: <#T##String#>)
-//        }
-//    }()
-    
-    
+
     func saveContext(){
         if persistentContainer.viewContext.hasChanges{
             do{

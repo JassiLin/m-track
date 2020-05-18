@@ -12,7 +12,6 @@ import Foundation
 
 class AddTrackingViewController: UIViewController {
 
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var listenerType: ListenerType = .record
     var date: String?
     var location: String?
@@ -22,12 +21,12 @@ class AddTrackingViewController: UIViewController {
     @IBOutlet weak var carrierTF: UITextField!
     @IBOutlet weak var nameTF: UITextField!
     
-    var databaseController: DatabaseProtocol?
+    weak var databaseController: DatabaseProtocol?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        databaseController = appDelegate.databaseController
     }
     
     @IBAction func addTracking(_ sender: Any) {
@@ -58,12 +57,9 @@ class AddTrackingViewController: UIViewController {
         newRecord.location = location
         newRecord.details = details
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        print(date!)
-//        let convertedDate = dateFormatter.date(from: date!)
-//        print(convertedDate!)
-//        newRecord.date = convertedDate
+        let convertedDate = stringToDate(date!)
+        print(convertedDate)
+        newRecord.date = convertedDate
         
         do {
             try context.save()
@@ -75,6 +71,7 @@ class AddTrackingViewController: UIViewController {
         }
     }
     
+    // MARK: - process API data requesting
     func requestTrackingDetails() {
 
         let headers = [
@@ -129,6 +126,14 @@ class AddTrackingViewController: UIViewController {
         dataTask.resume()
     }
     
+    // MARK: - convert string to date
+    private func stringToDate(_ string: String, dateFormat: String = "yyyy-MM-dd HH:mm:ss")-> Date{
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "en_AU")
+        formatter.dateFormat = dateFormat
+        let date = formatter.date(from: string)
+        return date!
+    }
     
     /*
     // MARK: - Navigation
