@@ -13,6 +13,7 @@ import Foundation
 class AddTrackingViewController: UIViewController {
 
     var listenerType: ListenerType = .record
+    
     var date: String?
     var location: String?
     var details: String?
@@ -33,42 +34,21 @@ class AddTrackingViewController: UIViewController {
         
         if trackingNoTF.text != "" && carrierTF.text != "" {
             requestTrackingDetails()
-//            let name = nameTF?.text
-//            let trackingNo = trackingNoTF?.text
-//            let carrier = carrierTF?.text
-
-//            let _ = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!)
-//            CoreDataController().cleanup()
-//            navigationController?.popViewController(animated: true)
-//            return
         }
     }
     
     func saveRecord() {
-        let context = appDelegate.persistentContainer.viewContext
-        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "TrackingRecord", into: context) as! TrackingRecord
+        
         let name = nameTF?.text
         let trackingNo = trackingNoTF?.text
         let carrier = carrierTF?.text
-        
-        newRecord.name = name
-        newRecord.carrier = carrier
-        newRecord.trackingNo = trackingNo
-        newRecord.location = location
-        newRecord.details = details
-        
-        let convertedDate = stringToDate(date!)
-        print(convertedDate)
-        newRecord.date = convertedDate
-        
-        do {
-            try context.save()
-            print("Added sucessfully: \(newRecord)")
+
+        let addedRecord = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!)
+        if(addedRecord != nil){
+            print("Added sucessfully: \(addedRecord!)")
             navigationController?.popViewController(animated: true)
         }
-        catch {
-            print("Cannot add record")
-        }
+
     }
     
     // MARK: - process API data requesting
@@ -125,16 +105,7 @@ class AddTrackingViewController: UIViewController {
 
         dataTask.resume()
     }
-    
-    // MARK: - convert string to date
-    private func stringToDate(_ string: String, dateFormat: String = "yyyy-MM-dd HH:mm:ss")-> Date{
-        let formatter = DateFormatter()
-        formatter.locale = Locale.init(identifier: "en_AU")
-        formatter.dateFormat = dateFormat
-        let date = formatter.date(from: string)
-        return date!
-    }
-    
+
     /*
     // MARK: - Navigation
 

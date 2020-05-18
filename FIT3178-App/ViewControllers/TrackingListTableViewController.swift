@@ -14,8 +14,10 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     
     var listenerType: ListenerType = .record
     
+    private var recordSelected: TrackingRecord?
     let CELL_RECORD = "recordCell"
-   
+    let cellSpacingHeight: CGFloat = 5
+    
     var records: [TrackingRecord] = []
 //    var recordList: [NSManagedObject]!
     weak var databaseController: DatabaseProtocol?
@@ -40,6 +42,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
             self.performSegue(withIdentifier: "ListToAddSegue", sender: self)
         })
         floatyBtn.paddingY = 200
+        floatyBtn.sticky = true
         self.view.addSubview(floatyBtn)
     }
 
@@ -64,26 +67,37 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return records.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return records.count
+        return 1
     }
 
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_RECORD, for: indexPath) as! TrackingListTableViewCell
-        let record = records[indexPath.row]
+        let record = records[indexPath.section]
+        
+        let dateString = self.dateToString(record.value(forKey: "date") as! Date)
+        
         cell.nameLabel.text = record.value(forKey: "name") as? String ?? "[empty]"
-        cell.dateLabel.text = record.value(forKey: "date") as? String ?? "N/A"
+        cell.dateLabel.text = dateString
         cell.detailsLabel.text = record.value(forKey: "details") as? String ?? "No details"
         cell.locationLabel.text = record.value(forKey: "location") as? String ?? "No location available"
 
         return cell
     }
     
+    // MARK: - didSelectRowAt
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.recordSelected = records[indexPath.section] as TrackingRecord
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -120,14 +134,25 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ListToDetailsSegue"{
+            let destination = segue.destination as! TrackingDetailsTableViewController
+            destination.trackingNo = recordSelected?.trackingNo
+            destination.carrier_code = recordSelected?.carrier
+        }
     }
-    */
+    
+    
+    private func dateToString(_ date:Date, dateFormat:String = "dd-MM-yyyy HH:mm:ss") -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "en_AU")
+        formatter.dateFormat = dateFormat
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
 
 }

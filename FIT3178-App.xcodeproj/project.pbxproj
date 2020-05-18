@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		044D7D55246FDE6800E0BDFC /* orderTrackingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D54246FDE6700E0BDFC /* orderTrackingApi.swift */; };
+		044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */; };
+		044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */; };
 		04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6224699E1F00E1230C /* AppDelegate.swift */; };
 		04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6424699E1F00E1230C /* SceneDelegate.swift */; };
 		04523C6724699E1F00E1230C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6624699E1F00E1230C /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		044D7D54246FDE6700E0BDFC /* orderTrackingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderTrackingApi.swift; sourceTree = "<group>"; };
+		044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewController.swift; sourceTree = "<group>"; };
+		044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		04523C5F24699E1F00E1230C /* FIT3178-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FIT3178-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04523C6224699E1F00E1230C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04523C6424699E1F00E1230C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */,
+				044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				045248A4246A7DB300BE68CC /* HomeViewController.swift */,
 				045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */,
 				0460343E246E11E600799E25 /* AddTrackingViewController.swift */,
+				044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -277,6 +283,8 @@
 				045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */,
 				0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
+				044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */,
+				044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */,
 				04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */,
 				045248B1246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift in Sources */,
 				045248AE246AC6B100BE68CC /* M-Track.xcdatamodeld in Sources */,
