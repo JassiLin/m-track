@@ -7,21 +7,101 @@
 //
 
 import UIKit
+import Floaty
 
 class TrackingDetailsTableViewController: UITableViewController {
 
     var trackingNo, carrier_code: String?
+    var date: [String] = []
+    var location: [String] = []
+    var status: [String] = []
+    var desc: [String] = []
+    let CELL_DETAILS = "detailsCell"
+    var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        requestTrackingDetails()
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 151
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // set float button
+        let floatyBtn = Floaty()
+        floatyBtn.addItem("Add tracking", icon: UIImage(named: "track")!, handler: {
+            _ in
+            self.performSegue(withIdentifier: "ListToAddSegue", sender: self)
+        })
+        floatyBtn.paddingY = 200
+        floatyBtn.sticky = true
+        self.view.addSubview(floatyBtn)
+       
     }
+    
+    private func requestTrackingDetails(){
+//        indicator.style = UIActivityIndicatorView.Style.medium
+//        indicator.center = self.tableView.center
+//        self.view.addSubview(indicator)
+        
+        let headers = [
+            "x-rapidapi-host": "order-tracking.p.rapidapi.com",
+            "x-rapidapi-key": "721ec697admshac6e25b8181ed51p1221c1jsn84964ace47ae",
+            "content-type": "application/json",
+            "accept": "application/json"
+        ]
+        
+        let parameters = [
+            "tracking_number": trackingNo!,
+            "carrier_code": carrier_code!
+        ] as [String : Any]
+        
+        let postData = try? JSONSerialization.data(withJSONObject: parameters, options: [])
 
+        let request = NSMutableURLRequest(url: NSURL(string: "https://order-tracking.p.rapidapi.com/trackings/realtime")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData! as Data
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print("error: \(error!)")
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse!)
+                print("data: \(data!)")
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedData = try decoder.decode(trackingData.self, from: data!)
+                    if (decodedData.data?.items?.first?.originInfo?.trackinfo?.count)! > 0 {
+                        for i in 0 ..< (decodedData.data?.items?.first?.originInfo?.trackinfo?.count)!{
+                            let trackInfo = decodedData.data?.items?.first?.originInfo?.trackinfo![i]
+                            self.date.append((trackInfo?.date)!)
+                            self.desc.append((trackInfo?.statusDescription)!)
+                            self.location.append((trackInfo?.details)!)
+                            self.status.append((trackInfo?.checkpointStatus)!)
+                        }
+                        DispatchQueue.main.async{
+                            self.tableView.reloadData()
+                        }
+                    }
+
+                } catch let err {
+                    print("error: \(err)")
+                }
+            }
+            
+        })
+
+        dataTask.resume()
+//        self.indicator.startAnimating()
+//        self.indicator.backgroundColor = UIColor.clear
+
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,18 +111,23 @@ class TrackingDetailsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return date.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DETAILS, for: indexPath) as! TrackingDetailsTableViewCell
+        if !self.date.isEmpty{
+            
+        }
+        cell.dateLabel.text = self.date[indexPath.row]
+        cell.desciptionLabel.text = self.desc[indexPath.row]
+        cell.locationLabel.text = self.location[indexPath.row]
+        cell.statusLabel.text = self.status[indexPath.row]
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

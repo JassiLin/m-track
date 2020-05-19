@@ -33,7 +33,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ODw-gT-Xxb" kind="presentation" identifier="showTrackingListSegue" modalPresentationStyle="fullScreen" id="9fV-9x-7w7"/>
+                                    <segue destination="icQ-3S-BQS" kind="presentation" identifier="HomeToListSegue" modalPresentationStyle="fullScreen" id="Vvj-sS-iTA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="132.58928571428572"/>
+            <point key="canvasLocation" x="1987" y="133"/>
         </scene>
         <!--Tracking List Table View Controller-->
         <scene sceneID="bmR-kg-ZSx">
@@ -184,30 +184,31 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvZ-rG-eyV">
-                                            <rect key="frame" x="25" y="68" width="324" height="21"/>
+                                            <rect key="frame" x="25" y="79" width="324" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lev-IM-UEC">
-                                            <rect key="frame" x="25" y="94" width="324" height="21"/>
+                                            <rect key="frame" x="25" y="105" width="324" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="QvZ-rG-eyV" firstAttribute="top" secondItem="XwG-7I-fYI" secondAttribute="bottom" constant="16" id="02b-qe-H3n"/>
                                         <constraint firstItem="XwG-7I-fYI" firstAttribute="leading" secondItem="2mS-17-bVZ" secondAttribute="leadingMargin" constant="5" id="CCu-1U-9Ml"/>
                                         <constraint firstItem="lev-IM-UEC" firstAttribute="top" secondItem="QvZ-rG-eyV" secondAttribute="bottom" constant="5" id="Feu-T2-azI"/>
-                                        <constraint firstItem="QvZ-rG-eyV" firstAttribute="top" secondItem="XwG-7I-fYI" secondAttribute="bottom" constant="5" id="G25-nc-ttE"/>
+                                        <constraint firstItem="XwG-7I-fYI" firstAttribute="top" secondItem="wdo-FL-NiU" secondAttribute="bottom" constant="5" id="Mrh-dv-X3B"/>
                                         <constraint firstItem="wdo-FL-NiU" firstAttribute="top" secondItem="2mS-17-bVZ" secondAttribute="topMargin" constant="5" id="NZF-7i-agD"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="XwG-7I-fYI" secondAttribute="trailing" constant="5" id="QDp-GB-6si"/>
                                         <constraint firstItem="lev-IM-UEC" firstAttribute="leading" secondItem="2mS-17-bVZ" secondAttribute="leadingMargin" constant="5" id="Vqb-kD-710"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="wdo-FL-NiU" secondAttribute="trailing" constant="5" id="XfC-HU-TqT"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="QvZ-rG-eyV" secondAttribute="trailing" constant="5" id="ekJ-x7-gOH"/>
                                         <constraint firstItem="QvZ-rG-eyV" firstAttribute="leading" secondItem="2mS-17-bVZ" secondAttribute="leadingMargin" constant="5" id="gFf-VF-j05"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="lev-IM-UEC" secondAttribute="bottom" id="gKI-gw-AU8"/>
                                         <constraint firstItem="wdo-FL-NiU" firstAttribute="leading" secondItem="2mS-17-bVZ" secondAttribute="leadingMargin" constant="5" id="n5q-bV-NSg"/>
-                                        <constraint firstItem="XwG-7I-fYI" firstAttribute="top" secondItem="wdo-FL-NiU" secondAttribute="bottom" constant="5" id="yoi-VU-kgN"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="lev-IM-UEC" secondAttribute="trailing" constant="5" id="yyN-wU-h3z"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -311,24 +312,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECs-wr-1IX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5547.826086956522" y="132.58928571428572"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mWE-oL-egB">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rsg-OD-Vqg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ODw-gT-Xxb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zpk-yo-G5l">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="icQ-3S-BQS" kind="relationship" relationship="rootViewController" id="VmS-0I-FAs"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="1982.608695652174" y="132.58928571428572"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TqS-Nd-wyb">

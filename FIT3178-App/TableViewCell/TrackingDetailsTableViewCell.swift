@@ -14,6 +14,7 @@ class TrackingDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var desciptionLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

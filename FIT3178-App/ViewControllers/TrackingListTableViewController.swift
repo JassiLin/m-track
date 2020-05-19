@@ -15,6 +15,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     var listenerType: ListenerType = .record
     
     private var recordSelected: TrackingRecord?
+    private var trackingNoSelected, carrierSelected: String?
     let CELL_RECORD = "recordCell"
     let cellSpacingHeight: CGFloat = 5
     
@@ -90,13 +91,18 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         cell.dateLabel.text = dateString
         cell.detailsLabel.text = record.value(forKey: "details") as? String ?? "No details"
         cell.locationLabel.text = record.value(forKey: "location") as? String ?? "No location available"
-
+        
+        self.trackingNoSelected = records[indexPath.section].trackingNo
+        self.carrierSelected = records[indexPath.section].carrier
+        
         return cell
     }
     
     // MARK: - didSelectRowAt
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.recordSelected = records[indexPath.section] as TrackingRecord
+        print(indexPath.section)
+
+        self.performSegue(withIdentifier: "ListToDetailsSegue", sender: self)
     }
 
     /*
@@ -141,8 +147,8 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ListToDetailsSegue"{
             let destination = segue.destination as! TrackingDetailsTableViewController
-            destination.trackingNo = recordSelected?.trackingNo
-            destination.carrier_code = recordSelected?.carrier
+            destination.trackingNo = trackingNoSelected
+            destination.carrier_code = carrierSelected
         }
     }
     

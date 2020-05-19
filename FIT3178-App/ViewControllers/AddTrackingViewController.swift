@@ -84,7 +84,7 @@ class AddTrackingViewController: UIViewController {
                 print("data: \(data!)")
                 do {
                     let decoder = JSONDecoder()
-                    let decodedData = try decoder.decode(orderTrackingApi.self, from: data!)
+                    let decodedData = try decoder.decode(trackingData.self, from: data!)
                     print("decodeData: \(decodedData)")
                     if let listTracking = decodedData.data?.items?.first {
                         print("listTracking: \(listTracking)")
