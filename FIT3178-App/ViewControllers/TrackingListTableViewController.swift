@@ -101,8 +101,6 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     // MARK: - didSelectRowAt
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.section)
-
-        self.performSegue(withIdentifier: "ListToDetailsSegue", sender: self)
     }
 
     /*

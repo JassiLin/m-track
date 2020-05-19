@@ -71,8 +71,8 @@ class TrackingDetailsTableViewController: UITableViewController {
                 print("error: \(error!)")
             } else {
                 let httpResponse = response as? HTTPURLResponse
-                print(httpResponse!)
-                print("data: \(data!)")
+                print(httpResponse?.statusCode as Any)
+
                 do {
                     let decoder = JSONDecoder()
                     let decodedData = try decoder.decode(trackingData.self, from: data!)
@@ -86,6 +86,8 @@ class TrackingDetailsTableViewController: UITableViewController {
                         }
                         DispatchQueue.main.async{
                             self.tableView.reloadData()
+                            //        self.indicator.startAnimating()
+                            //        self.indicator.backgroundColor = UIColor.clear
                         }
                     }
 
@@ -97,8 +99,7 @@ class TrackingDetailsTableViewController: UITableViewController {
         })
 
         dataTask.resume()
-//        self.indicator.startAnimating()
-//        self.indicator.backgroundColor = UIColor.clear
+
 
     }
     
