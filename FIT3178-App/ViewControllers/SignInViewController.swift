@@ -7,16 +7,32 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func signIn(_ sender: Any) {
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+            if error == nil {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
+                vc?.modalPresentationStyle = .fullScreen
+                vc?.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }else{
+                print(error as Any)
+            }
+        })
+    }
+    
     /*
     // MARK: - Navigation
 

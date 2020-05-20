@@ -484,6 +484,9 @@
                                 <state key="normal" title="CONTINUE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signIn:" destination="txm-Iz-RSz" eventType="touchUpInside" id="AOD-CD-Yae"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -499,6 +502,10 @@
                             <constraint firstItem="Iax-Q6-RnU" firstAttribute="top" secondItem="oy3-1U-WnS" secondAttribute="bottom" constant="100" id="vef-LC-TTR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="xz6-gf-CYd" id="f7l-vV-SwW"/>
+                        <outlet property="passwordTextField" destination="oy3-1U-WnS" id="0Ke-QW-bVQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdX-EO-Gzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
