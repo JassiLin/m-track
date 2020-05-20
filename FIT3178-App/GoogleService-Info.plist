@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>317465443945-jh6vvi8mqlcm15n82qcv20h81l1lhmb7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.317465443945-jh6vvi8mqlcm15n82qcv20h81l1lhmb7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBDCH_hMTvaNpjHXLcThXYypPMhSmLoLwU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>317465443945</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jlin.FIT3178-App</string>
+	<key>PROJECT_ID</key>
+	<string>m-track-3d884</string>
+	<key>STORAGE_BUCKET</key>
+	<string>m-track-3d884.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:317465443945:ios:57d5d1f88604bc7f4a6cf8</string>
+	<key>DATABASE_URL</key>
+	<string>https://m-track-3d884.firebaseio.com</string>
+</dict>
+</plist>

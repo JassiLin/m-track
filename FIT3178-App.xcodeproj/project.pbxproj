@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044A9260247519EF0030470F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044A925F247519EF0030470F /* GoogleService-Info.plist */; };
+		044A9268247569A50030470F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9267247569A50030470F /* LoginViewController.swift */; };
+		044A926A247571D80030470F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9269247571D80030470F /* SignInViewController.swift */; };
+		044A926C247572010030470F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A926B247572010030470F /* SignUpViewController.swift */; };
 		044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D54246FDE6700E0BDFC /* TrackingData.swift */; };
 		044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */; };
 		044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */; };
@@ -32,11 +36,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044A925F247519EF0030470F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		044A9267247569A50030470F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		044A9269247571D80030470F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		044A926B247572010030470F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		044D7D54246FDE6700E0BDFC /* TrackingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingData.swift; sourceTree = "<group>"; };
 		044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		044D7D5A2473488300E0BDFC /* TrackingDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDataRequest.swift; sourceTree = "<group>"; };
-		04523C5F24699E1F00E1230C /* FIT3178-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FIT3178-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04523C5F24699E1F00E1230C /* M-Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "M-Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04523C6224699E1F00E1230C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04523C6424699E1F00E1230C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04523C6624699E1F00E1230C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +93,7 @@
 		04523C6024699E1F00E1230C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04523C5F24699E1F00E1230C /* FIT3178-App.app */,
+				04523C5F24699E1F00E1230C /* M-Track.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +112,7 @@
 				04523C7024699E2300E1230C /* LaunchScreen.storyboard */,
 				04523C6624699E1F00E1230C /* ViewController.swift */,
 				04523C7324699E2300E1230C /* Info.plist */,
+				044A925F247519EF0030470F /* GoogleService-Info.plist */,
 				04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */,
 				044D7D54246FDE6700E0BDFC /* TrackingData.swift */,
 				044D7D5A2473488300E0BDFC /* TrackingDataRequest.swift */,
@@ -147,6 +156,9 @@
 				045248A6246A7E0500BE68CC /* TrackingListTableViewController.swift */,
 				0460343E246E11E600799E25 /* AddTrackingViewController.swift */,
 				044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */,
+				044A9267247569A50030470F /* LoginViewController.swift */,
+				044A9269247571D80030470F /* SignInViewController.swift */,
+				044A926B247572010030470F /* SignUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,7 +199,7 @@
 			);
 			name = "FIT3178-App";
 			productName = "FIT3178-App";
-			productReference = 04523C5F24699E1F00E1230C /* FIT3178-App.app */;
+			productReference = 04523C5F24699E1F00E1230C /* M-Track.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -229,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04523C7224699E2300E1230C /* LaunchScreen.storyboard in Resources */,
+				044A9260247519EF0030470F /* GoogleService-Info.plist in Resources */,
 				04523C6F24699E2300E1230C /* Assets.xcassets in Resources */,
 				04523C6A24699E1F00E1230C /* Main.storyboard in Resources */,
 			);
@@ -287,15 +300,18 @@
 				0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
 				044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */,
+				044A9268247569A50030470F /* LoginViewController.swift in Sources */,
 				044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */,
 				04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */,
 				045248B1246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift in Sources */,
+				044A926A247571D80030470F /* SignInViewController.swift in Sources */,
 				045248AE246AC6B100BE68CC /* M-Track.xcdatamodeld in Sources */,
 				044D7D5B2473488300E0BDFC /* TrackingDataRequest.swift in Sources */,
 				045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */,
 				04523C6D24699E1F00E1230C /* FIT3178_App.xcdatamodeld in Sources */,
 				045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */,
 				045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */,
+				044A926C247572010030470F /* SignUpViewController.swift in Sources */,
 				045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */,
 				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
 				044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */,
@@ -453,7 +469,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jlin.FIT3178-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "M-Track";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -472,7 +488,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jlin.FIT3178-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "M-Track";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -31,7 +31,7 @@ class TrackingDetailsTableViewController: UITableViewController {
         let floatyBtn = Floaty()
         floatyBtn.addItem("Add tracking", icon: UIImage(named: "track")!, handler: {
             _ in
-            self.performSegue(withIdentifier: "ListToAddSegue", sender: self)
+            self.performSegue(withIdentifier: "DetailsToAddSegue", sender: self)
         })
         floatyBtn.paddingY = 200
         floatyBtn.sticky = true
