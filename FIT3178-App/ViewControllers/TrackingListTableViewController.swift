@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Floaty
+import FirebaseAuth
 
 class TrackingListTableViewController: UITableViewController, DatabaseListener, FloatyDelegate {
     
@@ -33,6 +34,10 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         // set navigation title
         self.navigationItem.title = "M-TRACK"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: UIFont.Weight.bold)]
+        
+        if Auth.auth().currentUser != nil {
+            self.navigationItem.rightBarButtonItem?.title = "You're logged in"
+        }
         
         databaseController = appDelegate.databaseController
         
@@ -64,6 +69,15 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         tableView.reloadData()
     }
     
+    // Go to Sign-in screen
+    @IBAction func signIn(_ sender: Any) {
+        if Auth.auth().currentUser == nil {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+            vc?.modalPresentationStyle = .fullScreen
+            vc?.modalTransitionStyle = .crossDissolve
+            self.present(vc!, animated: true, completion: nil)
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

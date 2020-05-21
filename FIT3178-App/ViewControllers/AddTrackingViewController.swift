@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Foundation
+import FirebaseAuth
 
 class AddTrackingViewController: UIViewController {
 
@@ -28,6 +29,10 @@ class AddTrackingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         databaseController = appDelegate.databaseController
+        
+        if Auth.auth().currentUser != nil {
+            self.navigationItem.rightBarButtonItem?.title = "You're logged in"
+        }
     }
     
     @IBAction func addTracking(_ sender: Any) {

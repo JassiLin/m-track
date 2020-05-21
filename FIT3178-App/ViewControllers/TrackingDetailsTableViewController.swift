@@ -8,6 +8,7 @@
 
 import UIKit
 import Floaty
+import FirebaseAuth
 
 class TrackingDetailsTableViewController: UITableViewController {
 
@@ -27,6 +28,10 @@ class TrackingDetailsTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 151
 
+        if Auth.auth().currentUser != nil {
+            self.navigationItem.rightBarButtonItem?.title = "You're logged in"
+        }
+        
         // set float button
         let floatyBtn = Floaty()
         floatyBtn.addItem("Add tracking", icon: UIImage(named: "track")!, handler: {

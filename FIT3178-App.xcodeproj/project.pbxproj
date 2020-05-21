@@ -11,6 +11,11 @@
 		044A9268247569A50030470F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9267247569A50030470F /* LoginViewController.swift */; };
 		044A926A247571D80030470F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9269247571D80030470F /* SignInViewController.swift */; };
 		044A926C247572010030470F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A926B247572010030470F /* SignUpViewController.swift */; };
+		044A92702476060F0030470F /* ChannelsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A926F2476060F0030470F /* ChannelsTableViewController.swift */; };
+		044A9272247606210030470F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9271247606210030470F /* ChatViewController.swift */; };
+		044A927424760B540030470F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927324760B540030470F /* SettingsTableViewController.swift */; };
+		044A927624760FD20030470F /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927524760FD20030470F /* SettingsTableViewCell.swift */; };
+		044A9278247615E90030470F /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9277247615E90030470F /* Channel.swift */; };
 		044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D54246FDE6700E0BDFC /* TrackingData.swift */; };
 		044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */; };
 		044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */; };
@@ -40,6 +45,11 @@
 		044A9267247569A50030470F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		044A9269247571D80030470F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		044A926B247572010030470F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		044A926F2476060F0030470F /* ChannelsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsTableViewController.swift; sourceTree = "<group>"; };
+		044A9271247606210030470F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		044A927324760B540030470F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		044A927524760FD20030470F /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		044A9277247615E90030470F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		044D7D54246FDE6700E0BDFC /* TrackingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingData.swift; sourceTree = "<group>"; };
 		044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +135,7 @@
 			children = (
 				045248A8246A9BE600BE68CC /* TrackingListTableViewCell.swift */,
 				044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */,
+				044A927524760FD20030470F /* SettingsTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -135,6 +146,7 @@
 				045248AF246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift */,
 				045248B0246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift */,
 				045248AC246AC6B100BE68CC /* M-Track.xcdatamodeld */,
+				044A9277247615E90030470F /* Channel.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -159,6 +171,9 @@
 				044A9267247569A50030470F /* LoginViewController.swift */,
 				044A9269247571D80030470F /* SignInViewController.swift */,
 				044A926B247572010030470F /* SignUpViewController.swift */,
+				044A926F2476060F0030470F /* ChannelsTableViewController.swift */,
+				044A9271247606210030470F /* ChatViewController.swift */,
+				044A927324760B540030470F /* SettingsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -299,6 +314,7 @@
 				045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */,
 				0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
+				044A9278247615E90030470F /* Channel.swift in Sources */,
 				044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */,
 				044A9268247569A50030470F /* LoginViewController.swift in Sources */,
 				044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */,
@@ -309,14 +325,18 @@
 				044D7D5B2473488300E0BDFC /* TrackingDataRequest.swift in Sources */,
 				045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */,
 				04523C6D24699E1F00E1230C /* FIT3178_App.xcdatamodeld in Sources */,
+				044A927624760FD20030470F /* SettingsTableViewCell.swift in Sources */,
 				045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */,
 				045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */,
 				044A926C247572010030470F /* SignUpViewController.swift in Sources */,
+				044A9272247606210030470F /* ChatViewController.swift in Sources */,
+				044A92702476060F0030470F /* ChannelsTableViewController.swift in Sources */,
 				045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */,
 				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
 				044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */,
 				04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */,
 				045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */,
+				044A927424760B540030470F /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
