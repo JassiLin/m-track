@@ -73,7 +73,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     @IBAction func signIn(_ sender: Any) {
         if Auth.auth().currentUser == nil {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-            vc?.modalPresentationStyle = .fullScreen
+            vc?.modalPresentationStyle = .popover
             vc?.modalTransitionStyle = .crossDissolve
             self.present(vc!, animated: true, completion: nil)
         }
@@ -82,22 +82,22 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return records.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return records.count
     }
 
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
-    }
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return cellSpacingHeight
+//    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_RECORD, for: indexPath) as! TrackingListTableViewCell
-        let record = records[indexPath.section]
+        let record = records[indexPath.row]
         
         let dateString = self.dateToString(record.value(forKey: "date") as! Date)
         
@@ -105,16 +105,17 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         cell.dateLabel.text = dateString
         cell.detailsLabel.text = record.value(forKey: "details") as? String ?? "No details"
         cell.locationLabel.text = record.value(forKey: "location") as? String ?? "No location available"
-        
-        self.trackingNoSelected = records[indexPath.section].trackingNo
-        self.carrierSelected = records[indexPath.section].carrier
+
+        self.trackingNoSelected = records[indexPath.row].trackingNo
+        self.carrierSelected = records[indexPath.row].carrier
         
         return cell
     }
     
     // MARK: - didSelectRowAt
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.section)
+        self.trackingNoSelected = records[indexPath.row].trackingNo
+        self.carrierSelected = records[indexPath.row].carrier
     }
 
     /*

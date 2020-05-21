@@ -16,6 +16,8 @@
 		044A927424760B540030470F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927324760B540030470F /* SettingsTableViewController.swift */; };
 		044A927624760FD20030470F /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927524760FD20030470F /* SettingsTableViewCell.swift */; };
 		044A9278247615E90030470F /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9277247615E90030470F /* Channel.swift */; };
+		044A927B247627280030470F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927A247627280030470F /* UIColor+Additions.swift */; };
+		044A927D247629220030470F /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927C247629220030470F /* DatabaseRepresentation.swift */; };
 		044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D54246FDE6700E0BDFC /* TrackingData.swift */; };
 		044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */; };
 		044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */; };
@@ -50,6 +52,8 @@
 		044A927324760B540030470F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		044A927524760FD20030470F /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		044A9277247615E90030470F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		044A927A247627280030470F /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		044A927C247629220030470F /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
 		044D7D54246FDE6700E0BDFC /* TrackingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingData.swift; sourceTree = "<group>"; };
 		044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		044A9279247627040030470F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				044A927A247627280030470F /* UIColor+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		04523C5624699E1F00E1230C = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +123,7 @@
 		04523C6124699E1F00E1230C /* FIT3178-App */ = {
 			isa = PBXGroup;
 			children = (
+				044A9279247627040030470F /* Extensions */,
 				04603438246D1DB800799E25 /* ViewControllers */,
 				045248B3246ACB0500BE68CC /* Database */,
 				045248AB246AC65900BE68CC /* DataModel */,
@@ -147,6 +160,7 @@
 				045248B0246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift */,
 				045248AC246AC6B100BE68CC /* M-Track.xcdatamodeld */,
 				044A9277247615E90030470F /* Channel.swift */,
+				044A927C247629220030470F /* DatabaseRepresentation.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -328,11 +342,13 @@
 				044A927624760FD20030470F /* SettingsTableViewCell.swift in Sources */,
 				045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */,
 				045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */,
+				044A927B247627280030470F /* UIColor+Additions.swift in Sources */,
 				044A926C247572010030470F /* SignUpViewController.swift in Sources */,
 				044A9272247606210030470F /* ChatViewController.swift in Sources */,
 				044A92702476060F0030470F /* ChannelsTableViewController.swift in Sources */,
 				045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */,
 				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
+				044A927D247629220030470F /* DatabaseRepresentation.swift in Sources */,
 				044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */,
 				04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */,
 				045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */,

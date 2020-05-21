@@ -18,8 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        databaseController = CoreDataController()
         FirebaseApp.configure()
+//        if Auth.auth().currentUser != nil{
+//            self.window?.rootViewController = TrackingListTableViewController()
+//        }else{
+//            self.window?.rootViewController = HomeViewController()
+//        }
+        
+        databaseController = CoreDataController()
+        
         return true
     }
 

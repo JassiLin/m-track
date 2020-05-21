@@ -7,9 +7,27 @@
 //
 
 import UIKit
+import MessageKit
+import FirebaseAuth
+import FirebaseFirestore
 
-class ChatViewController: UIViewController {
+class ChatViewController: MessagesViewController {
 
+    private let user: User
+    private let channel: Channel
+    
+    init(user: User, channel: Channel) {
+      self.user = user
+      self.channel = channel
+      super.init(nibName: nil, bundle: nil)
+      
+      title = channel.name
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

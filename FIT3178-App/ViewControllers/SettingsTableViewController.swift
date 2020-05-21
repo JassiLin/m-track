@@ -12,10 +12,14 @@ import FirebaseAuth
 class SettingsTableViewController: UITableViewController {
 
 
+    @IBOutlet weak var signOutBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if Auth.auth().currentUser == nil{
+            signOutBtn.isHidden = true
+        }
     }
     
     @IBAction func signOut(_ sender: Any) {

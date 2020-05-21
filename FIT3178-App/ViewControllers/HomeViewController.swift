@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tryWithoutLoginBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // If user is already logged in, change buttons
+        if Auth.auth().currentUser != nil {
+            tryWithoutLoginBtn.setTitle("Access your parcel tracking list", for: .normal)
+            loginBtn.isHidden = true
+        }
     }
     
     func addNavBarImage(){
