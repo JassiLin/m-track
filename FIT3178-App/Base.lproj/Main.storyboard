@@ -80,12 +80,12 @@
         <!--Tracking List Table View Controller-->
         <scene sceneID="bmR-kg-ZSx">
             <objects>
-                <tableViewController storyboardIdentifier="TrackingList" id="sso-fo-PDI" customClass="TrackingListTableViewController" customModule="FIT3178_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TrackingList" id="sso-fo-PDI" customClass="TrackingListTableViewController" customModule="M_Track" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="151" estimatedRowHeight="151" sectionHeaderHeight="18" sectionFooterHeight="18" id="Vyv-Sw-DOD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordCell" rowHeight="151" id="5Lo-nS-zsR" customClass="TrackingListTableViewCell" customModule="FIT3178_App" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordCell" rowHeight="151" id="5Lo-nS-zsR" customClass="TrackingListTableViewCell" customModule="M_Track" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="151"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Lo-nS-zsR" id="NL3-ug-yoZ">
@@ -239,12 +239,12 @@
         <!--Tracking Details Table View Controller-->
         <scene sceneID="Yjq-fh-oVx">
             <objects>
-                <tableViewController id="LOS-T9-suJ" customClass="TrackingDetailsTableViewController" customModule="FIT3178_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LOS-T9-suJ" customClass="TrackingDetailsTableViewController" customModule="M_Track" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="7X9-yl-5px">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailsCell" rowHeight="137" id="2Ef-Dz-wLH" customClass="TrackingDetailsTableViewCell" customModule="FIT3178_App" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailsCell" rowHeight="137" id="2Ef-Dz-wLH" customClass="TrackingDetailsTableViewCell" customModule="M_Track" customModuleProvider="target">
                                 <rect key="frame" x="20" y="55.5" width="374" height="137"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Ef-Dz-wLH" id="2mS-17-bVZ">
@@ -320,7 +320,7 @@
         <!--Add Tracking View Controller-->
         <scene sceneID="shb-yz-ynP">
             <objects>
-                <viewController id="LjC-qJ-Q2h" customClass="AddTrackingViewController" customModule="FIT3178_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LjC-qJ-Q2h" customClass="AddTrackingViewController" customModule="M_Track" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JqP-51-izy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,41 +528,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xz6-gf-CYd">
-                                <rect key="frame" x="40" y="144" width="334" height="34"/>
+                                <rect key="frame" x="40" y="294" width="334" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RuE-Wy-4t8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oy3-1U-WnS">
-                                <rect key="frame" x="40" y="228" width="334" height="34"/>
+                                <rect key="frame" x="40" y="388" width="334" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HEU-03-zGa"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iax-Q6-RnU">
-                                <rect key="frame" x="40" y="362" width="334" height="40"/>
-                                <color key="backgroundColor" red="0.84705882349999995" green="0.68235294120000001" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="mKN-KL-7Qg"/>
-                                </constraints>
-                                <state key="normal" title="CONTINUE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="signIn:" destination="txm-Iz-RSz" eventType="touchUpInside" id="AOD-CD-Yae"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Iax-Q6-RnU" firstAttribute="leading" secondItem="zmM-uC-x9J" secondAttribute="leadingMargin" constant="20" id="0I6-8d-Te6"/>
                             <constraint firstItem="oy3-1U-WnS" firstAttribute="top" secondItem="xz6-gf-CYd" secondAttribute="bottom" constant="50" id="5HX-Zy-5Wm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oy3-1U-WnS" secondAttribute="trailing" constant="20" id="Bw0-sq-jvO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Iax-Q6-RnU" secondAttribute="trailing" constant="20" id="Flx-E1-ifo"/>
                             <constraint firstItem="oy3-1U-WnS" firstAttribute="leading" secondItem="zmM-uC-x9J" secondAttribute="leadingMargin" constant="20" id="LTs-bY-XHZ"/>
-                            <constraint firstItem="xz6-gf-CYd" firstAttribute="top" secondItem="zmM-uC-x9J" secondAttribute="topMargin" constant="100" id="RC8-yT-mWJ"/>
+                            <constraint firstItem="xz6-gf-CYd" firstAttribute="top" secondItem="zmM-uC-x9J" secondAttribute="topMargin" constant="250" id="RC8-yT-mWJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xz6-gf-CYd" secondAttribute="trailing" constant="20" id="cUX-Vl-xGF"/>
                             <constraint firstItem="xz6-gf-CYd" firstAttribute="leading" secondItem="zmM-uC-x9J" secondAttribute="leadingMargin" constant="20" id="mjz-Iu-brs"/>
-                            <constraint firstItem="Iax-Q6-RnU" firstAttribute="top" secondItem="oy3-1U-WnS" secondAttribute="bottom" constant="100" id="vef-LC-TTR"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="OOV-NX-urr"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="xz6-gf-CYd" id="f7l-vV-SwW"/>
@@ -625,6 +616,7 @@
                             <constraint firstItem="qAi-p9-v7V" firstAttribute="leading" secondItem="UDD-XO-Lbh" secondAttribute="leadingMargin" constant="20" id="tyu-3p-Ees"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qAi-p9-v7V" secondAttribute="trailing" constant="20" id="x9R-j6-3wh"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rhj-37-6eL"/>
                     </view>
                     <connections>
                         <outlet property="confirmPWTextField" destination="qAi-p9-v7V" id="Y3a-E7-Bkm"/>
