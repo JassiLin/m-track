@@ -20,6 +20,8 @@ class TrackingDetailsTableViewController: UITableViewController {
     let CELL_DETAILS = "detailsCell"
     var indicator = UIActivityIndicatorView()
     
+    var rControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,11 @@ class TrackingDetailsTableViewController: UITableViewController {
         if Auth.auth().currentUser != nil {
             self.navigationItem.rightBarButtonItem?.title = "You're logged in"
         }
+        
+        // pull to refresh
+        rControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        rControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(rControl)
         
         // set float button
         let floatyBtn = Floaty()
@@ -76,7 +83,7 @@ class TrackingDetailsTableViewController: UITableViewController {
                 print("error: \(error!)")
             } else {
                 let httpResponse = response as? HTTPURLResponse
-                print(httpResponse?.statusCode as Any)
+                print("response code: \(httpResponse?.statusCode as Any)")
 
                 do {
                     let decoder = JSONDecoder()
@@ -106,6 +113,26 @@ class TrackingDetailsTableViewController: UITableViewController {
         dataTask.resume()
 
 
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+       // Code to refresh table view
+        requestTrackingDetails()
+        
+        // Dismiss the refresh control.
+        DispatchQueue.main.async {
+            self.rControl.endRefreshing()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            guard let strongSelf = self else { return }
+            if strongSelf.rControl.isRefreshing {
+                strongSelf.rControl.endRefreshing()
+            } else if !strongSelf.rControl.isHidden {
+                strongSelf.rControl.beginRefreshing()
+                strongSelf.rControl.endRefreshing()
+            }
+        }
     }
     
     // MARK: - Table view data source

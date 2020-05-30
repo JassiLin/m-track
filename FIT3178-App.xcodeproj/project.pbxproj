@@ -38,6 +38,8 @@
 		045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */; };
 		045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B6246AD10100BE68CC /* MulticastDelegate.swift */; };
 		045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B8246AD14200BE68CC /* CoreDataController.swift */; };
+		0455CB7A248018BA00B7E97E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB79248018BA00B7E97E /* Message.swift */; };
+		0455CB7D24801C7D00B7E97E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB7C24801C7D00B7E97E /* AppSettings.swift */; };
 		0460343B246D84AC00799E25 /* Pods_FIT3178_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E68B2216BEEAB76FF936A1 /* Pods_FIT3178_App.framework */; };
 		0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460343E246E11E600799E25 /* AddTrackingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +78,8 @@
 		045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		045248B6246AD10100BE68CC /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		045248B8246AD14200BE68CC /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		0455CB79248018BA00B7E97E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0455CB7C24801C7D00B7E97E /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0460343E246E11E600799E25 /* AddTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackingViewController.swift; sourceTree = "<group>"; };
 		44BA9831C929A5FEC34A3FC9 /* Pods-FIT3178-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT3178-App.debug.xcconfig"; path = "Target Support Files/Pods-FIT3178-App/Pods-FIT3178-App.debug.xcconfig"; sourceTree = "<group>"; };
 		A27DC1CE1879B98333E10C46 /* Pods-FIT3178-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT3178-App.release.xcconfig"; path = "Target Support Files/Pods-FIT3178-App/Pods-FIT3178-App.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,12 +127,12 @@
 		04523C6124699E1F00E1230C /* FIT3178-App */ = {
 			isa = PBXGroup;
 			children = (
+				0455CB7B24801C4200B7E97E /* Controllers */,
 				044A9279247627040030470F /* Extensions */,
 				04603438246D1DB800799E25 /* ViewControllers */,
 				045248B3246ACB0500BE68CC /* Database */,
 				045248AB246AC65900BE68CC /* DataModel */,
 				045248AA246AC1A100BE68CC /* TableViewCell */,
-				04523C6224699E1F00E1230C /* AppDelegate.swift */,
 				04523C6424699E1F00E1230C /* SceneDelegate.swift */,
 				04523C6824699E1F00E1230C /* Main.storyboard */,
 				04523C6E24699E2300E1230C /* Assets.xcassets */,
@@ -161,6 +165,7 @@
 				045248AC246AC6B100BE68CC /* M-Track.xcdatamodeld */,
 				044A9277247615E90030470F /* Channel.swift */,
 				044A927C247629220030470F /* DatabaseRepresentation.swift */,
+				0455CB79248018BA00B7E97E /* Message.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -173,6 +178,15 @@
 				045248B8246AD14200BE68CC /* CoreDataController.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		0455CB7B24801C4200B7E97E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04523C6224699E1F00E1230C /* AppDelegate.swift */,
+				0455CB7C24801C7D00B7E97E /* AppSettings.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		04603438246D1DB800799E25 /* ViewControllers */ = {
@@ -329,9 +343,11 @@
 				0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
 				044A9278247615E90030470F /* Channel.swift in Sources */,
+				0455CB7A248018BA00B7E97E /* Message.swift in Sources */,
 				044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */,
 				044A9268247569A50030470F /* LoginViewController.swift in Sources */,
 				044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */,
+				0455CB7D24801C7D00B7E97E /* AppSettings.swift in Sources */,
 				04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */,
 				045248B1246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift in Sources */,
 				044A926A247571D80030470F /* SignInViewController.swift in Sources */,

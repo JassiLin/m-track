@@ -104,6 +104,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func loginAction(){
+        
+        AppSettings.displayName = emailTextField.text
+        
         Auth.auth().signIn(withEmail: txtUser.text!, password: txtPwd.text!, completion: { (user, error) in
             if error == nil {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")

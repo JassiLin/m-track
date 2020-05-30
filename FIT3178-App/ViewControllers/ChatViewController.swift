@@ -16,6 +16,8 @@ class ChatViewController: MessagesViewController {
     private let user: User
     private let channel: Channel
     
+    private var messages: [Message] = []
+    
     init(user: User, channel: Channel) {
       self.user = user
       self.channel = channel
