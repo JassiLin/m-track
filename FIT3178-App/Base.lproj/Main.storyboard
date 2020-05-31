@@ -198,9 +198,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="rNf-ty-ytE" kind="show" id="W42-tS-okb"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

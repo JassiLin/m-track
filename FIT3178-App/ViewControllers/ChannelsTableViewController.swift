@@ -16,7 +16,8 @@ class ChannelsTableViewController: UITableViewController {
     private var channels = [Channel]()
     private var currentChannelAlertController: UIAlertController?
     private var channelListener: ListenerRegistration?
-//    private let currentUser: User?
+    
+//    private let currentUser: User
     
     deinit {
       channelListener?.remove()
@@ -24,10 +25,9 @@ class ChannelsTableViewController: UITableViewController {
     
     let CELL_CHANNELS = "channelCell"
 
-    
 //    init(currentUser: User) {
 //      self.currentUser = currentUser
-//      super.init(style: .grouped)
+//      super.init(nibName: nil, bundle: nil)
 //
 //      title = "Channels"
 //    }
