@@ -17,7 +17,6 @@ class ChannelsTableViewController: UITableViewController {
     private var currentChannelAlertController: UIAlertController?
     private var channelListener: ListenerRegistration?
     
-//    private let currentUser: User
     
     deinit {
       channelListener?.remove()
@@ -31,9 +30,12 @@ class ChannelsTableViewController: UITableViewController {
 //
 //      title = "Channels"
 //    }
-//
+
 //    required init?(coder aDecoder: NSCoder) {
-//      super.init(coder: aDecoder)
+//
+//        self.currentUser = Auth.auth().currentUser!
+//
+//        super.init(coder: aDecoder)
 //    }
     
     private var channelReference: CollectionReference {

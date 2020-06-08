@@ -8,20 +8,26 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPWTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        passwordTextField.isSecureTextEntry = true
     }
     
     @IBAction func submit(_ sender: Any) {
-        guard validateEmail(enteredEmail: emailTextField.text!) else{
+        
+        // create cleaned versions of data
+        let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        guard Utilities.validateEmail(emailTextField.text!) else{
             let alert = UIAlertController(title: "Invalid format", message: "Your email address format is incorrect.", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: nil))
@@ -30,7 +36,9 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        guard validatePassword(password: passwordTextField.text!) else{
+        guard Utilities.validatePassword(passwordTextField.text!),
+            Utilities.isPasswordValid(passwordTextField.text!)
+        else{
             let alert = UIAlertController(title: "Invalid format", message: "Your password format is incorrect.", preferredStyle: .alert)
 
             alert.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: nil))
@@ -38,9 +46,21 @@ class SignUpViewController: UIViewController {
             self.present(alert, animated: true)
             return
         }
-        
+         
+        // create the user
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
             if error == nil {
+                // store username
+                let db = Firestore.firestore()
+                
+                db.collection("users").addDocument(data: ["username": username, "uid": user!.user.uid]) {
+                    (error) in
+                    
+                    if error != nil {
+                        print("Error saving user data")
+                    }
+                }
+                
                 // jump to tracking list screen
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
                 vc?.modalPresentationStyle = .fullScreen
@@ -51,48 +71,7 @@ class SignUpViewController: UIViewController {
             }
         })
     }
-    
-    private func validateEmail(enteredEmail:String) -> Bool {
-
-        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: enteredEmail)
-
-    }
-    
-    // Password validation:
-    // legnth >= 8
-    // lowercase, uppercase, decimal digits & characters (optional)
-    private func validatePassword(password: String) -> Bool {
-        var lowerCaseLetter: Bool = false
-        var upperCaseLetter: Bool = false
-        var digit: Bool = false
-        var specialCharacter: Bool = false
-
-        if password.count  >= 8 {
-            for char in password.unicodeScalars {
-                if !lowerCaseLetter {
-                    lowerCaseLetter = CharacterSet.lowercaseLetters.contains(char)
-                }
-                if !upperCaseLetter {
-                    upperCaseLetter = CharacterSet.uppercaseLetters.contains(char)
-                }
-                if !digit {
-                    digit = CharacterSet.decimalDigits.contains(char)
-                }
-                if !specialCharacter {
-                    specialCharacter = CharacterSet.punctuationCharacters.contains(char)
-                }
-            }
-            if specialCharacter || (digit && lowerCaseLetter && upperCaseLetter) {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-        return false
-    }
+        
     
     /*
     // MARK: - Navigation
