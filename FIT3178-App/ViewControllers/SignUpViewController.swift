@@ -37,7 +37,8 @@ class SignUpViewController: UIViewController {
         }
         
         guard Utilities.validatePassword(passwordTextField.text!),
-            Utilities.isPasswordValid(passwordTextField.text!)
+            Utilities.isPasswordValid(passwordTextField.text!),
+            passwordTextField.text == confirmPWTextField.text
         else{
             let alert = UIAlertController(title: "Invalid format", message: "Your password format is incorrect.", preferredStyle: .alert)
 
@@ -53,7 +54,7 @@ class SignUpViewController: UIViewController {
                 // store username
                 let db = Firestore.firestore()
                 
-                db.collection("users").addDocument(data: ["username": username, "uid": user!.user.uid]) {
+                db.collection("users").document(user!.user.uid).setData(["username": username, "uid": user!.user.uid]) {
                     (error) in
                     
                     if error != nil {

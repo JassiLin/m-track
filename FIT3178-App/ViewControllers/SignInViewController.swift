@@ -11,9 +11,6 @@ import FirebaseAuth
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    
     var txtUser:UITextField!
     var txtPwd:UITextField!
     
@@ -104,8 +101,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func loginAction(){
-        
-        AppSettings.displayName = emailTextField.text
         
         Auth.auth().signIn(withEmail: txtUser.text!, password: txtPwd.text!, completion: { (user, error) in
             if error == nil {

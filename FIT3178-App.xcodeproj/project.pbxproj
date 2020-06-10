@@ -23,11 +23,11 @@
 		044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */; };
 		044D7D5B2473488300E0BDFC /* TrackingDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D5A2473488300E0BDFC /* TrackingDataRequest.swift */; };
 		044E601A248E7038006CCADF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E6019248E7038006CCADF /* Utilities.swift */; };
+		044E601E248FCBA3006CCADF /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E601D248FCBA3006CCADF /* Record.swift */; };
 		04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6224699E1F00E1230C /* AppDelegate.swift */; };
 		04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6424699E1F00E1230C /* SceneDelegate.swift */; };
 		04523C6724699E1F00E1230C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6624699E1F00E1230C /* ViewController.swift */; };
 		04523C6A24699E1F00E1230C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04523C6824699E1F00E1230C /* Main.storyboard */; };
-		04523C6D24699E1F00E1230C /* FIT3178_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */; };
 		04523C6F24699E2300E1230C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04523C6E24699E2300E1230C /* Assets.xcassets */; };
 		04523C7224699E2300E1230C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04523C7024699E2300E1230C /* LaunchScreen.storyboard */; };
 		045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248A4246A7DB300BE68CC /* HomeViewController.swift */; };
@@ -62,12 +62,12 @@
 		044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		044D7D5A2473488300E0BDFC /* TrackingDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDataRequest.swift; sourceTree = "<group>"; };
 		044E6019248E7038006CCADF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		044E601D248FCBA3006CCADF /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		04523C5F24699E1F00E1230C /* M-Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "M-Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04523C6224699E1F00E1230C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04523C6424699E1F00E1230C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04523C6624699E1F00E1230C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04523C6924699E1F00E1230C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		04523C6C24699E1F00E1230C /* FIT3178_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FIT3178_App.xcdatamodel; sourceTree = "<group>"; };
 		04523C6E24699E2300E1230C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04523C7124699E2300E1230C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04523C7324699E2300E1230C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,7 +143,6 @@
 				04523C6624699E1F00E1230C /* ViewController.swift */,
 				04523C7324699E2300E1230C /* Info.plist */,
 				044A925F247519EF0030470F /* GoogleService-Info.plist */,
-				04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */,
 				044D7D54246FDE6700E0BDFC /* TrackingData.swift */,
 				044D7D5A2473488300E0BDFC /* TrackingDataRequest.swift */,
 			);
@@ -169,6 +168,7 @@
 				044A9277247615E90030470F /* Channel.swift */,
 				044A927C247629220030470F /* DatabaseRepresentation.swift */,
 				0455CB79248018BA00B7E97E /* Message.swift */,
+				044E601D248FCBA3006CCADF /* Record.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -358,10 +358,10 @@
 				045248AE246AC6B100BE68CC /* M-Track.xcdatamodeld in Sources */,
 				044D7D5B2473488300E0BDFC /* TrackingDataRequest.swift in Sources */,
 				045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */,
-				04523C6D24699E1F00E1230C /* FIT3178_App.xcdatamodeld in Sources */,
 				044A927624760FD20030470F /* SettingsTableViewCell.swift in Sources */,
 				045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */,
 				045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */,
+				044E601E248FCBA3006CCADF /* Record.swift in Sources */,
 				044A927B247627280030470F /* UIColor+Additions.swift in Sources */,
 				044A926C247572010030470F /* SignUpViewController.swift in Sources */,
 				044A9272247606210030470F /* ChatViewController.swift in Sources */,
@@ -574,16 +574,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		04523C6B24699E1F00E1230C /* FIT3178_App.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				04523C6C24699E1F00E1230C /* FIT3178_App.xcdatamodel */,
-			);
-			currentVersion = 04523C6C24699E1F00E1230C /* FIT3178_App.xcdatamodel */;
-			path = FIT3178_App.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		045248AC246AC6B100BE68CC /* M-Track.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

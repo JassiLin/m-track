@@ -10,6 +10,22 @@ import Foundation
 
 class Utilities {
     
+    static func dateToString(_ date:Date, dateFormat:String = "dd-MM-yyyy HH:mm:ss") -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "en_AU")
+        formatter.dateFormat = dateFormat
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
+    
+    static func stringToDate(_ string: String, dateFormat: String = "yyyy-MM-dd HH:mm:ss")-> Date{
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "en_AU")
+        formatter.dateFormat = dateFormat
+        let date = formatter.date(from: string)
+        return date!
+    }
+    
     static func validateEmail(_ enteredEmail:String) -> Bool {
 
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

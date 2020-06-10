@@ -10,9 +10,11 @@ import UIKit
 import CoreData
 import Foundation
 import FirebaseAuth
+import Firebase
 
 class AddTrackingViewController: UIViewController {
 
+    private let firebaseDB = Firestore.firestore()
     var listenerType: ListenerType = .record
     
     var date: String?
@@ -48,11 +50,34 @@ class AddTrackingViewController: UIViewController {
         let trackingNo = trackingNoTF?.text
         let carrier = carrierTF?.text
 
-        let addedRecord = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!)
-        if(addedRecord != nil){
-            print("Added sucessfully: \(addedRecord!)")
-            navigationController?.popViewController(animated: true)
+        if Auth.auth().currentUser == nil {
+            let addedRecord = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!)
+            if(addedRecord != nil){
+                print("Added sucessfully: \(addedRecord!)")
+                navigationController?.popViewController(animated: true)
+            }
+        }else{
+            let tracking = [
+                "trackingNo": trackingNo,
+                "carrier": carrier,
+                "name": name,
+                "location": location!,
+                "latestDetails": details!,
+                "date": date!
+            ]
+            
+            let userRef = firebaseDB.collection("users")
+
+            userRef.document(Auth.auth().currentUser!.uid).collection("trackingRecord").addDocument(data: tracking as [String : Any]){(error) in
+                
+                if error != nil {
+                    print("Error saving tracking data")
+                }else{
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
+        
 
     }
     
