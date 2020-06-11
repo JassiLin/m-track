@@ -39,7 +39,7 @@ class ChannelsTableViewController: UITableViewController {
 //    }
     
     private var channelReference: CollectionReference {
-      return db.collection("channels")
+        return db.collection("channels")
     }
     
     override func viewDidLoad() {

@@ -64,7 +64,6 @@ struct Message: MessageType {
         id = document.documentID
         
         self.sentDate = sentDate.dateValue()
-        
         user = MockUser(senderId: senderID, displayName: senderName)
         
         if let content = data["content"] as? String {

@@ -368,6 +368,7 @@
                                     <outlet property="desciptionLabel" destination="lev-IM-UEC" id="hs4-o7-nzE"/>
                                     <outlet property="locationLabel" destination="QvZ-rG-eyV" id="68v-OC-eSU"/>
                                     <outlet property="statusLabel" destination="XwG-7I-fYI" id="rnj-Uu-oCD"/>
+                                    <segue destination="gG2-Hu-372" kind="presentation" identifier="DetailsToMapSegue" id="nrB-Dt-C52"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -387,6 +388,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oM4-PC-3P6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4713" y="862"/>
+        </scene>
+        <!--Tracking-->
+        <scene sceneID="qPi-Eg-awp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tracking" id="gG2-Hu-372" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jTu-Zw-XQs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5405" y="853"/>
         </scene>
         <!--Add Tracking View Controller-->
         <scene sceneID="shb-yz-ynP">
@@ -769,7 +778,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g1Z-UZ-v7s"/>
+        <segue reference="4h2-OE-NcQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>

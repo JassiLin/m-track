@@ -26,6 +26,8 @@ class ChatViewController: MessagesViewController {
     private var messageList: [Message] = []
     private var messageListener: ListenerRegistration?
     
+    var username: String = ""
+    
     deinit {
       messageListener?.remove()
     }
@@ -69,6 +71,15 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        
+        let userRef = db.collection("users").document(user.uid)
+        userRef.getDocument(source: .cache){(document, error) in
+            if let doc = document {
+                self.username = doc.get("username") as! String
+            } else {
+                print("Username not exists")
+            }
+        }
     }
     
     
@@ -146,7 +157,7 @@ extension ChatViewController: MessagesDataSource {
     
     // 1
     func currentSender() -> SenderType {
-        return MockUser(senderId: user.uid, displayName: user.displayName ?? "none")
+        return MockUser(senderId: user.uid, displayName: username)
     }
     // 2
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -168,8 +179,8 @@ extension ChatViewController: MessagesDataSource {
     return NSAttributedString(
       string: name,
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .caption1),
-        .foregroundColor: UIColor(white: 0.3, alpha: 1)
+        .font: UIFont.preferredFont(forTextStyle: .caption2),
+        .foregroundColor: UIColor.primary
       ]
     )
   }

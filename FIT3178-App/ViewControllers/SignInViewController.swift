@@ -104,6 +104,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().signIn(withEmail: txtUser.text!, password: txtPwd.text!, completion: { (user, error) in
             if error == nil {
+                
+                AppSettings.displayName = Auth.auth().currentUser?.displayName
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
                 vc?.modalPresentationStyle = .fullScreen
                 vc?.modalTransitionStyle = .crossDissolve

@@ -39,6 +39,10 @@
 		045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */; };
 		045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B6246AD10100BE68CC /* MulticastDelegate.swift */; };
 		045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045248B8246AD14200BE68CC /* CoreDataController.swift */; };
+		0454021924912AB100FB03BB /* Tracking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0454021824912AB100FB03BB /* Tracking.storyboard */; };
+		0454021B2491344400FB03BB /* MapDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454021A2491344400FB03BB /* MapDetailsViewController.swift */; };
+		0454021D2491347F00FB03BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454021C2491347F00FB03BB /* MapViewController.swift */; };
+		0454021F249134D100FB03BB /* MapFunctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454021E249134D100FB03BB /* MapFunctionViewController.swift */; };
 		0455CB7A248018BA00B7E97E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB79248018BA00B7E97E /* Message.swift */; };
 		0455CB7D24801C7D00B7E97E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB7C24801C7D00B7E97E /* AppSettings.swift */; };
 		0460343B246D84AC00799E25 /* Pods_FIT3178_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E68B2216BEEAB76FF936A1 /* Pods_FIT3178_App.framework */; };
@@ -80,6 +84,10 @@
 		045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		045248B6246AD10100BE68CC /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		045248B8246AD14200BE68CC /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		0454021824912AB100FB03BB /* Tracking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tracking.storyboard; sourceTree = "<group>"; };
+		0454021A2491344400FB03BB /* MapDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailsViewController.swift; sourceTree = "<group>"; };
+		0454021C2491347F00FB03BB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0454021E249134D100FB03BB /* MapFunctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFunctionViewController.swift; sourceTree = "<group>"; };
 		0455CB79248018BA00B7E97E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0455CB7C24801C7D00B7E97E /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0460343E246E11E600799E25 /* AddTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackingViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +138,7 @@
 		04523C6124699E1F00E1230C /* FIT3178-App */ = {
 			isa = PBXGroup;
 			children = (
+				0454021724912A8300FB03BB /* Storyboards */,
 				0455CB7B24801C4200B7E97E /* Controllers */,
 				044A9279247627040030470F /* Extensions */,
 				04603438246D1DB800799E25 /* ViewControllers */,
@@ -183,6 +192,14 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		0454021724912A8300FB03BB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0454021824912AB100FB03BB /* Tracking.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		0455CB7B24801C4200B7E97E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +222,9 @@
 				044A926F2476060F0030470F /* ChannelsTableViewController.swift */,
 				044A9271247606210030470F /* ChatViewController.swift */,
 				044A927324760B540030470F /* SettingsTableViewController.swift */,
+				0454021A2491344400FB03BB /* MapDetailsViewController.swift */,
+				0454021C2491347F00FB03BB /* MapViewController.swift */,
+				0454021E249134D100FB03BB /* MapFunctionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -288,6 +308,7 @@
 			files = (
 				04523C7224699E2300E1230C /* LaunchScreen.storyboard in Resources */,
 				044A9260247519EF0030470F /* GoogleService-Info.plist in Resources */,
+				0454021924912AB100FB03BB /* Tracking.storyboard in Resources */,
 				04523C6F24699E2300E1230C /* Assets.xcassets in Resources */,
 				04523C6A24699E1F00E1230C /* Main.storyboard in Resources */,
 			);
@@ -361,15 +382,18 @@
 				044A927624760FD20030470F /* SettingsTableViewCell.swift in Sources */,
 				045248A9246A9BE600BE68CC /* TrackingListTableViewCell.swift in Sources */,
 				045248B9246AD14200BE68CC /* CoreDataController.swift in Sources */,
+				0454021F249134D100FB03BB /* MapFunctionViewController.swift in Sources */,
 				044E601E248FCBA3006CCADF /* Record.swift in Sources */,
 				044A927B247627280030470F /* UIColor+Additions.swift in Sources */,
 				044A926C247572010030470F /* SignUpViewController.swift in Sources */,
+				0454021D2491347F00FB03BB /* MapViewController.swift in Sources */,
 				044A9272247606210030470F /* ChatViewController.swift in Sources */,
 				044A92702476060F0030470F /* ChannelsTableViewController.swift in Sources */,
 				045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */,
 				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
 				044A927D247629220030470F /* DatabaseRepresentation.swift in Sources */,
 				044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */,
+				0454021B2491344400FB03BB /* MapDetailsViewController.swift in Sources */,
 				04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */,
 				045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */,
 				044A927424760B540030470F /* SettingsTableViewController.swift in Sources */,
