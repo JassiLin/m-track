@@ -18,7 +18,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     private var recordListener: ListenerRegistration?
     
     private var recordSelected: TrackingRecord?
-    private var trackingNoSelected, carrierSelected: String?
+    private var trackingNoSelected, carrierSelected, name: String?
     let SECTION_SYNC_RECORD = 0
     let SECTION_RECORD = 1
     let CELL_RECORD = "recordCell"
@@ -163,6 +163,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
             let destination = segue.destination as! TrackingDetailsTableViewController
             destination.trackingNo = trackingNoSelected
             destination.carrier_code = carrierSelected
+            destination.name = name!
         }
     }
     
@@ -195,7 +196,7 @@ extension TrackingListTableViewController {
           case SECTION_SYNC_RECORD:
              return "Synchrnoized Records"
           case SECTION_RECORD:
-            return "Records"
+            return "Local Records"
           default:
              return nil
         }
@@ -221,6 +222,7 @@ extension TrackingListTableViewController {
 
             self.trackingNoSelected = records[indexPath.row].trackingNo
             self.carrierSelected = records[indexPath.row].carrier
+            self.name = records[indexPath.row].name
             
             return cell
         case SECTION_SYNC_RECORD:
@@ -235,6 +237,7 @@ extension TrackingListTableViewController {
 
                 self.trackingNoSelected = record.trackingNo
                 self.carrierSelected = record.carrier
+                self.name = record.name
                 
                 return cell
             }else{
@@ -251,11 +254,13 @@ extension TrackingListTableViewController {
             if indexPath.section == SECTION_RECORD {
                 self.trackingNoSelected = records[indexPath.row].trackingNo
                 self.carrierSelected = records[indexPath.row].carrier
+                self.name = records[indexPath.row].name
             }
             
             if indexPath.section == SECTION_SYNC_RECORD {
                 self.trackingNoSelected = syncRecords[indexPath.row].trackingNo
                 self.carrierSelected = syncRecords[indexPath.row].carrier
+                self.name = syncRecords[indexPath.row].name
             }
             
             performSegue(withIdentifier: "ListToDetailsSegue", sender: self)

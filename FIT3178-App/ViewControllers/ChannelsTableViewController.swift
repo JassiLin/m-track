@@ -64,18 +64,20 @@ class ChannelsTableViewController: UITableViewController {
             }))
 
             self.present(alert, animated: true)
+        }else{
+            channelListener = channelReference.addSnapshotListener { querySnapshot, error in
+              guard let snapshot = querySnapshot else {
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                return
+              }
+              
+              snapshot.documentChanges.forEach { change in
+                self.handleDocumentChange(change)
+              }
+            }
         }
         
-        channelListener = channelReference.addSnapshotListener { querySnapshot, error in
-          guard let snapshot = querySnapshot else {
-            print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
-            return
-          }
-          
-          snapshot.documentChanges.forEach { change in
-            self.handleDocumentChange(change)
-          }
-        }
+        
     }
     
     @IBAction func addChannel(_ sender: Any) {

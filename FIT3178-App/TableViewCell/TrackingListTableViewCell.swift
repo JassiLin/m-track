@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class TrackingListTableViewCell: UITableViewCell {
 
@@ -14,7 +16,10 @@ class TrackingListTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
-    
+
+    @IBAction func sync(_ sender: Any) {
+
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

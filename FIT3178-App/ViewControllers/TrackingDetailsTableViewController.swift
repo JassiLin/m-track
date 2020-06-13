@@ -17,12 +17,21 @@ class TrackingDetailsTableViewController: UITableViewController {
     var location: [String] = []
     var status: [String] = []
     var desc: [String] = []
-    let CELL_DETAILS = "detailsCell"
-    var indicator = UIActivityIndicatorView()
     
+    private var selectedDate: String = ""
+    private var selectedLocation: String = ""
+    private var selectedStatus: String = ""
+    private var selectedDesc: String = ""
+    
+    var indicator = UIActivityIndicatorView()
+    var name:String = ""
     var rControl = UIRefreshControl()
     
     var index: Int = 0
+    let SECTION_INFO = 0
+    let SECTION_DETAILS = 1
+    let CELL_INFO = "infoCell"
+    let CELL_DETAILS = "detailsCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +55,10 @@ class TrackingDetailsTableViewController: UITableViewController {
         floatyBtn.addItem("Add tracking", icon: UIImage(named: "track")!, handler: {
             _ in
             self.performSegue(withIdentifier: "DetailsToAddSegue", sender: self)
+        })
+        floatyBtn.addItem("Edit tracking", icon: UIImage(named: "track")!, handler: {
+            _ in
+            self.performSegue(withIdentifier: "DetailsToEditSegue", sender: self)
         })
         floatyBtn.paddingY = 200
         floatyBtn.sticky = true
@@ -137,39 +150,9 @@ class TrackingDetailsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return date.count
-    }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DETAILS, for: indexPath) as! TrackingDetailsTableViewCell
-        if !self.date.isEmpty{
-            
-        }
-        cell.dateLabel.text = self.date[indexPath.row]
-        cell.desciptionLabel.text = self.desc[indexPath.row]
-        cell.locationLabel.text = self.location[indexPath.row]
-        cell.statusLabel.text = self.status[indexPath.row]
-
-        index = indexPath.row
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let trackingStoryboard = UIStoryboard(name: "Tracking", bundle: nil)
-//        let vc = trackingStoryboard.instantiateViewController(identifier: "MapDetails") as? MapDetailsViewController
-        
-
-    }
 
     
     // MARK: - Navigation
@@ -177,11 +160,91 @@ class TrackingDetailsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "DetailsToMapSegue"){
             let vc = segue.destination as! MapFunctionViewController
-            vc.date = date[index]
-            vc.status = status[index]
-            vc.location = location[index]
-            vc.event = desc[index]
+            vc.date = selectedDate
+            vc.status = selectedStatus
+            vc.location = selectedLocation
+            vc.event = selectedDesc
+        }
+        
+        if (segue.identifier == "DetailsToEditSegue"){
+            let vc = segue.destination as! EditTrackingViewController
+            vc.trackingNo = trackingNo
+            vc.carrier = carrier_code
+            vc.name = name
         }
     }
     
 }
+
+
+    // MARK: - Table view data source
+
+extension TrackingDetailsTableViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 2
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        switch section {
+          case SECTION_INFO:
+             return 1
+          case SECTION_DETAILS:
+            return date.count
+          default:
+             return 0
+        }
+    }
+
+        
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.section{
+        case SECTION_DETAILS:
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DETAILS, for: indexPath) as! TrackingDetailsTableViewCell
+            if !self.date.isEmpty{
+                
+            }
+            cell.dateLabel.text = self.date[indexPath.row]
+            cell.desciptionLabel.text = self.desc[indexPath.row]
+            cell.locationLabel.text = self.location[indexPath.row]
+            cell.statusLabel.text = self.status[indexPath.row]
+
+            return cell
+            
+        case SECTION_INFO:
+            let cell = tableView.dequeueReusableCell(withIdentifier: CELL_INFO, for: indexPath) as! TrackingDetailsTableViewCell
+            
+            cell.nameLabel.text = self.name
+            cell.trackingNoLabel.text = "Tracking number: \(self.trackingNo ?? "loading...")"
+            cell.lastStatusLabel.text = "Status: \(self.status.first ?? "loading...")"
+            cell.lastUpdatedDateLabel.text = "Last updated date: \(self.date.first ?? "loading...")"
+            
+            return cell
+        default:
+            return UITableViewCell()
+        }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        index = indexPath.row
+        
+        if indexPath.section == SECTION_DETAILS {
+            selectedDate = date[index]
+            selectedDesc = desc[index]
+            selectedStatus = status[index]
+            selectedLocation = location[index]
+            
+            performSegue(withIdentifier: "DetailsToMapSegue", sender: self)
+        }
+//        let trackingStoryboard = UIStoryboard(name: "Tracking", bundle: nil)
+//        let vc = trackingStoryboard.instantiateViewController(identifier: "MapDetails") as? MapDetailsViewController
+        
+
+    }
+}
+
+
