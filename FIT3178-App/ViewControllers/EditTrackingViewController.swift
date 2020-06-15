@@ -19,9 +19,12 @@ class EditTrackingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameTF.text = name
+        trackingNoTF.text = trackingNo
     }
     
     @IBAction func update(_ sender: Any) {
+        
     }
     
     /*

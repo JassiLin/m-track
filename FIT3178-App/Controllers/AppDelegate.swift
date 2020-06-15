@@ -17,11 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
+        FirebaseApp.configure() // Firebase configuration
+        databaseController = CoreDataController() // CoreData configuration
 
+        UINavigationBar.appearance().tintColor = UIColor.dark
+        UINavigationBar.appearance().backgroundColor = UIColor.grayishRed
+        UINavigationBar.appearance().barTintColor = UIColor.grayishRed
         
-        databaseController = CoreDataController()
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.paleOrange]
         
+        if Auth.auth().currentUser != nil {
+        
+        }
         return true
     }
 

@@ -95,7 +95,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         vLogin.addSubview(txtPwd)
         
         loginBtn = UIButton(frame: CGRect(x: 30, y: 160, width: vLogin.frame.size.width - 60, height: 44))
-        loginBtn.backgroundColor = UIColor.btnPink
+        loginBtn.backgroundColor = UIColor.grayishRed
         loginBtn.setTitle("CONTINUE", for: .normal)
         loginBtn.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         vLogin.addSubview(loginBtn)

@@ -180,7 +180,7 @@ extension ChatViewController: MessagesDataSource {
       string: name,
       attributes: [
         .font: UIFont.preferredFont(forTextStyle: .caption2),
-        .foregroundColor: UIColor.primary
+        .foregroundColor: UIColor.grayishViolet
       ]
     )
   }
@@ -219,7 +219,7 @@ extension ChatViewController: MessagesDisplayDelegate {
       in messagesCollectionView: MessagesCollectionView) -> UIColor {
       
       // 1
-      return isFromCurrentSender(message: message) ? .primary : .incomingMessage
+      return isFromCurrentSender(message: message) ? .grayishViolet : .grayishRed
     }
 
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,

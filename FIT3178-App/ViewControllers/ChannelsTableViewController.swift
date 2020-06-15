@@ -91,7 +91,7 @@ class ChannelsTableViewController: UITableViewController {
           field.clearButtonMode = .whileEditing
           field.placeholder = "Channel name"
           field.returnKeyType = .done
-          field.tintColor = .primary
+          field.tintColor = .grayishViolet
         }
         
         let createAction = UIAlertAction(title: "Create", style: .default, handler: { _ in

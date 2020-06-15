@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043BF1532495006E00B91BB9 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF1522495006E00B91BB9 /* FirebaseController.swift */; };
+		043BF155249652AC00B91BB9 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF154249652AC00B91BB9 /* UIView.swift */; };
 		044A9260247519EF0030470F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044A925F247519EF0030470F /* GoogleService-Info.plist */; };
 		044A9268247569A50030470F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9267247569A50030470F /* LoginViewController.swift */; };
 		044A926A247571D80030470F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9269247571D80030470F /* SignInViewController.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043BF1522495006E00B91BB9 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		043BF154249652AC00B91BB9 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		044A925F247519EF0030470F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		044A9267247569A50030470F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		044A9269247571D80030470F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			children = (
 				044A927A247627280030470F /* UIColor+Additions.swift */,
 				044E6019248E7038006CCADF /* Utilities.swift */,
+				043BF154249652AC00B91BB9 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				045248B4246ACCB500BE68CC /* DatabaseProtocol.swift */,
 				045248B6246AD10100BE68CC /* MulticastDelegate.swift */,
 				045248B8246AD14200BE68CC /* CoreDataController.swift */,
+				043BF1522495006E00B91BB9 /* FirebaseController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -366,9 +372,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043BF1532495006E00B91BB9 /* FirebaseController.swift in Sources */,
 				045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */,
 				0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */,
 				04523C6724699E1F00E1230C /* ViewController.swift in Sources */,
+				043BF155249652AC00B91BB9 /* UIView.swift in Sources */,
 				044A9278247615E90030470F /* Channel.swift in Sources */,
 				044E601A248E7038006CCADF /* Utilities.swift in Sources */,
 				0455CB7A248018BA00B7E97E /* Message.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -15,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInView: UIView!
     @IBOutlet weak var signUpView: UIView!
     
+    var handle: AuthStateDidChangeListenerHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,10 +25,20 @@ class LoginViewController: UIViewController {
         signUpView.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if user != nil {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
+                vc?.modalPresentationStyle = .fullScreen
+                vc?.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        })
+    }
 
     @IBAction func loginSegmentTapped(_ sender: Any) {
         let getIndex = loginSegment.selectedSegmentIndex
-        print(getIndex)
         
         switch (getIndex) {
         case 0:

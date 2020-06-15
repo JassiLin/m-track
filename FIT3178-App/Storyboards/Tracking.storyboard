@@ -331,6 +331,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="mca-i6-sf5">
+                        <barButtonItem key="backBarButtonItem" title=" " id="7a4-js-KbL"/>
                         <barButtonItem key="rightBarButtonItem" title="Login" id="QBC-sZ-qeP">
                             <connections>
                                 <action selector="signIn:" destination="7rL-y1-cJl" id="owS-cO-H4r"/>
@@ -354,11 +355,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="infoCell" rowHeight="137" id="vyq-D5-Pkg" customClass="TrackingDetailsTableViewCell" customModule="M_Track" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="137"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="infoCell" rowHeight="174" id="vyq-D5-Pkg" customClass="TrackingDetailsTableViewCell" customModule="M_Track" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.5" width="374" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vyq-D5-Pkg" id="rjI-AS-SmK">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="137"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="174"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ly-Dv-Tig">
@@ -385,9 +386,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SuP-5P-b0k">
+                                            <rect key="frame" x="304" y="133" width="50" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="lmU-05-sDa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <state key="normal" title="Button" image="square.and.pencil" catalog="system"/>
+                                            <connections>
+                                                <action selector="editRecord:" destination="oSv-ag-1XL" eventType="touchUpInside" id="JXp-mw-Y6r"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="SuP-5P-b0k" firstAttribute="bottom" secondItem="rjI-AS-SmK" secondAttribute="bottomMargin" id="2SL-pK-el7"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="RS4-71-oRh" secondAttribute="trailing" id="5qB-ZF-rhB"/>
+                                        <constraint firstItem="SuP-5P-b0k" firstAttribute="trailing" secondItem="rjI-AS-SmK" secondAttribute="trailingMargin" id="81g-pU-8fD"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="jGu-q8-zxC" secondAttribute="trailing" id="FRl-Y3-iy3"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="2pI-Xe-APE" secondAttribute="trailing" id="Gvw-lq-vij"/>
                                         <constraint firstItem="jGu-q8-zxC" firstAttribute="leading" secondItem="rjI-AS-SmK" secondAttribute="leadingMargin" id="Nv1-rc-ONC"/>
@@ -395,10 +409,10 @@
                                         <constraint firstItem="4Ly-Dv-Tig" firstAttribute="leading" secondItem="rjI-AS-SmK" secondAttribute="leadingMargin" id="Q1E-3e-q76"/>
                                         <constraint firstItem="2pI-Xe-APE" firstAttribute="top" secondItem="jGu-q8-zxC" secondAttribute="bottom" constant="16.5" id="Wx5-CA-LFQ"/>
                                         <constraint firstItem="4Ly-Dv-Tig" firstAttribute="top" secondItem="rjI-AS-SmK" secondAttribute="topMargin" constant="5" id="fWD-I4-rUJ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="RS4-71-oRh" secondAttribute="bottom" id="k1o-M9-EM1"/>
                                         <constraint firstItem="RS4-71-oRh" firstAttribute="leading" secondItem="rjI-AS-SmK" secondAttribute="leadingMargin" id="kzX-0H-Pxb"/>
                                         <constraint firstItem="2pI-Xe-APE" firstAttribute="leading" secondItem="rjI-AS-SmK" secondAttribute="leadingMargin" id="nst-tX-q8G"/>
                                         <constraint firstItem="jGu-q8-zxC" firstAttribute="top" secondItem="4Ly-Dv-Tig" secondAttribute="bottom" constant="5" id="pyo-Ce-V14"/>
+                                        <constraint firstItem="SuP-5P-b0k" firstAttribute="top" secondItem="RS4-71-oRh" secondAttribute="bottom" constant="7" id="vvw-ss-bhf"/>
                                         <constraint firstItem="RS4-71-oRh" firstAttribute="top" secondItem="2pI-Xe-APE" secondAttribute="bottom" constant="5" id="ykn-2M-4AQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -410,7 +424,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailsCell" rowHeight="137" id="SCO-rT-ufe" customClass="TrackingDetailsTableViewCell" customModule="M_Track" customModuleProvider="target">
-                                <rect key="frame" x="20" y="192.5" width="374" height="137"/>
+                                <rect key="frame" x="20" y="229.5" width="374" height="137"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SCO-rT-ufe" id="WvC-q9-Uqg">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="137"/>
@@ -482,12 +496,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shj-a0-Vtc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2565" y="621"/>
+            <point key="canvasLocation" x="-2565.217391304348" y="620.75892857142856"/>
         </scene>
         <!--Edit Tracking View Controller-->
         <scene sceneID="cqj-e8-Ntz">
             <objects>
-                <viewController id="S44-VU-Mnn" customClass="EditTrackingViewController" customModule="M_Track" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditRecord" id="S44-VU-Mnn" customClass="EditTrackingViewController" customModule="M_Track" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="plS-HM-eAK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -592,7 +606,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Carrier" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-B7-Etr">
-                                <rect key="frame" x="40" y="288" width="334" height="50"/>
+                                <rect key="frame" x="40" y="340" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JZb-94-m7I"/>
                                 </constraints>
@@ -600,7 +614,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVC-cg-T33">
-                                <rect key="frame" x="40" y="388" width="334" height="50"/>
+                                <rect key="frame" x="40" y="440" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GGK-xo-eiZ"/>
                                 </constraints>
@@ -628,7 +642,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tracking number" textAlignment="natural" minimumFontSize="17" background="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gwK-dV-Ebd">
-                                <rect key="frame" x="40" y="188" width="334" height="50"/>
+                                <rect key="frame" x="40" y="240" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eXE-w1-AqL"/>
                                 </constraints>
@@ -673,9 +687,12 @@
                     <tabBarItem key="tabBarItem" title="Track" image="doc.text.magnifyingglass" catalog="system" selectedImage="doc.text.magnifyingglass" id="fIl-el-3QY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="elR-Nu-MmY">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="elR-Nu-MmY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.94509803921568625" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -694,6 +711,7 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="116" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="track" width="512" height="512"/>
     </resources>
 </document>

@@ -66,6 +66,15 @@ class TrackingDetailsTableViewController: UITableViewController {
        
     }
     
+    @IBAction func editRecord(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(identifier: "EditRecord") as? EditTrackingViewController
+        vc?.name = name
+        vc?.trackingNo = trackingNo
+        
+        performSegue(withIdentifier: "DetailsToEditSegue", sender: self)
+    }
+    
     private func requestTrackingDetails(){
 //        indicator.style = UIActivityIndicatorView.Style.medium
 //        indicator.center = self.tableView.center

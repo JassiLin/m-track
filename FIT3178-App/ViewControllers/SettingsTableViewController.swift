@@ -11,8 +11,26 @@ import FirebaseAuth
 
 class SettingsTableViewController: UITableViewController {
 
-
     @IBOutlet weak var signOutBtn: UIButton!
+    
+    let profileImageView: UIImageView = {
+        let iv = UIImageView()
+//        iv.image =
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.layer.borderWidth = 3
+        iv.layer.borderColor = UIColor.white.cgColor
+        return iv
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.text = AppSettings.displayName
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = .dark
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +38,20 @@ class SettingsTableViewController: UITableViewController {
         if Auth.auth().currentUser == nil{
             signOutBtn.isHidden = true
         }
+
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200))
+        tableView.tableHeaderView = header
+        header.backgroundColor = .grayishRed
+        header.addSubview(profileImageView)
+        
+        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileImageView.anchor(top: view.topAnchor, paddingTop: 44,
+                                width: 80, height: 80)
+        profileImageView.layer.cornerRadius = 80 / 2
+        
+        view.addSubview(nameLabel)
+        nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 12)
     }
     
     @IBAction func signOut(_ sender: Any) {

@@ -43,7 +43,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
 
         // set navigation title
         self.navigationItem.title = "M-TRACK"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: UIFont.Weight.bold)]
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: UIFont.Weight.bold)]
         
         if Auth.auth().currentUser != nil {
             self.navigationItem.rightBarButtonItem?.title = "You're logged in"
@@ -148,10 +148,11 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     // Go to Sign-in screen
     @IBAction func signIn(_ sender: Any) {
         if Auth.auth().currentUser == nil {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-            vc?.modalPresentationStyle = .popover
-            vc?.modalTransitionStyle = .crossDissolve
-            self.present(vc!, animated: true, completion: nil)
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
+            vc.modalPresentationStyle = .popover
+            vc.modalTransitionStyle = .crossDissolve
+            self.present(vc, animated: true, completion: nil)
         }
     }
     
