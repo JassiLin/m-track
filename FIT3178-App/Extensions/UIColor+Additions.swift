@@ -23,26 +23,26 @@ extension UIColor {
     }
     
     static var grayishViolet: UIColor {
-        return UIColor(red: 59 / 255, green: 57 / 255, blue: 63 / 255, alpha: 1)
+        return UIColor(red: 151 / 255, green: 145 / 255, blue: 160 / 255, alpha: 1)
     }
     
     static var softOrange: UIColor {
-        return UIColor(red: 98 / 255, green: 85 / 255, blue: 76 / 255, alpha: 1)
+        return UIColor(red: 251 / 255, green: 218 / 255, blue: 195 / 255, alpha: 1)
     }
     
     static var paleOrange: UIColor {
-        return UIColor(red: 100 / 255, green: 95 / 255, blue: 87 / 255, alpha: 1)
+        return UIColor(red: 255 / 255, green: 241 / 255, blue: 221 / 255, alpha: 1)
     }
     
     static var red: UIColor {
-        return UIColor(red: 99 / 255, green: 0 / 255, blue: 23 / 255, alpha: 1)
+        return UIColor(red: 253 / 255, green: 0 / 255, blue: 58 / 255, alpha: 1)
     }
     
     static var dark: UIColor {
-        return UIColor(red: 16 / 255, green: 22 / 255, blue: 27 / 255, alpha: 1)
+        return UIColor(red: 41 / 255, green: 56 / 255, blue: 68 / 255, alpha: 1)
     }
 
     static var white: UIColor {
-        return UIColor(red: 100 / 255, green: 100 / 255, blue: 100 / 255, alpha: 1)
+        return UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1)
     }
 }

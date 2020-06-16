@@ -20,11 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure() // Firebase configuration
         databaseController = CoreDataController() // CoreData configuration
 
+
         UINavigationBar.appearance().tintColor = UIColor.dark
-        UINavigationBar.appearance().backgroundColor = UIColor.grayishRed
-        UINavigationBar.appearance().barTintColor = UIColor.grayishRed
         
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.paleOrange]
+//        UINavigationBar.appearance().backgroundColor = UIColor.grayishRed
+        UINavigationBar.appearance().barTintColor = .grayishRed
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.dark]
         
         if Auth.auth().currentUser != nil {
         

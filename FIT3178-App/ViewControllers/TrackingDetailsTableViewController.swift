@@ -9,10 +9,13 @@
 import UIKit
 import Floaty
 import FirebaseAuth
+import Firebase
 
 class TrackingDetailsTableViewController: UITableViewController {
 
-    var trackingNo, carrier_code: String?
+    private let firebaseDB = Firestore.firestore()
+    
+    var trackingNo, carrier_code, ID: String?
     var date: [String] = []
     var location: [String] = []
     var status: [String] = []
@@ -33,11 +36,28 @@ class TrackingDetailsTableViewController: UITableViewController {
     let CELL_INFO = "infoCell"
     let CELL_DETAILS = "detailsCell"
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // Get information by document ID
+        let userRef = firebaseDB.collection("users")
+        
+        userRef.document(Auth.auth().currentUser!.uid).collection("trackingRecord").document(self.ID!).addSnapshotListener { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                print("Error listening for record updates: \(error?.localizedDescription ?? "No error")")
+                return
+            }
+            self.trackingNo = snapshot.get("trackingNo") as? String
+            self.name = snapshot.get("name") as! String
+            self.carrier_code = snapshot.get("carrier") as? String
+            
+            self.requestTrackingDetails()
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        requestTrackingDetails()
-        
+
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 151
 
@@ -79,6 +99,11 @@ class TrackingDetailsTableViewController: UITableViewController {
 //        indicator.style = UIActivityIndicatorView.Style.medium
 //        indicator.center = self.tableView.center
 //        self.view.addSubview(indicator)
+
+        clearData(array: &date)
+        clearData(array: &desc)
+        clearData(array: &status)
+        clearData(array: &location)
         
         let headers = [
             "x-rapidapi-host": "order-tracking.p.rapidapi.com",
@@ -139,6 +164,12 @@ class TrackingDetailsTableViewController: UITableViewController {
 
     }
     
+    private func clearData(array: inout [String]){
+        if array != []{
+            array = []
+        }
+    }
+    
     @objc func refresh(_ sender: AnyObject) {
        // Code to refresh table view
         requestTrackingDetails()
@@ -180,6 +211,7 @@ class TrackingDetailsTableViewController: UITableViewController {
             vc.trackingNo = trackingNo
             vc.carrier = carrier_code
             vc.name = name
+            vc.ID = ID
         }
     }
     
@@ -213,8 +245,13 @@ extension TrackingDetailsTableViewController {
         switch indexPath.section{
         case SECTION_DETAILS:
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DETAILS, for: indexPath) as! TrackingDetailsTableViewCell
-            if !self.date.isEmpty{
-                
+            guard
+                !self.date.isEmpty,
+                !self.date.isEmpty,
+                !self.date.isEmpty,
+                !self.date.isEmpty
+            else {
+                return cell
             }
             cell.dateLabel.text = self.date[indexPath.row]
             cell.desciptionLabel.text = self.desc[indexPath.row]

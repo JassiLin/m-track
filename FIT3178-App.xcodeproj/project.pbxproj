@@ -46,6 +46,7 @@
 		0454021D2491347F00FB03BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454021C2491347F00FB03BB /* MapViewController.swift */; };
 		0454021F249134D100FB03BB /* MapFunctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454021E249134D100FB03BB /* MapFunctionViewController.swift */; };
 		045402212491E78700FB03BB /* EditTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045402202491E78700FB03BB /* EditTrackingViewController.swift */; };
+		04555EB1249868A4003BF15F /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04555EB0249868A4003BF15F /* ApiRequest.swift */; };
 		0455CB7A248018BA00B7E97E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB79248018BA00B7E97E /* Message.swift */; };
 		0455CB7D24801C7D00B7E97E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB7C24801C7D00B7E97E /* AppSettings.swift */; };
 		0460343B246D84AC00799E25 /* Pods_FIT3178_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E68B2216BEEAB76FF936A1 /* Pods_FIT3178_App.framework */; };
@@ -94,6 +95,7 @@
 		0454021C2491347F00FB03BB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0454021E249134D100FB03BB /* MapFunctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFunctionViewController.swift; sourceTree = "<group>"; };
 		045402202491E78700FB03BB /* EditTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrackingViewController.swift; sourceTree = "<group>"; };
+		04555EB0249868A4003BF15F /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		0455CB79248018BA00B7E97E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0455CB7C24801C7D00B7E97E /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0460343E246E11E600799E25 /* AddTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackingViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				044A927A247627280030470F /* UIColor+Additions.swift */,
 				044E6019248E7038006CCADF /* Utilities.swift */,
+				04555EB0249868A4003BF15F /* ApiRequest.swift */,
 				043BF154249652AC00B91BB9 /* UIView.swift */,
 			);
 			path = Extensions;
@@ -372,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04555EB1249868A4003BF15F /* ApiRequest.swift in Sources */,
 				043BF1532495006E00B91BB9 /* FirebaseController.swift in Sources */,
 				045248A5246A7DB300BE68CC /* HomeViewController.swift in Sources */,
 				0460343F246E11E600799E25 /* AddTrackingViewController.swift in Sources */,

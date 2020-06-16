@@ -18,7 +18,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     private var recordListener: ListenerRegistration?
     
     private var recordSelected: TrackingRecord?
-    private var trackingNoSelected, carrierSelected, name: String?
+    private var trackingNoSelected, carrierSelected, name, ID: String?
     let SECTION_SYNC_RECORD = 0
     let SECTION_RECORD = 1
     let CELL_RECORD = "recordCell"
@@ -44,6 +44,14 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         // set navigation title
         self.navigationItem.title = "M-TRACK"
 //        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: UIFont.Weight.bold)]
+        
+        let appearance = UINavigationBarAppearance(idiom: .phone)
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+        appearance.backgroundColor = .grayishRed
+        
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
         
         if Auth.auth().currentUser != nil {
             self.navigationItem.rightBarButtonItem?.title = "You're logged in"
@@ -162,9 +170,10 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ListToDetailsSegue"{
             let destination = segue.destination as! TrackingDetailsTableViewController
-            destination.trackingNo = trackingNoSelected
-            destination.carrier_code = carrierSelected
-            destination.name = name!
+//            destination.trackingNo = trackingNoSelected
+//            destination.carrier_code = carrierSelected
+//            destination.name = name!
+            destination.ID = ID
         }
     }
     
@@ -262,6 +271,7 @@ extension TrackingListTableViewController {
                 self.trackingNoSelected = syncRecords[indexPath.row].trackingNo
                 self.carrierSelected = syncRecords[indexPath.row].carrier
                 self.name = syncRecords[indexPath.row].name
+                self.ID = syncRecords[indexPath.row].id
             }
             
             performSegue(withIdentifier: "ListToDetailsSegue", sender: self)

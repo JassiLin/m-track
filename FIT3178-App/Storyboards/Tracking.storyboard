@@ -485,7 +485,7 @@
                             <outlet property="delegate" destination="oSv-ag-1XL" id="faQ-2U-JVa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="IGI-KA-5hc">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="IGI-KA-5hc">
                         <barButtonItem key="rightBarButtonItem" title="Login" id="Xer-x1-NDz"/>
                     </navigationItem>
                     <connections>
@@ -606,7 +606,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Carrier" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-B7-Etr">
-                                <rect key="frame" x="40" y="340" width="334" height="50"/>
+                                <rect key="frame" x="40" y="288" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JZb-94-m7I"/>
                                 </constraints>
@@ -614,7 +614,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVC-cg-T33">
-                                <rect key="frame" x="40" y="440" width="334" height="50"/>
+                                <rect key="frame" x="40" y="388" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GGK-xo-eiZ"/>
                                 </constraints>
@@ -642,7 +642,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tracking number" textAlignment="natural" minimumFontSize="17" background="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gwK-dV-Ebd">
-                                <rect key="frame" x="40" y="240" width="334" height="50"/>
+                                <rect key="frame" x="40" y="188" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eXE-w1-AqL"/>
                                 </constraints>

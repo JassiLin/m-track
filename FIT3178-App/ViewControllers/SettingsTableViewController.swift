@@ -39,6 +39,12 @@ class SettingsTableViewController: UITableViewController {
             signOutBtn.isHidden = true
         }
 
+        var frame = self.tableView.bounds
+        frame.origin.y = -frame.size.height
+        let grayishRedView = UIView(frame: frame)
+        grayishRedView.backgroundColor = .grayishRed
+        self.tableView.addSubview(grayishRedView)
+        
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200))
         tableView.tableHeaderView = header
         header.backgroundColor = .grayishRed
