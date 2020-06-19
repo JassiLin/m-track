@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class SettingsTableViewController: UITableViewController {
 
+    @IBOutlet weak var carrierListLabel: UILabel!
     @IBOutlet weak var signOutBtn: UIButton!
     
     let profileImageView: UIImageView = {
@@ -82,5 +83,7 @@ class SettingsTableViewController: UITableViewController {
         }))
         self.present(ac, animated: true, completion: nil)
     }
+
+    
 
 }
