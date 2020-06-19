@@ -37,6 +37,7 @@ class TrackingDetailsTableViewController: UITableViewController {
     let CELL_DETAILS = "detailsCell"
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         // Get information by document ID
         let userRef = firebaseDB.collection("users")
@@ -53,17 +54,15 @@ class TrackingDetailsTableViewController: UITableViewController {
             self.requestTrackingDetails()
         }
         
+        setUpNavigationBarItems()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 151
-
-        if Auth.auth().currentUser != nil {
-            self.navigationItem.rightBarButtonItem?.title = "You're logged in"
-        }
+        view.backgroundColor = .white
+        tableView.separatorStyle = .none
         
         // pull to refresh
         rControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -71,17 +70,24 @@ class TrackingDetailsTableViewController: UITableViewController {
         tableView.addSubview(rControl)
         
         // set float button
+        
         let floatyBtn = Floaty()
-        floatyBtn.addItem("Add tracking", icon: UIImage(named: "track")!, handler: {
+        floatyBtn.addItem("Add tracking", icon: UIImage(named: "add")!, handler: {
             _ in
             self.performSegue(withIdentifier: "DetailsToAddSegue", sender: self)
         })
-        floatyBtn.addItem("Edit tracking", icon: UIImage(named: "track")!, handler: {
+        floatyBtn.addItem("Edit tracking", icon: UIImage(named: "edit")!, handler: {
             _ in
             self.performSegue(withIdentifier: "DetailsToEditSegue", sender: self)
         })
-        floatyBtn.paddingY = 200
+
+        floatyBtn.paddingY = 100
         floatyBtn.sticky = true
+        floatyBtn.respondsToKeyboard = false
+        floatyBtn.friendlyTap = false
+        floatyBtn.plusColor = .white
+        floatyBtn.buttonColor = .grayishRed
+        
         self.view.addSubview(floatyBtn)
        
     }
@@ -247,17 +253,23 @@ extension TrackingDetailsTableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DETAILS, for: indexPath) as! TrackingDetailsTableViewCell
             guard
                 !self.date.isEmpty,
-                !self.date.isEmpty,
-                !self.date.isEmpty,
-                !self.date.isEmpty
+                !self.desc.isEmpty,
+                !self.location.isEmpty,
+                !self.status.isEmpty
             else {
                 return cell
             }
+            cell.dotLabel.text = "\u{25c6}"
+            cell.lineLabel.text = "\u{007c}"
+            
             cell.dateLabel.text = self.date[indexPath.row]
             cell.desciptionLabel.text = self.desc[indexPath.row]
             cell.locationLabel.text = self.location[indexPath.row]
             cell.statusLabel.text = self.status[indexPath.row]
 
+            if indexPath.row == date.count - 1 {
+                cell.lineLabel.textColor = .white
+            }
             return cell
             
         case SECTION_INFO:

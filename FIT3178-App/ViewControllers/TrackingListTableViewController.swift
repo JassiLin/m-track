@@ -38,12 +38,10 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 151
 
-        // set navigation title
+        // navigation items
+        
         self.navigationItem.title = "M-TRACK"
-//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: UIFont.Weight.bold)]
         
         let appearance = UINavigationBarAppearance(idiom: .phone)
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
@@ -54,7 +52,6 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         navigationItem.scrollEdgeAppearance = appearance
         
         if Auth.auth().currentUser != nil {
-            self.navigationItem.rightBarButtonItem?.title = "You're logged in"
             
             let ref = db.collection("users").document(Auth.auth().currentUser!.uid).collection("trackingRecord")
             recordListener = ref.addSnapshotListener { querySnapshot, error in
@@ -74,17 +71,25 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         
         // set float button
         let floatyBtn = Floaty()
-        floatyBtn.addItem("Add tracking", icon: UIImage(named: "track")!, handler: {
+        
+        floatyBtn.addItem("Add tracking", icon: UIImage(named: "add")!, handler: {
             _ in
             self.performSegue(withIdentifier: "ListToAddSegue", sender: self)
         })
-        floatyBtn.paddingY = 200
+        
+        floatyBtn.paddingY = 100
         floatyBtn.sticky = true
+        floatyBtn.respondsToKeyboard = false
+        floatyBtn.friendlyTap = false
+        floatyBtn.plusColor = .white
+        floatyBtn.buttonColor = .grayishRed
+        
         self.view.addSubview(floatyBtn)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setUpNavigationBarItems()
         databaseController?.addListener(listener: self)
         tableView.reloadData()
     }
@@ -154,15 +159,9 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     }
     
     // Go to Sign-in screen
-    @IBAction func signIn(_ sender: Any) {
-        if Auth.auth().currentUser == nil {
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
-            vc.modalPresentationStyle = .popover
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true, completion: nil)
-        }
-    }
+//    @IBAction override func signIn(_ sender: Any) {
+//
+//    }
     
     // MARK: - Navigation
 

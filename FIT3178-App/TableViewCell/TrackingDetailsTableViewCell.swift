@@ -23,6 +23,9 @@ class TrackingDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lastStatusLabel: UILabel!
     @IBOutlet weak var lastUpdatedDateLabel: UILabel!
     
+    @IBOutlet weak var dotLabel: UILabel!
+    @IBOutlet weak var lineLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

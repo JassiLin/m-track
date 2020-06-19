@@ -20,6 +20,7 @@
 		044A9278247615E90030470F /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A9277247615E90030470F /* Channel.swift */; };
 		044A927B247627280030470F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927A247627280030470F /* UIColor+Additions.swift */; };
 		044A927D247629220030470F /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A927C247629220030470F /* DatabaseRepresentation.swift */; };
+		044CE4B1249C800E004B3B72 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CE4B0249C800E004B3B72 /* UserDetails.swift */; };
 		044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D54246FDE6700E0BDFC /* TrackingData.swift */; };
 		044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */; };
 		044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */; };
@@ -47,6 +48,7 @@
 		0454021F249134D100FB03BB /* MapFunctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454021E249134D100FB03BB /* MapFunctionViewController.swift */; };
 		045402212491E78700FB03BB /* EditTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045402202491E78700FB03BB /* EditTrackingViewController.swift */; };
 		04555EB1249868A4003BF15F /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04555EB0249868A4003BF15F /* ApiRequest.swift */; };
+		04555EB7249B09FF003BF15F /* TrackingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04555EB6249B09FF003BF15F /* TrackingBaseViewController.swift */; };
 		0455CB7A248018BA00B7E97E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB79248018BA00B7E97E /* Message.swift */; };
 		0455CB7D24801C7D00B7E97E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB7C24801C7D00B7E97E /* AppSettings.swift */; };
 		0460343B246D84AC00799E25 /* Pods_FIT3178_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E68B2216BEEAB76FF936A1 /* Pods_FIT3178_App.framework */; };
@@ -67,6 +69,7 @@
 		044A9277247615E90030470F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		044A927A247627280030470F /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		044A927C247629220030470F /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		044CE4B0249C800E004B3B72 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		044D7D54246FDE6700E0BDFC /* TrackingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingData.swift; sourceTree = "<group>"; };
 		044D7D562472D92500E0BDFC /* TrackingDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewController.swift; sourceTree = "<group>"; };
 		044D7D582472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		0454021E249134D100FB03BB /* MapFunctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFunctionViewController.swift; sourceTree = "<group>"; };
 		045402202491E78700FB03BB /* EditTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrackingViewController.swift; sourceTree = "<group>"; };
 		04555EB0249868A4003BF15F /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		04555EB6249B09FF003BF15F /* TrackingBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingBaseViewController.swift; sourceTree = "<group>"; };
 		0455CB79248018BA00B7E97E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0455CB7C24801C7D00B7E97E /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0460343E246E11E600799E25 /* AddTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackingViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				044E6019248E7038006CCADF /* Utilities.swift */,
 				04555EB0249868A4003BF15F /* ApiRequest.swift */,
 				043BF154249652AC00B91BB9 /* UIView.swift */,
+				044CE4B0249C800E004B3B72 /* UserDetails.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 		04523C6124699E1F00E1230C /* FIT3178-App */ = {
 			isa = PBXGroup;
 			children = (
+				04555EB5249B09E3003BF15F /* BaseControllers */,
 				0454021724912A8300FB03BB /* Storyboards */,
 				0455CB7B24801C4200B7E97E /* Controllers */,
 				044A9279247627040030470F /* Extensions */,
@@ -209,6 +215,14 @@
 				0454021824912AB100FB03BB /* Tracking.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		04555EB5249B09E3003BF15F /* BaseControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04555EB6249B09FF003BF15F /* TrackingBaseViewController.swift */,
+			);
+			path = BaseControllers;
 			sourceTree = "<group>";
 		};
 		0455CB7B24801C4200B7E97E /* Controllers */ = {
@@ -384,6 +398,7 @@
 				044A9278247615E90030470F /* Channel.swift in Sources */,
 				044E601A248E7038006CCADF /* Utilities.swift in Sources */,
 				0455CB7A248018BA00B7E97E /* Message.swift in Sources */,
+				044CE4B1249C800E004B3B72 /* UserDetails.swift in Sources */,
 				044D7D592472DE2A00E0BDFC /* TrackingDetailsTableViewCell.swift in Sources */,
 				044A9268247569A50030470F /* LoginViewController.swift in Sources */,
 				044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */,
@@ -402,6 +417,7 @@
 				044E601E248FCBA3006CCADF /* Record.swift in Sources */,
 				044A927B247627280030470F /* UIColor+Additions.swift in Sources */,
 				044A926C247572010030470F /* SignUpViewController.swift in Sources */,
+				04555EB7249B09FF003BF15F /* TrackingBaseViewController.swift in Sources */,
 				0454021D2491347F00FB03BB /* MapViewController.swift in Sources */,
 				044A9272247606210030470F /* ChatViewController.swift in Sources */,
 				044A92702476060F0030470F /* ChannelsTableViewController.swift in Sources */,

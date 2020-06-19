@@ -15,7 +15,7 @@ class SettingsTableViewController: UITableViewController {
     
     let profileImageView: UIImageView = {
         let iv = UIImageView()
-//        iv.image =
+
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.borderWidth = 3
@@ -26,11 +26,16 @@ class SettingsTableViewController: UITableViewController {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.text = AppSettings.displayName
+//        label.text = username
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .dark
         return label
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let username = AppSettings.displayName
+        nameLabel.text = username
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +74,7 @@ class SettingsTableViewController: UITableViewController {
           } catch {
             print("Error signing out: \(error.localizedDescription)")
           }
+            AppSettings.displayName.removeAll()
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
             vc?.modalPresentationStyle = .fullScreen
             vc?.modalTransitionStyle = .crossDissolve
@@ -76,14 +82,5 @@ class SettingsTableViewController: UITableViewController {
         }))
         self.present(ac, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

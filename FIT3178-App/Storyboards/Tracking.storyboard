@@ -332,11 +332,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="mca-i6-sf5">
                         <barButtonItem key="backBarButtonItem" title=" " id="7a4-js-KbL"/>
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="QBC-sZ-qeP">
-                            <connections>
-                                <action selector="signIn:" destination="7rL-y1-cJl" id="owS-cO-H4r"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="uOp-bp-tPa" kind="show" identifier="ListToAddSegue" id="rbA-Q3-LT4"/>
@@ -431,25 +426,37 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ztt-JO-PGK">
-                                            <rect key="frame" x="25" y="16" width="324" height="21"/>
+                                            <rect key="frame" x="40" y="16" width="309" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJn-c3-NU2">
-                                            <rect key="frame" x="25" y="42" width="324" height="21"/>
+                                            <rect key="frame" x="40" y="42" width="309" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncg-QU-p7l">
-                                            <rect key="frame" x="25" y="79" width="324" height="21"/>
+                                            <rect key="frame" x="40" y="79" width="309" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKb-Cv-Up2">
-                                            <rect key="frame" x="25" y="105" width="324" height="21"/>
+                                            <rect key="frame" x="40" y="105" width="309" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MiA-sR-oFh">
+                                            <rect key="frame" x="0.0" y="16" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z8-5Z-v7Q">
+                                            <rect key="frame" x="0.0" y="45" width="42" height="92"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -457,23 +464,31 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ztt-JO-PGK" secondAttribute="trailing" constant="5" id="19K-YW-6Ge"/>
-                                        <constraint firstItem="VJn-c3-NU2" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="5" id="9Kd-wl-q5R"/>
-                                        <constraint firstItem="OKb-Cv-Up2" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="5" id="AZv-EH-AuY"/>
+                                        <constraint firstItem="MiA-sR-oFh" firstAttribute="top" secondItem="WvC-q9-Uqg" secondAttribute="top" constant="16" id="1SL-R4-bLc"/>
+                                        <constraint firstItem="VJn-c3-NU2" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="20" id="9Kd-wl-q5R"/>
+                                        <constraint firstItem="OKb-Cv-Up2" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="20" id="AZv-EH-AuY"/>
+                                        <constraint firstAttribute="bottom" secondItem="3z8-5Z-v7Q" secondAttribute="bottom" id="Bh7-88-03U"/>
+                                        <constraint firstItem="3z8-5Z-v7Q" firstAttribute="top" secondItem="MiA-sR-oFh" secondAttribute="bottom" constant="8" id="ELn-Qb-cEU"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="VJn-c3-NU2" secondAttribute="trailing" constant="5" id="EgH-cg-dCO"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ncg-QU-p7l" secondAttribute="trailing" constant="5" id="Uni-yQ-iNh"/>
+                                        <constraint firstItem="VJn-c3-NU2" firstAttribute="top" secondItem="MiA-sR-oFh" secondAttribute="bottom" constant="5" id="XhF-my-swl"/>
                                         <constraint firstItem="VJn-c3-NU2" firstAttribute="top" secondItem="Ztt-JO-PGK" secondAttribute="bottom" constant="5" id="ikU-oE-g11"/>
                                         <constraint firstItem="Ztt-JO-PGK" firstAttribute="top" secondItem="WvC-q9-Uqg" secondAttribute="topMargin" constant="5" id="qNV-dl-ugn"/>
                                         <constraint firstItem="ncg-QU-p7l" firstAttribute="top" secondItem="VJn-c3-NU2" secondAttribute="bottom" constant="16" id="qbk-W8-1s7"/>
-                                        <constraint firstItem="ncg-QU-p7l" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="5" id="skc-dg-jF6"/>
+                                        <constraint firstItem="ncg-QU-p7l" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="20" id="skc-dg-jF6"/>
                                         <constraint firstItem="OKb-Cv-Up2" firstAttribute="top" secondItem="ncg-QU-p7l" secondAttribute="bottom" constant="5" id="vfy-Ga-CSg"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="OKb-Cv-Up2" secondAttribute="bottom" id="wZn-MY-OPw"/>
+                                        <constraint firstItem="MiA-sR-oFh" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leading" id="x1C-s8-sg3"/>
+                                        <constraint firstItem="3z8-5Z-v7Q" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leading" id="x8G-Bj-v6j"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="OKb-Cv-Up2" secondAttribute="trailing" constant="5" id="xg6-ur-jS1"/>
-                                        <constraint firstItem="Ztt-JO-PGK" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="5" id="zPh-2X-HZx"/>
+                                        <constraint firstItem="Ztt-JO-PGK" firstAttribute="leading" secondItem="WvC-q9-Uqg" secondAttribute="leadingMargin" constant="20" id="zPh-2X-HZx"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="Ztt-JO-PGK" id="DRa-H3-mjS"/>
                                     <outlet property="desciptionLabel" destination="OKb-Cv-Up2" id="4Fs-CW-iw2"/>
+                                    <outlet property="dotLabel" destination="MiA-sR-oFh" id="bk0-JS-IS1"/>
+                                    <outlet property="lineLabel" destination="3z8-5Z-v7Q" id="0sH-Gb-jeI"/>
                                     <outlet property="locationLabel" destination="ncg-QU-p7l" id="zXX-1V-TLl"/>
                                     <outlet property="statusLabel" destination="VJn-c3-NU2" id="Ob7-40-61a"/>
                                 </connections>
@@ -486,7 +501,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="IGI-KA-5hc">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="Xer-x1-NDz"/>
+                        <barButtonItem key="rightBarButtonItem" id="Xer-x1-NDz"/>
                     </navigationItem>
                     <connections>
                         <segue destination="uOp-bp-tPa" kind="show" identifier="DetailsToAddSegue" id="SOc-OQ-ipR"/>
@@ -606,7 +621,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Carrier" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-B7-Etr">
-                                <rect key="frame" x="40" y="288" width="334" height="50"/>
+                                <rect key="frame" x="40" y="340" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JZb-94-m7I"/>
                                 </constraints>
@@ -614,7 +629,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVC-cg-T33">
-                                <rect key="frame" x="40" y="388" width="334" height="50"/>
+                                <rect key="frame" x="40" y="440" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GGK-xo-eiZ"/>
                                 </constraints>
@@ -642,7 +657,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tracking number" textAlignment="natural" minimumFontSize="17" background="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gwK-dV-Ebd">
-                                <rect key="frame" x="40" y="188" width="334" height="50"/>
+                                <rect key="frame" x="40" y="240" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="eXE-w1-AqL"/>
                                 </constraints>
@@ -667,9 +682,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y45-Us-ALR"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0mp-qp-b2N">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="lFy-z3-Hza"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="0mp-qp-b2N"/>
                     <connections>
                         <outlet property="carrierTF" destination="vMG-B7-Etr" id="K7E-l9-ATk"/>
                         <outlet property="nameTF" destination="pVC-cg-T33" id="ANp-PZ-329"/>
@@ -705,7 +718,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SOc-OQ-ipR"/>
+        <segue reference="rbA-Q3-LT4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>

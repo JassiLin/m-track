@@ -12,6 +12,10 @@ import Firebase
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
 
+    private let defaults = UserDefaults.standard
+    private let firebaseDB = Firestore.firestore()
+    var username: String = ""
+    
     var txtUser:UITextField!
     var txtPwd:UITextField!
     
@@ -106,11 +110,26 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: txtUser.text!, password: txtPwd.text!, completion: { (user, error) in
             if error == nil {
                 
-                AppSettings.displayName = Auth.auth().currentUser?.displayName
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
-                vc?.modalPresentationStyle = .fullScreen
-                vc?.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
+                let userRef = self.firebaseDB.collection("users")
+                userRef.document(Auth.auth().currentUser!.uid).addSnapshotListener { (querySnapshot, error) in
+                    guard let snapshot = querySnapshot else {
+                        print("Error listening for record updates: \(error?.localizedDescription ?? "No error")")
+                        return
+                    }
+                    self.username = snapshot.get("username") as! String
+                    // save username to user default
+                    self.defaults.set(self.username, forKey: "username")
+                    AppSettings.displayName = self.username
+                    DispatchQueue.main.async{
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
+                        vc?.modalPresentationStyle = .fullScreen
+                        vc?.modalTransitionStyle = .crossDissolve
+                        self.present(vc!, animated: true, completion: nil)
+                    }
+                }
+                    
+                
+                
             }else{
                 print(error as Any)
             }

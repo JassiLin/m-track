@@ -48,7 +48,7 @@ class ChatViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         guard let id = channel.id else {
           navigationController?.popViewController(animated: true)
           return
@@ -157,7 +157,8 @@ extension ChatViewController: MessagesDataSource {
     
     // 1
     func currentSender() -> SenderType {
-        return MockUser(senderId: user.uid, displayName: username)
+        return MockUser(senderId: user.uid, displayName: AppSettings.displayName)
+        
     }
     // 2
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -174,13 +175,14 @@ extension ChatViewController: MessagesDataSource {
   // 4
   func cellTopLabelAttributedText(for message: MessageType,
     at indexPath: IndexPath) -> NSAttributedString? {
-
+    print(message.sender.displayName)
     let name = message.sender.displayName
     return NSAttributedString(
       string: name,
       attributes: [
-        .font: UIFont.preferredFont(forTextStyle: .caption2),
-        .foregroundColor: UIColor.grayishViolet
+        .font: UIFont(name: "Chalkduster", size: 18.0)!,
+        .foregroundColor: UIColor.dark,
+        
       ]
     )
   }
