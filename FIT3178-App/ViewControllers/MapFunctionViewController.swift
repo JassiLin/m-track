@@ -24,6 +24,7 @@ class MapFunctionViewController: UIViewController {
 
         detailsView.isHidden = false
         mapView.isHidden = true
+
     }
     
     @IBAction func mapSegmentTapped(_ sender: Any) {
@@ -56,8 +57,12 @@ class MapFunctionViewController: UIViewController {
             vc.event = event
         }
         if (segue.identifier == "embedToMap"){
+            
             let vc = segue.destination as! MapViewController
+            vc.date = date
+            vc.status = status
             vc.location = location
+            vc.event = event
         }
     }
     

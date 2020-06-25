@@ -219,11 +219,11 @@
             </objects>
             <point key="canvasLocation" x="6427.5362318840589" y="-584.59821428571422"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="Qrz-Rs-tOY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JFf-He-ERD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="icon_person" selectedImage="icon_person" id="isU-Kr-hxV"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="icon_person" selectedImage="icon_person" id="isU-Kr-hxV"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xa0-Ru-yhj">

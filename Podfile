@@ -16,6 +16,7 @@ target 'FIT3178-App' do
   # https://firebase.google.com/docs/ios/setup#available-pods
   
   pod 'MessageKit'
+  pod 'FloatingPanel'
   # Pods for FIT3178-App
 
 end

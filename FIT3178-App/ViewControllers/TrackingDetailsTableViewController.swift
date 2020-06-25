@@ -267,8 +267,8 @@ extension TrackingDetailsTableViewController {
             cell.locationLabel.text = self.location[indexPath.row]
             cell.statusLabel.text = self.status[indexPath.row]
 
-            if indexPath.row == date.count - 1 {
-                cell.lineLabel.textColor = .white
+            if indexPath.row == status.count - 1 {
+                cell.lineLabel.isHidden = true
             }
             return cell
             
