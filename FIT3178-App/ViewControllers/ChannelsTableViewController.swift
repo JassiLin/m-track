@@ -107,6 +107,14 @@ class ChannelsTableViewController: UITableViewController {
         currentChannelAlertController = ac
     }
     
+    
+    @IBAction func displayUserList(_ sender: Any) {
+        
+    }
+    
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -134,7 +142,7 @@ class ChannelsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       let channel = channels[indexPath.row]
-        let vc = ChatViewController(user: Auth.auth().currentUser!, channel: channel)
+        let vc = ChatViewController(user: MockUser(senderId: Auth.auth().currentUser!.uid, displayName: AppSettings.displayName), channel: channel)
       navigationController?.pushViewController(vc, animated: true)
     }
     

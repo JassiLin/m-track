@@ -697,7 +697,7 @@
         <scene sceneID="z62-ay-Nuy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8zO-jn-sAS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Track" image="doc.text.magnifyingglass" catalog="system" selectedImage="doc.text.magnifyingglass" id="fIl-el-3QY"/>
+                    <tabBarItem key="tabBarItem" title="Track" image="icon_truck" selectedImage="icon_truck" id="fIl-el-3QY"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="elR-Nu-MmY">
@@ -722,7 +722,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="doc.text.magnifyingglass" catalog="system" width="116" height="128"/>
+        <image name="icon_truck" width="30" height="30"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="track" width="512" height="512"/>

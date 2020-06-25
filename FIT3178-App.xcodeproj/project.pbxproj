@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0432E3E424A2E3DC007E9848 /* Chatting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0432E3E324A2E3DC007E9848 /* Chatting.storyboard */; };
+		0432E3E624A2E79C007E9848 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0432E3E524A2E79C007E9848 /* Setting.storyboard */; };
+		0432E3E824A30259007E9848 /* UserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432E3E724A30259007E9848 /* UserListTableViewController.swift */; };
+		0432E3EC24A3105C007E9848 /* userData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432E3EB24A3105C007E9848 /* userData.swift */; };
+		0432E3EE24A37FAC007E9848 /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432E3ED24A37FAC007E9848 /* UICollectionView+Additions.swift */; };
+		0432E3F024A38026007E9848 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432E3EF24A38026007E9848 /* UIImage+Additions.swift */; };
 		043BF1532495006E00B91BB9 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF1522495006E00B91BB9 /* FirebaseController.swift */; };
 		043BF155249652AC00B91BB9 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043BF154249652AC00B91BB9 /* UIView.swift */; };
 		044A9260247519EF0030470F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044A925F247519EF0030470F /* GoogleService-Info.plist */; };
@@ -52,7 +58,6 @@
 		0454021F249134D100FB03BB /* MapFunctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0454021E249134D100FB03BB /* MapFunctionViewController.swift */; };
 		045402212491E78700FB03BB /* EditTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045402202491E78700FB03BB /* EditTrackingViewController.swift */; };
 		04555EB1249868A4003BF15F /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04555EB0249868A4003BF15F /* ApiRequest.swift */; };
-		04555EB7249B09FF003BF15F /* TrackingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04555EB6249B09FF003BF15F /* TrackingBaseViewController.swift */; };
 		0455CB7A248018BA00B7E97E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB79248018BA00B7E97E /* Message.swift */; };
 		0455CB7D24801C7D00B7E97E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455CB7C24801C7D00B7E97E /* AppSettings.swift */; };
 		0460343B246D84AC00799E25 /* Pods_FIT3178_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E68B2216BEEAB76FF936A1 /* Pods_FIT3178_App.framework */; };
@@ -60,6 +65,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0432E3E324A2E3DC007E9848 /* Chatting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chatting.storyboard; sourceTree = "<group>"; };
+		0432E3E524A2E79C007E9848 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		0432E3E724A30259007E9848 /* UserListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTableViewController.swift; sourceTree = "<group>"; };
+		0432E3EB24A3105C007E9848 /* userData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userData.swift; sourceTree = "<group>"; };
+		0432E3ED24A37FAC007E9848 /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
+		0432E3EF24A38026007E9848 /* UIImage+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		043BF1522495006E00B91BB9 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		043BF154249652AC00B91BB9 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		044A925F247519EF0030470F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -107,7 +118,6 @@
 		0454021E249134D100FB03BB /* MapFunctionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFunctionViewController.swift; sourceTree = "<group>"; };
 		045402202491E78700FB03BB /* EditTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTrackingViewController.swift; sourceTree = "<group>"; };
 		04555EB0249868A4003BF15F /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
-		04555EB6249B09FF003BF15F /* TrackingBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingBaseViewController.swift; sourceTree = "<group>"; };
 		0455CB79248018BA00B7E97E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0455CB7C24801C7D00B7E97E /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		0460343E246E11E600799E25 /* AddTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackingViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +147,8 @@
 				043BF154249652AC00B91BB9 /* UIView.swift */,
 				044CE4B0249C800E004B3B72 /* UserDetails.swift */,
 				044CE4B4249CA28B004B3B72 /* CarrierRequest.swift */,
+				0432E3ED24A37FAC007E9848 /* UICollectionView+Additions.swift */,
+				0432E3EF24A38026007E9848 /* UIImage+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -162,7 +174,6 @@
 		04523C6124699E1F00E1230C /* FIT3178-App */ = {
 			isa = PBXGroup;
 			children = (
-				04555EB5249B09E3003BF15F /* BaseControllers */,
 				0454021724912A8300FB03BB /* Storyboards */,
 				0455CB7B24801C4200B7E97E /* Controllers */,
 				044A9279247627040030470F /* Extensions */,
@@ -205,6 +216,7 @@
 				0455CB79248018BA00B7E97E /* Message.swift */,
 				044E601D248FCBA3006CCADF /* Record.swift */,
 				044CE4B2249C9D79004B3B72 /* CarrierData.swift */,
+				0432E3EB24A3105C007E9848 /* userData.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -224,16 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				0454021824912AB100FB03BB /* Tracking.storyboard */,
+				0432E3E324A2E3DC007E9848 /* Chatting.storyboard */,
+				0432E3E524A2E79C007E9848 /* Setting.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		04555EB5249B09E3003BF15F /* BaseControllers */ = {
-			isa = PBXGroup;
-			children = (
-				04555EB6249B09FF003BF15F /* TrackingBaseViewController.swift */,
-			);
-			path = BaseControllers;
 			sourceTree = "<group>";
 		};
 		0455CB7B24801C4200B7E97E /* Controllers */ = {
@@ -256,6 +262,7 @@
 				044A9269247571D80030470F /* SignInViewController.swift */,
 				044A926B247572010030470F /* SignUpViewController.swift */,
 				044A926F2476060F0030470F /* ChannelsTableViewController.swift */,
+				0432E3E724A30259007E9848 /* UserListTableViewController.swift */,
 				044A9271247606210030470F /* ChatViewController.swift */,
 				044A927324760B540030470F /* SettingsTableViewController.swift */,
 				0454021A2491344400FB03BB /* MapDetailsViewController.swift */,
@@ -344,7 +351,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0432E3E424A2E3DC007E9848 /* Chatting.storyboard in Resources */,
 				04523C7224699E2300E1230C /* LaunchScreen.storyboard in Resources */,
+				0432E3E624A2E79C007E9848 /* Setting.storyboard in Resources */,
 				044A9260247519EF0030470F /* GoogleService-Info.plist in Resources */,
 				0454021924912AB100FB03BB /* Tracking.storyboard in Resources */,
 				04523C6F24699E2300E1230C /* Assets.xcassets in Resources */,
@@ -417,12 +426,14 @@
 				044A9268247569A50030470F /* LoginViewController.swift in Sources */,
 				044D7D572472D92500E0BDFC /* TrackingDetailsTableViewController.swift in Sources */,
 				0455CB7D24801C7D00B7E97E /* AppSettings.swift in Sources */,
+				0432E3EE24A37FAC007E9848 /* UICollectionView+Additions.swift in Sources */,
 				045402212491E78700FB03BB /* EditTrackingViewController.swift in Sources */,
 				044CE4B7249CB05E004B3B72 /* CarrierListTableViewController.swift in Sources */,
 				04523C6324699E1F00E1230C /* AppDelegate.swift in Sources */,
 				045248B1246ACABF00BE68CC /* TrackingRecord+CoreDataClass.swift in Sources */,
 				044A926A247571D80030470F /* SignInViewController.swift in Sources */,
 				045248AE246AC6B100BE68CC /* M-Track.xcdatamodeld in Sources */,
+				0432E3EC24A3105C007E9848 /* userData.swift in Sources */,
 				044D7D5B2473488300E0BDFC /* TrackingDataRequest.swift in Sources */,
 				045248B5246ACCB500BE68CC /* DatabaseProtocol.swift in Sources */,
 				044A927624760FD20030470F /* SettingsTableViewCell.swift in Sources */,
@@ -432,9 +443,9 @@
 				044E601E248FCBA3006CCADF /* Record.swift in Sources */,
 				044A927B247627280030470F /* UIColor+Additions.swift in Sources */,
 				044A926C247572010030470F /* SignUpViewController.swift in Sources */,
-				04555EB7249B09FF003BF15F /* TrackingBaseViewController.swift in Sources */,
 				0454021D2491347F00FB03BB /* MapViewController.swift in Sources */,
 				044A9272247606210030470F /* ChatViewController.swift in Sources */,
+				0432E3F024A38026007E9848 /* UIImage+Additions.swift in Sources */,
 				044A92702476060F0030470F /* ChannelsTableViewController.swift in Sources */,
 				045248B2246ACABF00BE68CC /* TrackingRecord+CoreDataProperties.swift in Sources */,
 				045248A7246A7E0500BE68CC /* TrackingListTableViewController.swift in Sources */,
@@ -443,6 +454,7 @@
 				044D7D55246FDE6800E0BDFC /* TrackingData.swift in Sources */,
 				0454021B2491344400FB03BB /* MapDetailsViewController.swift in Sources */,
 				04523C6524699E1F00E1230C /* SceneDelegate.swift in Sources */,
+				0432E3E824A30259007E9848 /* UserListTableViewController.swift in Sources */,
 				045248B7246AD10100BE68CC /* MulticastDelegate.swift in Sources */,
 				044A927424760B540030470F /* SettingsTableViewController.swift in Sources */,
 			);
