@@ -10,24 +10,41 @@ import Foundation
 
 final class AppSettings {
   
-  private enum SettingKey: String {
-    case displayName
-  }
+    private enum SettingKey: String {
+        case displayName
+        case imageUrl
+    }
   
-  static var displayName: String! {
-    get {
-      return UserDefaults.standard.string(forKey: SettingKey.displayName.rawValue)
+    static var displayName: String! {
+        get {
+            return UserDefaults.standard.string(forKey: SettingKey.displayName.rawValue)
+        }
+        set {
+            let defaults = UserDefaults.standard
+            let key = SettingKey.displayName.rawValue
+
+            if let name = newValue {
+                defaults.set(name, forKey: key)
+            } else {
+                defaults.removeObject(forKey: key)
+            }
+        }
     }
-    set {
-      let defaults = UserDefaults.standard
-      let key = SettingKey.displayName.rawValue
-      
-      if let name = newValue {
-        defaults.set(name, forKey: key)
-      } else {
-        defaults.removeObject(forKey: key)
-      }
+    
+    static var imageUrl: URL! {
+        get {
+            return UserDefaults.standard.url(forKey: SettingKey.imageUrl.rawValue)
+        }
+        set{
+            let defaults = UserDefaults.standard
+            let key = SettingKey.imageUrl.rawValue
+
+            if let imageUrl = newValue {
+                defaults.set(imageUrl, forKey: key)
+            } else {
+                defaults.removeObject(forKey: key)
+            }
+        }
     }
-  }
   
 }
