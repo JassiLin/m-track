@@ -12,7 +12,12 @@ import Floaty
 import FirebaseAuth
 import Firebase
 
-class TrackingListTableViewController: UITableViewController, DatabaseListener, FloatyDelegate {
+class TrackingListTableViewController: UITableViewController, DatabaseListener, FloatyDelegate, URLSessionDelegate, URLSessionDownloadDelegate {
+    let image: UIImage = UIImage(named: "image-placeholder")!
+    let config = URLSessionConfiguration.default
+    lazy var session = {
+        return URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue())
+    }()
     
     var listenerType: ListenerType = .record
     private var recordListener: ListenerRegistration?
@@ -31,7 +36,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     let db = Firestore.firestore()
-    
+    var ref: CollectionReference?
     deinit {
         recordListener?.remove()
     }
@@ -53,8 +58,8 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         
         if Auth.auth().currentUser != nil {
             
-            let ref = db.collection("users").document(Auth.auth().currentUser!.uid).collection("trackingRecord")
-            recordListener = ref.addSnapshotListener { querySnapshot, error in
+            ref = db.collection("users").document(Auth.auth().currentUser!.uid).collection("trackingRecord")
+            recordListener = ref!.addSnapshotListener { querySnapshot, error in
                 guard let snapshot = querySnapshot else {
                   print("Error listening for record updates: \(error?.localizedDescription ?? "No error")")
                   return
@@ -99,15 +104,14 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         databaseController?.removeListener(listener: self)
     }
     
-    // MARK: - Functions
+    // MARK: - Firebase Functions
     
     // DB listener function
     func onRecordChange(change: DatabaseChange, record: [TrackingRecord]) {
         records = record
         tableView.reloadData()
     }
-    
-    // Firebase functions
+
     private func addRecordToTable(_ record: Record) {
         guard !syncRecords.contains(record) else {
         return
@@ -157,21 +161,60 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
           removeRecordFromTable(record)
         }
     }
+
+    // MARK: - Functions
     
-    // Go to Sign-in screen
-//    @IBAction override func signIn(_ sender: Any) {
-//
-//    }
+    private func downloadEpisodeImage(imageURLString: String) -> Int? {
+        //        print(imageURLString)
+        
+        if let imageURL = URL(string: imageURLString) {
+            let task = session.downloadTask(with: imageURL)
+            task.resume()
+            
+            return task.taskIdentifier
+        }
+        return nil
+    }
+
+    internal func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        if totalBytesExpectedToWrite > 0 {
+            let _ = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+            //            print("Progress \(downloadTask.currentRequest!.description): \(progress)")
+        }
+    }
+    
+    internal func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
+        do {
+            let data = try Data(contentsOf: location)
+            
+            // Find the index of the cell that this download coresponds to.
+            var cellIndex = -1
+            for index in 0..<syncRecords.count {
+                let record = syncRecords[index]
+                if record.downloadTaskIdentifier == downloadTask.taskIdentifier {
+                    syncRecords[index].imageView = UIImage(data: data)
+                    cellIndex = index
+                }
+            }
+            
+            // If found the episode/cell to update, reload that row of tableview.
+            if cellIndex >= 0 {
+                DispatchQueue.main.async {
+                    self.tableView.reloadRows(at: [IndexPath(row: cellIndex, section: 0)], with: .automatic)
+                }
+            }
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "ListToDetailsSegue"{
             let destination = segue.destination as! TrackingDetailsTableViewController
-//            destination.trackingNo = trackingNoSelected
-//            destination.carrier_code = carrierSelected
-//            destination.name = name!
             destination.ID = ID
         }
     }
@@ -248,66 +291,66 @@ extension TrackingListTableViewController {
                 self.carrierSelected = record.carrier
                 self.name = record.name
                 
+                let IV = UIImageView()
+                cell.addSubview(IV)
+                IV.image = image
+//                IV.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: cell.locationLabel.bottomAnchor, right: cell.nameLabel.rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 10, paddingRight: 15, width: 45, height: 45)
+                IV.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.locationLabel.bottomAnchor,  paddingTop: 15, paddingLeft: 15, paddingBottom: 10,  width: 45, height: 45)
+                
+                if record.imgUrl != "" {
+                    
+                    if let image = record.imageView {
+                        // Use the image if already retreived.
+                        IV.image = image
+                    }else if record.downloadTaskIdentifier == nil {
+                        // Otherwise, request image.
+                        syncRecords[indexPath.row].downloadTaskIdentifier = downloadEpisodeImage(imageURLString: record.imgUrl!)
+                    }
+                }
                 return cell
             }else{
                 return UITableViewCell()
             }
+        
+            
         default:
             return UITableViewCell()
         }
     }
         
-        // MARK: - didSelectRowAt
-        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-            if indexPath.section == SECTION_RECORD {
-                self.trackingNoSelected = records[indexPath.row].trackingNo
-                self.carrierSelected = records[indexPath.row].carrier
-                self.name = records[indexPath.row].name
-            }
-            
-            if indexPath.section == SECTION_SYNC_RECORD {
-                self.trackingNoSelected = syncRecords[indexPath.row].trackingNo
-                self.carrierSelected = syncRecords[indexPath.row].carrier
-                self.name = syncRecords[indexPath.row].name
-                self.ID = syncRecords[indexPath.row].id
-            }
-            
-            performSegue(withIdentifier: "ListToDetailsSegue", sender: self)
+    // MARK: - didSelectRowAt
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.section == SECTION_RECORD {
+            self.trackingNoSelected = records[indexPath.row].trackingNo
+            self.carrierSelected = records[indexPath.row].carrier
+            self.name = records[indexPath.row].name
         }
-
-        /*
-        // Override to support conditional editing of the table view.
-        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-            // Return false if you do not want the specified item to be editable.
-            return true
+        
+        if indexPath.section == SECTION_SYNC_RECORD {
+            self.trackingNoSelected = syncRecords[indexPath.row].trackingNo
+            self.carrierSelected = syncRecords[indexPath.row].carrier
+            self.name = syncRecords[indexPath.row].name
+            self.ID = syncRecords[indexPath.row].id
         }
-        */
-
-        /*
-        // Override to support editing the table view.
-        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                // Delete the row from the data source
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            } else if editingStyle == .insert {
-                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-            }
+        
+        performSegue(withIdentifier: "ListToDetailsSegue", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let id = syncRecords[indexPath.row].id
+            ref?.document(id!).delete(completion: { (Error) in
+                if let err = Error {
+                    print(err)
+                }
+                tableView.reloadData()
+            })
+            // ^^ this only works if the value is set to the firebase uid, otherwise you need to pull that data from somewhere else.
+//            groupsArray.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        */
+    }
 
-        /*
-        // Override to support rearranging the table view.
-        override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-        }
-        */
-
-        /*
-        // Override to support conditional rearranging of the table view.
-        override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-            // Return false if you do not want the item to be re-orderable.
-            return true
-        }
-        */
 }

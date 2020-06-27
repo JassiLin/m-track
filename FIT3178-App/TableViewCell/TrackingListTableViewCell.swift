@@ -17,6 +17,9 @@ class TrackingListTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var detailsLabel: UILabel!
 
+//    @IBOutlet weak var carrierImageView: UIImageView!
+    
+    
     @IBAction func sync(_ sender: Any) {
 
     }

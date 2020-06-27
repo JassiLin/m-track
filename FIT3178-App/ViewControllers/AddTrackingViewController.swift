@@ -20,6 +20,7 @@ class AddTrackingViewController: UIViewController {
     var date: String?
     var location: String?
     var details: String?
+    var imageUrl: String?
     
     @IBOutlet weak var trackingNoTF: UITextField!
     @IBOutlet weak var carrierTF: UITextField!
@@ -50,12 +51,14 @@ class AddTrackingViewController: UIViewController {
         let trackingNo = trackingNoTF?.text
         let carrier = carrierTF?.text
 
+        // For not logged-in user
         if Auth.auth().currentUser == nil {
             let addedRecord = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!)
             if(addedRecord != nil){
                 print("Added sucessfully: \(addedRecord!)")
                 navigationController?.popViewController(animated: true)
             }
+        // For logged-in user
         }else{
             let tracking = [
                 "trackingNo": trackingNo,
@@ -63,7 +66,8 @@ class AddTrackingViewController: UIViewController {
                 "name": name,
                 "location": location!,
                 "latestDetails": details!,
-                "date": date!
+                "date": date!,
+                "imgUrl": (imageUrl != nil) ? "https:\(imageUrl ?? "//image.flaticon.com/icons/svg/1515/1515640.svg")": ""
             ]
             
             let userRef = firebaseDB.collection("users")
@@ -82,7 +86,8 @@ class AddTrackingViewController: UIViewController {
     }
     
     // MARK: - process API data requesting
-    func requestTrackingDetails() {
+    
+    private func requestTrackingDetails() {
 
         let headers = [
             "x-rapidapi-host": "order-tracking.p.rapidapi.com",
@@ -122,7 +127,8 @@ class AddTrackingViewController: UIViewController {
                         self.details = listTracking.lastEvent
                         self.location = listTracking.destinationCountry
                         DispatchQueue.main.async{
-                            self.saveRecord()
+                            self.requestCarrier()
+                            
                         }
                     }
                     
@@ -136,15 +142,53 @@ class AddTrackingViewController: UIViewController {
         dataTask.resume()
     }
 
-    /*
-    // MARK: - Navigation
+    // Fetch carrier image
+    private func requestCarrier()  {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let headers = [
+            "x-rapidapi-host": "order-tracking.p.rapidapi.com",
+            "x-rapidapi-key": "721ec697admshac6e25b8181ed51p1221c1jsn84964ace47ae",
+            "content-type": "application/json"
+        ]
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://order-tracking.p.rapidapi.com/carriers")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error!)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse!)
+                print("data: \(data!)")
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedData = try decoder.decode(CarrierData.self, from: data!)
+                    if let listCarrier = decodedData.data {
+                        print("listCarrier: \(listCarrier.count) >>>")
+                        for carrier in listCarrier {
+                            if carrier.code == self.carrierTF.text{
+                                self.imageUrl = carrier.picture
+                            }
+                        }
+
+                        DispatchQueue.main.async{
+                            self.saveRecord()
+                        }
+                    }
+                    
+                } catch let err {
+                    print("error: \(err)")
+                }
+            }
+        })
+
+        dataTask.resume()
     }
-    */
 
 }
 

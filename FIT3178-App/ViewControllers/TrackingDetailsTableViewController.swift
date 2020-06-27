@@ -27,7 +27,7 @@ class TrackingDetailsTableViewController: UITableViewController {
     private var selectedDesc: String = ""
     
     var indicator = UIActivityIndicatorView()
-    var name:String = ""
+    var name:String?
     var rControl = UIRefreshControl()
     
     var index: Int = 0
@@ -43,12 +43,13 @@ class TrackingDetailsTableViewController: UITableViewController {
         let userRef = firebaseDB.collection("users")
         
         userRef.document(Auth.auth().currentUser!.uid).collection("trackingRecord").document(self.ID!).addSnapshotListener { (querySnapshot, error) in
-            guard let snapshot = querySnapshot else {
+            guard querySnapshot?.get("trackingNo") != nil,
+                let snapshot = querySnapshot else {
                 print("Error listening for record updates: \(error?.localizedDescription ?? "No error")")
                 return
             }
             self.trackingNo = snapshot.get("trackingNo") as? String
-            self.name = snapshot.get("name") as! String
+            self.name = snapshot.get("name") as? String
             self.carrier_code = snapshot.get("carrier") as? String
             
             self.requestTrackingDetails()

@@ -12,7 +12,10 @@ struct Record {
     
     let id: String?
     let carrier, latestDetails, location, name, trackingNo, date: String
-
+    // use for tracking image download
+    var downloadTaskIdentifier: Int?
+    var imageView: UIImage?
+    let imgUrl: String?
 //    init(name:String, trackingNo:String, location:String, latestDetails:String, carrier:String){
 //        id = nil
 //        self.name = name
@@ -30,7 +33,8 @@ struct Record {
             let location = data["location"] as? String,
             let latestDetails = data["latestDetails"] as? String,
             let carrier = data["carrier"] as? String,
-            let date = data["date"] as? String
+            let date = data["date"] as? String,
+            let imgUrl = data["imgUrl"] as? String
         else {
             return nil
         }
@@ -42,6 +46,7 @@ struct Record {
         self.latestDetails = latestDetails
         self.carrier = carrier
         self.date = date
+        self.imgUrl = imgUrl
     }
 }
 
