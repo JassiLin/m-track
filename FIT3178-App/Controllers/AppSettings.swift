@@ -13,6 +13,7 @@ final class AppSettings {
     private enum SettingKey: String {
         case displayName
         case imageUrl
+        case darkMode
     }
   
     static var displayName: String! {
@@ -41,6 +42,22 @@ final class AppSettings {
 
             if let imageUrl = newValue {
                 defaults.set(imageUrl, forKey: key)
+            } else {
+                defaults.removeObject(forKey: key)
+            }
+        }
+    }
+    
+    static var darkMode: Int! {
+        get {
+            return UserDefaults.standard.integer(forKey:"darkMode")
+        }
+        set {
+            let defaults = UserDefaults.standard
+            let key = "darkMode"
+
+            if let name = newValue {
+                defaults.set(name, forKey: key)
             } else {
                 defaults.removeObject(forKey: key)
             }

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.dark
         
 //        UINavigationBar.appearance().backgroundColor = UIColor.grayishRed
-        UINavigationBar.appearance().barTintColor = .grayishRed
+        UINavigationBar.appearance().barTintColor = UIColor(named: "pink")
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.dark]
         

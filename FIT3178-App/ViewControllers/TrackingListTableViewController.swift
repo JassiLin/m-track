@@ -73,27 +73,15 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         }
         
         databaseController = appDelegate.databaseController
-        
+
         // set float button
-        let floatyBtn = Floaty()
-        
-        floatyBtn.addItem("Add tracking", icon: UIImage(named: "add")!, handler: {
-            _ in
-            self.performSegue(withIdentifier: "ListToAddSegue", sender: self)
-        })
-        
-        floatyBtn.paddingY = 100
-        floatyBtn.sticky = true
-        floatyBtn.respondsToKeyboard = false
-        floatyBtn.friendlyTap = false
-        floatyBtn.plusColor = .white
-        floatyBtn.buttonColor = .grayishRed
-        
-        self.view.addSubview(floatyBtn)
+        addFloatyBtn()
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         setUpNavigationBarItems()
         databaseController?.addListener(listener: self)
         tableView.reloadData()
@@ -210,12 +198,22 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         }
     }
     
+    @objc func sync(_ sender: Any){
+        
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ListToDetailsSegue"{
             let destination = segue.destination as! TrackingDetailsTableViewController
-            destination.ID = ID
+            if Auth.auth().currentUser != nil {
+                destination.ID = ID
+            }else{
+                destination.trackingNo = trackingNoSelected
+                destination.carrier_code = carrierSelected
+                destination.name = name
+            }
+
         }
     }
     
@@ -254,10 +252,6 @@ extension TrackingListTableViewController {
         }
     }
         
-    //    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return cellSpacingHeight
-    //    }
-        
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section{
@@ -265,10 +259,10 @@ extension TrackingListTableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: CELL_RECORD, for: indexPath) as! TrackingListTableViewCell
             let record = records[indexPath.row]
             
-            let dateString = Utilities.dateToString(record.value(forKey: "date") as! Date)
+//            let dateString = Utilities.dateToString(record.value(forKey: "date") as! Date)
             
             cell.nameLabel.text = record.value(forKey: "name") as? String ?? "[empty]"
-            cell.dateLabel.text = dateString
+            cell.dateLabel.text = record.value(forKey: "strDate") as? String
             cell.detailsLabel.text = record.value(forKey: "details") as? String ?? "No details"
             cell.locationLabel.text = record.value(forKey: "location") as? String ?? "No location available"
 
@@ -276,6 +270,17 @@ extension TrackingListTableViewController {
             self.carrierSelected = records[indexPath.row].carrier
             self.name = records[indexPath.row].name
             
+            let status = record.value(forKey: "status") as? String
+            let compared = "Delivered"
+            let IV = UIImageView()
+            cell.addSubview(IV)
+            IV.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.locationLabel.topAnchor,  paddingTop: 15, paddingLeft: 25, paddingBottom: 10,  width: 45, height: 45)
+            if status?.caseInsensitiveCompare(compared) == .orderedSame {
+                
+                IV.image = UIImage(named: "delivered")
+            }else{
+                IV.image = UIImage(named: "delivering")
+            }
             return cell
         case SECTION_SYNC_RECORD:
             if Auth.auth().currentUser != nil {
@@ -294,8 +299,8 @@ extension TrackingListTableViewController {
                 let IV = UIImageView()
                 cell.addSubview(IV)
                 IV.image = image
-//                IV.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: cell.locationLabel.bottomAnchor, right: cell.nameLabel.rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 10, paddingRight: 15, width: 45, height: 45)
-                IV.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.locationLabel.bottomAnchor,  paddingTop: 15, paddingLeft: 15, paddingBottom: 10,  width: 45, height: 45)
+                
+                IV.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.locationLabel.topAnchor,  paddingTop: 15, paddingLeft: 25, paddingBottom: 10,  width: 45, height: 45)
                 
                 if record.imgUrl != "" {
                     
@@ -347,9 +352,6 @@ extension TrackingListTableViewController {
                 }
                 tableView.reloadData()
             })
-            // ^^ this only works if the value is set to the firebase uid, otherwise you need to pull that data from somewhere else.
-//            groupsArray.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 

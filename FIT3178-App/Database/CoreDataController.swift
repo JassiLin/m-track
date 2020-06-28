@@ -55,16 +55,16 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
     
     
     
-    func addRecord(trackingNo: String, carrier: String, name: String, date: String, location:String, details:String) -> TrackingRecord {
+    func addRecord(trackingNo: String, carrier: String, name: String, date: String, location:String, details:String, status:String) -> TrackingRecord {
         let record = NSEntityDescription.insertNewObject(forEntityName: "TrackingRecord", into: persistentContainer.viewContext) as! TrackingRecord
         
-        let convertedDate = Utilities.stringToDate(date)
+//        let convertedDate = Utilities.stringToDate(date)
         record.trackingNo = trackingNo
         record.carrier = carrier
         record.name = name
         record.location = location
         record.details = details
-        record.date = convertedDate
+        record.strDate = date
         
         return record
     }

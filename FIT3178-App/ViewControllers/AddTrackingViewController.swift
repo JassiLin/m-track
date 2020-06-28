@@ -11,6 +11,7 @@ import CoreData
 import Foundation
 import FirebaseAuth
 import Firebase
+import iOSDropDown
 
 class AddTrackingViewController: UIViewController {
 
@@ -20,10 +21,14 @@ class AddTrackingViewController: UIViewController {
     var date: String?
     var location: String?
     var details: String?
+    var status: String?
+    
     var imageUrl: String?
+    var carrierList: [String:String] = [:]
+    var carrierCode: String?
     
     @IBOutlet weak var trackingNoTF: UITextField!
-    @IBOutlet weak var carrierTF: UITextField!
+    @IBOutlet weak var carrierTF: DropDown!
     @IBOutlet weak var nameTF: UITextField!
     
     weak var databaseController: DatabaseProtocol?
@@ -32,31 +37,51 @@ class AddTrackingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         databaseController = appDelegate.databaseController
+        requestCarrierName()
         
-        if Auth.auth().currentUser != nil {
-            self.navigationItem.rightBarButtonItem?.title = "You're logged in"
+    }
+    
+    func textFieldDidBeginEditing(_ textField:UITextField){
+        if textField.isEqual(carrierTF){
+            carrierTF.showList()
         }
     }
     
+    func textFieldDidEndEditing(_ textField:UITextField){
+        if textField.isEqual(carrierTF){
+            carrierTF.hideList()
+            
+        }
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func addTracking(_ sender: Any) {
         
         if trackingNoTF.text != "" && carrierTF.text != "" {
+            carrierCode = carrierList[carrierTF.text!]
             requestTrackingDetails()
         }
     }
     
     func saveRecord() {
         
-        let name = nameTF?.text
+        let name = (nameTF?.text != "") ? nameTF?.text : trackingNoTF?.text
         let trackingNo = trackingNoTF?.text
-        let carrier = carrierTF?.text
+        let carrier = carrierList[carrierTF.text!]
 
         // For not logged-in user
         if Auth.auth().currentUser == nil {
-            let addedRecord = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!)
+            let addedRecord = databaseController?.addRecord(trackingNo: trackingNo!, carrier: carrier!, name: name!, date: date!, location: location!, details: details!,status:status!)
             if(addedRecord != nil){
                 print("Added sucessfully: \(addedRecord!)")
-                navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true) {
+                    let main = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = main.instantiateViewController(identifier: "TabBar")
+                    self.present(vc, animated: true, completion: nil)
+                }
+                
             }
         // For logged-in user
         }else{
@@ -67,6 +92,7 @@ class AddTrackingViewController: UIViewController {
                 "location": location!,
                 "latestDetails": details!,
                 "date": date!,
+                "status": status!,
                 "imgUrl": (imageUrl != nil) ? "https:\(imageUrl ?? "//image.flaticon.com/icons/svg/1515/1515640.svg")": ""
             ]
             
@@ -126,9 +152,15 @@ class AddTrackingViewController: UIViewController {
                         self.date = listTracking.lastUpdateTime
                         self.details = listTracking.lastEvent
                         self.location = listTracking.destinationCountry
+                        self.status = listTracking.status
+                        
                         DispatchQueue.main.async{
-                            self.requestCarrier()
-                            
+                            // Only logged in user will fetch carrier image
+                            if Auth.auth().currentUser != nil{
+                                self.requestCarrier()
+                            }else{
+                                self.saveRecord()
+                            }
                         }
                     }
                     
@@ -142,6 +174,51 @@ class AddTrackingViewController: UIViewController {
         dataTask.resume()
     }
 
+    // Fetch carrier name
+    private func requestCarrierName()  {
+
+        let headers = [
+            "x-rapidapi-host": "order-tracking.p.rapidapi.com",
+            "x-rapidapi-key": "721ec697admshac6e25b8181ed51p1221c1jsn84964ace47ae",
+            "content-type": "application/json"
+        ]
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://order-tracking.p.rapidapi.com/carriers")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error!)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse!)
+                print("data: \(data!)")
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedData = try decoder.decode(CarrierData.self, from: data!)
+                    if let listCarrier = decodedData.data {
+                        for carrier in listCarrier {
+                            self.carrierList[carrier.name!] = carrier.code!
+                        }
+                        DispatchQueue.main.async{
+                            self.carrierTF.optionArray = Array(self.carrierList.keys)
+                        }
+                    }
+                    
+                } catch let err {
+                    print("error: \(err)")
+                }
+            }
+        })
+
+        dataTask.resume()
+    }
+    
+    
     // Fetch carrier image
     private func requestCarrier()  {
 
@@ -171,7 +248,7 @@ class AddTrackingViewController: UIViewController {
                     if let listCarrier = decodedData.data {
                         print("listCarrier: \(listCarrier.count) >>>")
                         for carrier in listCarrier {
-                            if carrier.code == self.carrierTF.text{
+                            if carrier.code == self.carrierCode{
                                 self.imageUrl = carrier.picture
                             }
                         }

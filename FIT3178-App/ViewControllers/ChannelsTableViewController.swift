@@ -23,20 +23,6 @@ class ChannelsTableViewController: UITableViewController {
     }
     
     let CELL_CHANNELS = "channelCell"
-
-//    init(currentUser: User) {
-//      self.currentUser = currentUser
-//      super.init(nibName: nil, bundle: nil)
-//
-//      title = "Channels"
-//    }
-
-//    required init?(coder aDecoder: NSCoder) {
-//
-//        self.currentUser = Auth.auth().currentUser!
-//
-//        super.init(coder: aDecoder)
-//    }
     
     private var channelReference: CollectionReference {
         return db.collection("channels")
@@ -44,23 +30,24 @@ class ChannelsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(channels.count)
+        addFloatyBtn()
+
         if Auth.auth().currentUser == nil {
             
             let alert = UIAlertController(title: "Login requirement", message: "You need to sign in first to access chat function.", preferredStyle: .alert)
-            
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             alert.addAction(UIAlertAction(title: "Sign in", style: .default, handler: { action in
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-                vc?.modalPresentationStyle = .fullScreen
-                vc?.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
+                vc.modalPresentationStyle = .popover
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true, completion: nil)
             }))
             
             alert.addAction(UIAlertAction(title: "Consider again", style: .cancel, handler: {action in
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
-                vc?.modalPresentationStyle = .fullScreen
-                vc?.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "TabBar")
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true, completion: nil)
             }))
 
             self.present(alert, animated: true)

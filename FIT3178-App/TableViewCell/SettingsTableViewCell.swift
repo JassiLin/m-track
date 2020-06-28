@@ -11,6 +11,17 @@ import FirebaseAuth
 
 class SettingsTableViewCell: UITableViewCell {
 
+
+    @IBAction func darkModeSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+           window!.overrideUserInterfaceStyle = .dark
+            AppSettings.darkMode = 1
+       }
+       else {
+           window!.overrideUserInterfaceStyle = .light
+            AppSettings.darkMode = 0
+       }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

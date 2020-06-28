@@ -17,6 +17,7 @@ target 'FIT3178-App' do
   
   pod 'MessageKit'
   pod 'FloatingPanel'
+  pod 'iOSDropDown'
   # Pods for FIT3178-App
 
 end

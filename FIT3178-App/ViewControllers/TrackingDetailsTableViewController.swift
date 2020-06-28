@@ -40,20 +40,25 @@ class TrackingDetailsTableViewController: UITableViewController {
         super.viewWillAppear(true)
         
         // Get information by document ID
-        let userRef = firebaseDB.collection("users")
-        
-        userRef.document(Auth.auth().currentUser!.uid).collection("trackingRecord").document(self.ID!).addSnapshotListener { (querySnapshot, error) in
-            guard querySnapshot?.get("trackingNo") != nil,
-                let snapshot = querySnapshot else {
-                print("Error listening for record updates: \(error?.localizedDescription ?? "No error")")
-                return
-            }
-            self.trackingNo = snapshot.get("trackingNo") as? String
-            self.name = snapshot.get("name") as? String
-            self.carrier_code = snapshot.get("carrier") as? String
+        if Auth.auth().currentUser != nil {
+            let userRef = firebaseDB.collection("users")
             
+            userRef.document(Auth.auth().currentUser!.uid).collection("trackingRecord").document(self.ID!).addSnapshotListener { (querySnapshot, error) in
+                guard querySnapshot?.get("trackingNo") != nil,
+                    let snapshot = querySnapshot else {
+                    print("Error listening for record updates: \(error?.localizedDescription ?? "No error")")
+                    return
+                }
+                self.trackingNo = snapshot.get("trackingNo") as? String
+                self.name = snapshot.get("name") as? String
+                self.carrier_code = snapshot.get("carrier") as? String
+                
+                self.requestTrackingDetails()
+            }
+        }else{
             self.requestTrackingDetails()
         }
+        
         
         setUpNavigationBarItems()
         
@@ -61,7 +66,7 @@ class TrackingDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
         tableView.separatorStyle = .none
         
@@ -70,31 +75,30 @@ class TrackingDetailsTableViewController: UITableViewController {
         rControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(rControl)
         
-        // set float button
-        
-        let floatyBtn = Floaty()
-        floatyBtn.addItem("Add tracking", icon: UIImage(named: "add")!, handler: {
-            _ in
-            self.performSegue(withIdentifier: "DetailsToAddSegue", sender: self)
-        })
-        floatyBtn.addItem("Edit tracking", icon: UIImage(named: "edit")!, handler: {
-            _ in
-            self.performSegue(withIdentifier: "DetailsToEditSegue", sender: self)
-        })
-
-        floatyBtn.paddingY = 100
-        floatyBtn.sticky = true
-        floatyBtn.respondsToKeyboard = false
-        floatyBtn.friendlyTap = false
-        floatyBtn.plusColor = .white
-        floatyBtn.buttonColor = .grayishRed
-        
-        self.view.addSubview(floatyBtn)
        
     }
     
     @IBAction func editRecord(_ sender: Any) {
         
+        if Auth.auth().currentUser == nil {
+            let alert = UIAlertController(title: "Login requirement", message: "You need to sign in first to access edit function.", preferredStyle: .alert)
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            alert.addAction(UIAlertAction(title: "Sign in", style: .default, handler: { action in
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
+                vc.modalPresentationStyle = .popover
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "Consider again", style: .cancel, handler: {action in
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "TabBar")
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true, completion: nil)
+            }))
+
+            self.present(alert, animated: true)
+            return
+        }
         let vc = self.storyboard?.instantiateViewController(identifier: "EditRecord") as? EditTrackingViewController
         vc?.name = name
         vc?.trackingNo = trackingNo
@@ -103,9 +107,6 @@ class TrackingDetailsTableViewController: UITableViewController {
     }
     
     private func requestTrackingDetails(){
-//        indicator.style = UIActivityIndicatorView.Style.medium
-//        indicator.center = self.tableView.center
-//        self.view.addSubview(indicator)
 
         clearData(array: &date)
         clearData(array: &desc)
@@ -261,16 +262,15 @@ extension TrackingDetailsTableViewController {
                 return cell
             }
             cell.dotLabel.text = "\u{25c6}"
-            cell.lineLabel.text = "\u{007c}"
             
             cell.dateLabel.text = self.date[indexPath.row]
             cell.desciptionLabel.text = self.desc[indexPath.row]
             cell.locationLabel.text = self.location[indexPath.row]
             cell.statusLabel.text = self.status[indexPath.row]
 
-            if indexPath.row == status.count - 1 {
-                cell.lineLabel.isHidden = true
-            }
+//            if indexPath.row == status.count - 1 {
+//                cell.lineLabel.isHidden = true
+//            }
             return cell
             
         case SECTION_INFO:
@@ -279,7 +279,7 @@ extension TrackingDetailsTableViewController {
             cell.nameLabel.text = self.name
             cell.trackingNoLabel.text = "Tracking number: \(self.trackingNo ?? "loading...")"
             cell.lastStatusLabel.text = "Status: \(self.status.first ?? "loading...")"
-            cell.lastUpdatedDateLabel.text = "Last updated date: \(self.date.first ?? "loading...")"
+            cell.lastUpdatedDateLabel.text = "Last updated: \(self.date.first ?? "loading...")"
             
             return cell
         default:

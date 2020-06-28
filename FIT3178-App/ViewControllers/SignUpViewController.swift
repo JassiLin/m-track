@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
         
         // create cleaned versions of data
         let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         guard Utilities.validateEmail(emailTextField.text!) else{
             let alert = UIAlertController(title: "Invalid format", message: "Your email address format is incorrect.", preferredStyle: .alert)
 
@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
                 // store username
                 let db = Firestore.firestore()
                 
-                db.collection("users").document(user!.user.uid).setData(["username": username, "uid": user!.user.uid]) {
+                db.collection("users").document(user!.user.uid).setData(["username": username, "email": email]) {
                     (error) in
                     
                     if error != nil {

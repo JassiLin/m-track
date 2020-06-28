@@ -14,9 +14,7 @@ class UserProfileTableViewController: UITableViewController, UIImagePickerContro
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var positionTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
+
     var userRef: CollectionReference?
     private let firebaseDB = Firestore.firestore()
     private let storage = Storage.storage().reference()
@@ -27,33 +25,36 @@ class UserProfileTableViewController: UITableViewController, UIImagePickerContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userRef = firebaseDB.collection("users")
-        userRef!.document(Auth.auth().currentUser!.uid).addSnapshotListener { (snapshot, err) in
-            self.nameTextField.text = snapshot?.get("username") as? String
-            self.imageUrl = URL(string:snapshot?.get("imageUrl") as! String)
-            self.imageName = snapshot?.get("imageName") as? String
-            
-            if let image = self.loadImageData(filename: self.imageName!) {
-                self.imageView.image = image
-            } else{
-                if let url = self.imageUrl {
-                    self.downloadImage(at: url) { [weak self] image in
-                    guard let `self` = self else {
-                      return
-                    }
-                    guard let image = image else {
-                      return
-                    }
-                    self.imageView.image = image
-                  }
-                }
-            }
+        if Auth.auth().currentUser != nil {
+            userRef = firebaseDB.collection("users")
+             userRef!.document(Auth.auth().currentUser!.uid).addSnapshotListener { (snapshot, err) in
+                 self.nameTextField.text = snapshot?.get("username") as? String
+                 self.imageUrl = URL(string:snapshot?.get("imageUrl") as! String)
+                 self.imageName = snapshot?.get("imageName") as? String
+                 
+                 if let image = self.loadImageData(filename: self.imageName!) {
+                     self.imageView.image = image
+                 } else{
+                     if let url = self.imageUrl {
+                         self.downloadImage(at: url) { [weak self] image in
+                         guard let `self` = self else {
+                           return
+                         }
+                         guard let image = image else {
+                           return
+                         }
+                         self.imageView.image = image
+                       }
+                     }
+                 }
 
+             }
+             
+             imageView.isUserInteractionEnabled = true
+             let tap = UITapGestureRecognizer(target:self, action: #selector(imagePressed))
+             imageView.addGestureRecognizer(tap)
         }
-        
-        imageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target:self, action: #selector(imagePressed))
-        imageView.addGestureRecognizer(tap)
+ 
     }
 
     private func loadImageData(filename:String) -> UIImage? {
@@ -92,11 +93,18 @@ class UserProfileTableViewController: UITableViewController, UIImagePickerContro
     }
     
     @IBAction func saveUser(_ sender: Any) {
-        print("clicked>>>")
+
+        if nameTextField.text != AppSettings.displayName{
+            AppSettings.displayName = nameTextField.text
+        }
         sendPhoto(imageView.image!)
     
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if let photo = imageView.image,
 //        let name = nameTextField.text
 ////        let position = positionTextField.text,
@@ -153,10 +161,8 @@ extension UserProfileTableViewController {
             "imageName": self.imageName
             ]
             self.userRef!.document(Auth.auth().currentUser!.uid).updateData(newUser as [AnyHashable : Any])
-        
-        
-        
-        return
+
+            self.dismiss(animated: true, completion: nil)
         
       }
     }

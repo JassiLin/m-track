@@ -27,7 +27,7 @@ protocol DatabaseListener: AnyObject{
 protocol DatabaseProtocol: AnyObject{
 //    var defaultRecord: TrackingRecord {get}
     func cleanup()
-    func addRecord(trackingNo:String, carrier:String, name:String, date:String, location:String, details:String)->TrackingRecord
+    func addRecord(trackingNo:String, carrier:String, name:String, date:String, location:String, details:String, status:String)->TrackingRecord
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
 }

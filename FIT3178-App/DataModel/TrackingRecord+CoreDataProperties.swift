@@ -23,5 +23,6 @@ extension TrackingRecord {
     @NSManaged public var details: String?
     @NSManaged public var date: Date?
     @NSManaged public var location: String?
-
+    @NSManaged public var status: String?
+    @NSManaged public var strDate: String?
 }

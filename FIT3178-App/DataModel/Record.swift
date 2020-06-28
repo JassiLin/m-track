@@ -16,14 +16,6 @@ struct Record {
     var downloadTaskIdentifier: Int?
     var imageView: UIImage?
     let imgUrl: String?
-//    init(name:String, trackingNo:String, location:String, latestDetails:String, carrier:String){
-//        id = nil
-//        self.name = name
-//        self.trackingNo = trackingNo
-//        self.location = location
-//        self.latestDetails = latestDetails
-//        self.carrier = carrier
-//    }
     
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()

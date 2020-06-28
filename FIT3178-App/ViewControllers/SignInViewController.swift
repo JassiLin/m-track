@@ -32,7 +32,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // get screen size
         let mainSize = UIScreen.main.bounds.size
         
@@ -82,6 +82,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         imgUser.image = UIImage(named:"iconfont-user")
         txtUser.leftView!.addSubview(imgUser)
         txtUser.autocapitalizationType = .none
+        txtUser.textColor = .dark
         vLogin.addSubview(txtUser)
         
         txtPwd = UITextField(frame:CGRect(x: 30, y: 90, width: vLogin.frame.size.width - 60, height: 44))
@@ -92,7 +93,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         txtPwd.isSecureTextEntry = true
         txtPwd.leftView = UIView(frame:CGRect(x: 0, y: 0, width: 44, height: 44))
         txtPwd.leftViewMode = UITextField.ViewMode.always
-
+        txtPwd.textColor = .dark
         let imgPwd = UIImageView(frame:CGRect(x: 11, y: 11, width: 22, height: 22))
         imgPwd.image = UIImage(named:"iconfont-password")
         txtPwd.leftView!.addSubview(imgPwd)
@@ -122,6 +123,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     AppSettings.displayName = self.username
                     DispatchQueue.main.async{
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar")
+                        
                         vc?.modalPresentationStyle = .fullScreen
                         vc?.modalTransitionStyle = .crossDissolve
                         self.present(vc!, animated: true, completion: nil)

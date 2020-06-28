@@ -11,10 +11,12 @@ import Firebase
 
 class SettingsTableViewController: UITableViewController {
 
+    @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var carrierListLabel: UILabel!
     @IBOutlet weak var signOutBtn: UIButton!
     
+//    let window: UIWindow?
     var userRef: CollectionReference?
     private let firebaseDB = Firestore.firestore()
     private let storage = Storage.storage().reference()
@@ -42,16 +44,23 @@ class SettingsTableViewController: UITableViewController {
         return label
     }()
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        let username = AppSettings.displayName
-//        nameLabel.text = username
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addFloatyBtn()
+        // Set switch button
+        if AppSettings.darkMode != nil{
+            if AppSettings.darkMode == 1{
+                darkModeSwitch.isOn = true
+            }else{
+                darkModeSwitch.isOn = false
+            }
+        }else{
+            darkModeSwitch.isOn = false
+        }
+        
         if Auth.auth().currentUser == nil{
-            signOutBtn.isHidden = true
+            signOutBtn.setTitle("Sign In", for: .normal)
+            
         }
 
         var frame = self.tableView.bounds
@@ -65,45 +74,58 @@ class SettingsTableViewController: UITableViewController {
         header.backgroundColor = .grayishRed
         header.addSubview(profileImageView)
         
-        userRef = firebaseDB.collection("users")
-        userRef!.document(Auth.auth().currentUser!.uid).addSnapshotListener { (snapshot, err) in
-            self.nameLabel.text = snapshot?.get("username") as? String
-            self.imageUrl = URL(string:snapshot?.get("imageUrl") as! String)
-            self.imageName = snapshot?.get("imageName") as? String
-            
-            if let image = self.loadImageData(filename: self.imageName!) {
-                self.profileImageView.image = image
-            } else{
-                if let url = self.imageUrl {
-                    self.downloadImage(at: url) { [weak self] image in
-                    guard let `self` = self else {
-                      return
-                    }
-                    guard let image = image else {
-                      return
-                    }
-                    self.profileImageView.image = image
-                  }
+        if Auth.auth().currentUser != nil{
+            userRef = firebaseDB.collection("users")
+            userRef!.document(Auth.auth().currentUser!.uid).addSnapshotListener { (snapshot, err) in
+                guard snapshot != nil else{
+                    return
                 }
-            }
+                self.nameLabel.text = snapshot?.get("username") as? String
+                self.imageUrl = URL(string:snapshot?.get("imageUrl") as! String)
+                self.imageName = snapshot?.get("imageName") as? String
+                
+                if let image = self.loadImageData(filename: self.imageName!) {
+                    self.profileImageView.image = image
+                } else{
+                    if let url = self.imageUrl {
+                        self.downloadImage(at: url) { [weak self] image in
+                        guard let `self` = self else {
+                          return
+                        }
+                        guard let image = image else {
+                          return
+                        }
+                        self.profileImageView.image = image
+                      }
+                    }
+                }
 
+            }
+        }else{
+            profileImageView.image = UIImage(named:"User")
+            nameLabel.text = "LOGIN"
         }
         
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.anchor(top: view.topAnchor, paddingTop: 44,
-                                width: 80, height: 80)
-        profileImageView.layer.cornerRadius = 80 / 2
+                                width: 100, height: 100)
+        profileImageView.layer.cornerRadius = 100 / 2
         
         view.addSubview(nameLabel)
         nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         nameLabel.anchor(top: profileImageView.bottomAnchor, paddingTop: 12)
         
         // Set gesture recognizer
-        profileLabel.isUserInteractionEnabled = true
-        profileImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target:self, action: #selector(profileTapped))
-        profileLabel.addGestureRecognizer(tap)
-        profileImageView.addGestureRecognizer(tap)
+        if Auth.auth().currentUser != nil {
+            profileLabel.isUserInteractionEnabled = true
+            profileImageView.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target:self, action: #selector(profileTapped))
+            let textTap = UITapGestureRecognizer(target:self, action: #selector(profileTapped))
+            profileLabel.addGestureRecognizer(tap)
+            profileImageView.addGestureRecognizer(textTap)
+        }
+        
+        
     }
     
     
@@ -134,23 +156,32 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
-        let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
-          do {
-            try Auth.auth().signOut()
-          } catch {
-            print("Error signing out: \(error.localizedDescription)")
-          }
-            AppSettings.displayName.removeAll()
-            
+        if Auth.auth().currentUser != nil {
+            let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+              do {
+                try Auth.auth().signOut()
+              } catch {
+                print("Error signing out: \(error.localizedDescription)")
+              }
+                AppSettings.displayName.removeAll()
+                
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = mainStoryboard.instantiateViewController(withIdentifier: "TabBar")
+                vc.modalPresentationStyle = .fullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true, completion: nil)
+            }))
+            self.present(ac, animated: true, completion: nil)
+        }else{
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = mainStoryboard.instantiateViewController(withIdentifier: "TabBar")
-            vc.modalPresentationStyle = .fullScreen
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "Login")
+            vc.modalPresentationStyle = .popover
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true, completion: nil)
-        }))
-        self.present(ac, animated: true, completion: nil)
+        }
+        
     }
 
     

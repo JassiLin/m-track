@@ -23,6 +23,7 @@ class Utilities {
         formatter.locale = Locale.init(identifier: "en_AU")
         formatter.dateFormat = dateFormat
         let date = formatter.date(from: string)
+
         return date!
     }
     
