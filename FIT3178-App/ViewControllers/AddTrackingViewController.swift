@@ -103,7 +103,11 @@ class AddTrackingViewController: UIViewController {
                 if error != nil {
                     print("Error saving tracking data")
                 }else{
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true) {
+                        let main = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = main.instantiateViewController(identifier: "TabBar")
+                        self.present(vc, animated: true, completion: nil)
+                    }
                 }
             }
         }

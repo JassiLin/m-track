@@ -13,12 +13,13 @@ import FirebaseAuth
 import Firebase
 
 class TrackingListTableViewController: UITableViewController, DatabaseListener, FloatyDelegate, URLSessionDelegate, URLSessionDownloadDelegate {
-    let image: UIImage = UIImage(named: "image-placeholder")!
+    let image: UIImage? = nil
     let config = URLSessionConfiguration.default
     lazy var session = {
         return URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue())
     }()
     
+    private let firebaseDB = Firestore.firestore()
     var listenerType: ListenerType = .record
     private var recordListener: ListenerRegistration?
     
@@ -37,6 +38,7 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
     
     let db = Firestore.firestore()
     var ref: CollectionReference?
+    var section: Int?
     deinit {
         recordListener?.remove()
     }
@@ -198,14 +200,48 @@ class TrackingListTableViewController: UITableViewController, DatabaseListener, 
         }
     }
     
-    @objc func sync(_ sender: Any){
+
+    @IBAction func sync(_ sender: Any) {
+        print(records)
+        if Auth.auth().currentUser != nil {
+            for record in records{
+                let tracking = [
+                    "trackingNo": record.trackingNo,
+                    "carrier": record.carrier,
+                    "name": record.name,
+                    "location": record.location,
+                    "date": record.strDate,
+                    "status": record.status,
+                    "latestDetails": record.details,
+                    "imgUrl": ""
+                ]
+                let userRef = firebaseDB.collection("users")
+                userRef.document(Auth.auth().currentUser!.uid).collection("trackingRecord").addDocument(data: tracking as [String : Any]){(error) in
+                               
+                               if error != nil {
+                                   print("Error saving tracking data")
+                               }else{
+                                    self.databaseController?.deleteRecord(record: record)
+                                    print("success")
+                                    self.tableView.reloadData()
+                                     let tracking = UIStoryboard(name: "Tracking", bundle: nil)
+                                    let vc = tracking.instantiateViewController(withIdentifier: "AddTracking")
+                                    vc.modalPresentationStyle = .fullScreen
+                                    vc.modalTransitionStyle = .crossDissolve
+                                    self.present(vc, animated: true, completion: nil)
+                               }
+                           }
+            }
+        }
         
     }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ListToDetailsSegue"{
             let destination = segue.destination as! TrackingDetailsTableViewController
+            destination.section = section
             if Auth.auth().currentUser != nil {
                 destination.ID = ID
             }else{
@@ -330,6 +366,7 @@ extension TrackingListTableViewController {
             self.trackingNoSelected = records[indexPath.row].trackingNo
             self.carrierSelected = records[indexPath.row].carrier
             self.name = records[indexPath.row].name
+            section = 0
         }
         
         if indexPath.section == SECTION_SYNC_RECORD {
@@ -337,6 +374,7 @@ extension TrackingListTableViewController {
             self.carrierSelected = syncRecords[indexPath.row].carrier
             self.name = syncRecords[indexPath.row].name
             self.ID = syncRecords[indexPath.row].id
+            section = 1
         }
         
         performSegue(withIdentifier: "ListToDetailsSegue", sender: self)

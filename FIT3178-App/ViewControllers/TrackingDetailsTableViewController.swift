@@ -21,6 +21,8 @@ class TrackingDetailsTableViewController: UITableViewController {
     var status: [String] = []
     var desc: [String] = []
     
+    var section: Int?
+    
     private var selectedDate: String = ""
     private var selectedLocation: String = ""
     private var selectedStatus: String = ""
@@ -40,7 +42,7 @@ class TrackingDetailsTableViewController: UITableViewController {
         super.viewWillAppear(true)
         
         // Get information by document ID
-        if Auth.auth().currentUser != nil {
+        if Auth.auth().currentUser != nil && section == 1 {
             let userRef = firebaseDB.collection("users")
             
             userRef.document(Auth.auth().currentUser!.uid).collection("trackingRecord").document(self.ID!).addSnapshotListener { (querySnapshot, error) in

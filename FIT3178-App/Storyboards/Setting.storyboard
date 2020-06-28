@@ -135,6 +135,9 @@
                                                 <constraint firstItem="mBB-Yj-2dh" firstAttribute="centerY" secondItem="sMV-lz-9fx" secondAttribute="centerY" id="hyS-Gk-J2Y"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="uEr-Tl-mjn" kind="show" id="YkX-sd-s0D"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="3HB-xv-mf4" customClass="SettingsTableViewCell" customModule="M_Track">
                                         <rect key="frame" x="20" y="305" width="374" height="50"/>
@@ -291,6 +294,260 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16b-Ty-vDd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6427.5362318840589" y="-584.59821428571422"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="xlb-FM-fpz">
+            <objects>
+                <tableViewController id="uEr-Tl-mjn" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7O8-BJ-eN1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Firebase" id="vnq-wO-bUt">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="162" id="z7D-IB-2Xl">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="162"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z7D-IB-2Xl" id="Txb-Xn-tFu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdq-5N-d8H">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <string key="content">Copyright 2019 Google: 
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <font key="NSFont" metaFont="menu" size="14"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="https://firebase.google.com/?gclid=CjwKCAjw_-D3BRBIEiwAjVMy7OPUAdH_i8uzTo2ibdsKBfKVgD7WwFEjTbf9Lu2zdzfNmEVKr7e0CxoCnWsQAvD_BwE">
+                                                            <attributes>
+                                                                <color key="NSColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <font key="NSFont" metaFont="menu" size="14"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kdq-5N-d8H" firstAttribute="leading" secondItem="Txb-Xn-tFu" secondAttribute="leading" id="ASg-cJ-cL3"/>
+                                                <constraint firstItem="kdq-5N-d8H" firstAttribute="top" secondItem="Txb-Xn-tFu" secondAttribute="top" id="COn-7b-rbS"/>
+                                                <constraint firstAttribute="trailing" secondItem="kdq-5N-d8H" secondAttribute="trailing" id="K6Y-GO-EA9"/>
+                                                <constraint firstAttribute="bottom" secondItem="kdq-5N-d8H" secondAttribute="bottom" id="RWU-Uj-oaJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="MessageKit" id="nnL-Ca-wP7">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="121" id="3VB-bf-Oy2">
+                                        <rect key="frame" x="0.0" y="246" width="414" height="121"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3VB-bf-Oy2" id="2WV-K9-cPj">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wO3-wD-gxm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <string key="text">Copyright 2020 MessageKit 
+https://github.com/MessageKit/MessageKit
+MessageKit is released under the MIT License.
+https://github.com/MessageKit/MessageKit/blob/master/LICENSE.md</string>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="wO3-wD-gxm" secondAttribute="trailing" id="5cA-dP-idC"/>
+                                                <constraint firstItem="wO3-wD-gxm" firstAttribute="top" secondItem="2WV-K9-cPj" secondAttribute="top" id="INo-Se-2JV"/>
+                                                <constraint firstAttribute="bottom" secondItem="wO3-wD-gxm" secondAttribute="bottom" id="Qfd-fm-o3T"/>
+                                                <constraint firstItem="wO3-wD-gxm" firstAttribute="leading" secondItem="2WV-K9-cPj" secondAttribute="leading" id="aIh-JH-dId"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Floating Panel" id="VWo-H4-Ez9">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="112" id="W1E-Fb-fY0">
+                                        <rect key="frame" x="0.0" y="423" width="414" height="112"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W1E-Fb-fY0" id="ihg-Tv-9Bq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9rG-82-q8e">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <string key="text">Copyright 2020 FloatingPanel
+https://github.com/SCENEE/FloatingPanel
+FloatingPanel is available under the MIT license. See the LICENSE file for more info.</string>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9rG-82-q8e" firstAttribute="top" secondItem="ihg-Tv-9Bq" secondAttribute="top" id="4lm-Uo-r6k"/>
+                                                <constraint firstItem="9rG-82-q8e" firstAttribute="leading" secondItem="ihg-Tv-9Bq" secondAttribute="leading" id="QjU-pv-MEh"/>
+                                                <constraint firstAttribute="trailing" secondItem="9rG-82-q8e" secondAttribute="trailing" id="iNw-1j-SBp"/>
+                                                <constraint firstAttribute="bottom" secondItem="9rG-82-q8e" secondAttribute="bottom" id="uGS-KI-XWd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="iOSDropDown" id="gxm-uG-LxN">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="106" id="zTf-NC-nP7">
+                                        <rect key="frame" x="0.0" y="591" width="414" height="106"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zTf-NC-nP7" id="wBF-pR-Wfz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="106"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HoK-bZ-sKZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="106"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <string key="content">jriosdev/iOSDropDown
+https://github.com/jriosdev/iOSDropDown
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.16078431369999999" green="0.21960784310000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" metaFont="menu" size="14"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="iOSDropDown is available under the MIT license. See the LICENSE file for more info.">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.70196078429999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <font key="NSFont" metaFont="menu" size="14"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="HoK-bZ-sKZ" secondAttribute="trailing" id="PJy-Vb-EXF"/>
+                                                <constraint firstItem="HoK-bZ-sKZ" firstAttribute="leading" secondItem="wBF-pR-Wfz" secondAttribute="leading" id="gEs-S6-U1N"/>
+                                                <constraint firstItem="HoK-bZ-sKZ" firstAttribute="top" secondItem="wBF-pR-Wfz" secondAttribute="top" id="hBy-ws-sc4"/>
+                                                <constraint firstAttribute="bottom" secondItem="HoK-bZ-sKZ" secondAttribute="bottom" id="uJM-up-Ugy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Floaty" id="YWX-5d-vL7">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="133" id="ncf-VC-CTR">
+                                        <rect key="frame" x="0.0" y="753" width="414" height="133"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ncf-VC-CTR" id="qKJ-hu-Bua">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0xY-dw-GlZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <string key="text">kciter/Floaty
+https://github.com/kciter/Floaty
+License
+The MIT License (MIT)
+Copyright (c) 2015 Lee Sun-Hyoup</string>
+                                                    <color key="textColor" red="0.16078431369999999" green="0.21960784310000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name=".SFNS-Regular" family=".AppleSystemUIFont" pointSize="18"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="0xY-dw-GlZ" secondAttribute="trailing" id="7OF-4v-3r7"/>
+                                                <constraint firstItem="0xY-dw-GlZ" firstAttribute="leading" secondItem="qKJ-hu-Bua" secondAttribute="leading" id="Q0I-8z-vTh"/>
+                                                <constraint firstItem="0xY-dw-GlZ" firstAttribute="top" secondItem="qKJ-hu-Bua" secondAttribute="top" id="ps5-Yd-1BJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="0xY-dw-GlZ" secondAttribute="bottom" id="qOs-jS-hO9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Firebase Firestore Swfit" id="k4I-Q4-L5S">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="86" id="M2S-dB-SBD">
+                                        <rect key="frame" x="0.0" y="942" width="414" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M2S-dB-SBD" id="f6z-hB-FQg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="https://www.apache.org/licenses/LICENSE-2.0" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6f8-Cg-as1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6f8-Cg-as1" firstAttribute="top" secondItem="f6z-hB-FQg" secondAttribute="top" id="Mwx-TS-zpd"/>
+                                                <constraint firstAttribute="trailing" secondItem="6f8-Cg-as1" secondAttribute="trailing" id="Ukg-9O-6pR"/>
+                                                <constraint firstItem="6f8-Cg-as1" firstAttribute="leading" secondItem="f6z-hB-FQg" secondAttribute="leading" id="pgU-UR-iTc"/>
+                                                <constraint firstAttribute="bottom" secondItem="6f8-Cg-as1" secondAttribute="bottom" id="wg3-fp-GB5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Technology support" id="HpS-qB-DXU">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aNX-UD-c7S">
+                                        <rect key="frame" x="0.0" y="1084" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aNX-UD-c7S" id="Q0X-1l-gCd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Eqb-zW-eV1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <string key="text">Persistent Storage (Week 4) Web services (Week 5) Firebase Cloud Platform (Week 6)
+Maps and Location Services (Week 7) Gesture Handling (Week 8) Image (Week 9)</string>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Eqb-zW-eV1" firstAttribute="leading" secondItem="Q0X-1l-gCd" secondAttribute="leading" id="Jzo-DO-tVw"/>
+                                                <constraint firstAttribute="bottom" secondItem="Eqb-zW-eV1" secondAttribute="bottom" id="M5l-fr-eo4"/>
+                                                <constraint firstAttribute="trailing" secondItem="Eqb-zW-eV1" secondAttribute="trailing" id="ecX-mh-hYL"/>
+                                                <constraint firstItem="Eqb-zW-eV1" firstAttribute="top" secondItem="Q0X-1l-gCd" secondAttribute="top" id="zuE-Q3-ewh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="uEr-Tl-mjn" id="o57-SK-IGK"/>
+                            <outlet property="delegate" destination="uEr-Tl-mjn" id="GMP-An-MkV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FXS-M7-Y65"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6c-op-6GM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4879.7101449275369" y="116.51785714285714"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Qrz-Rs-tOY">

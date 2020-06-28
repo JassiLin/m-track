@@ -106,5 +106,9 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         
         return records
     }
+    
+    func deleteRecord(record:TrackingRecord){
+        persistentContainer.viewContext.delete(record)
+    }
   
 }

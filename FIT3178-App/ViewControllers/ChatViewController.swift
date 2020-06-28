@@ -363,7 +363,7 @@ extension ChatViewController: MessagesDisplayDelegate {
       in messagesCollectionView: MessagesCollectionView) -> UIColor {
       
       // 1
-      return isFromCurrentSender(message: message) ? .grayishRed : .incomingMessage
+      return isFromCurrentSender(message: message) ? .grayishRed : .grayishViolet
     }
 
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,

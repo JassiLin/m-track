@@ -14,7 +14,6 @@ extension UITableViewController {
     func addFloatyBtn(){
         let floatyBtn = Floaty()
         let tracking = UIStoryboard(name: "Tracking", bundle: nil)
-        let viewController = UIApplication.shared.keyWindow?.rootViewController
         
         floatyBtn.addItem("Add tracking", icon: UIImage(named: "add")!, handler: {
             _ in
@@ -24,14 +23,7 @@ extension UITableViewController {
             self.present(vc, animated: true, completion: nil)
             
         })
-        
-        if viewController == tracking.instantiateViewController(withIdentifier: "TrackingDetails"){
-            floatyBtn.addItem("Edit tracking", icon: UIImage(named: "edit")!, handler: {
-                _ in
-                self.performSegue(withIdentifier: "DetailsToEditSegue", sender: self)
-            })
-
-        }
+       
         
         
         floatyBtn.paddingY = 100
