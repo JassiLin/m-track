@@ -31,35 +31,55 @@ No need to switch the apps on background to copy and paste the tracking numbers.
 The app full storyboards are listed here. All designs are in line with the Apple Human Interface Guidelines (HIG). App icon, color scheme, and the typography it uses will be mentioned in the following part.
 - Launching: we provide a launch screen with a head photo, the app name, and different accessing methods including sign-in/up or try without login. It clearly gives users the first impression that what the app is and how it can be used. It also always keep the same orientation whatever people are in the portrait or landscape.
 
+![Alt text](design-specification/home-screen.png)
+
 - Navigation: bottom tab bar clarifies the peer function sections and make users easier to switch between them. Current section is highlighted to prompt users where they are.
+
+![Alt text](design-specification/nav.png)
 
 - Authentication: we have functions which no need user sign in first, which corresponds to the rule “Delay sign-in as long as possible”. We try to make user try our app first, and then make a decision to create an account.
 We also provide “Sign in with Apple” as one of the sign-in option, trying to give user a simple and secure way to sign in.
 
 - Data entry: we provide the convenience for users to enter the carrier. It will be auto suggested once tracking number is put or some letters are put.
 
+![Alt text](design-specification/data-entry.png)
+
 - Gestures: standard gestures are provided. When deleting one chat, users swipe left the chat from the list and delete button will be shown.
+
+![Alt text](design-specification/gestures.png)
 
 - Adaptivity and layout: Auto layout is applied for M-Track, and each element will have constraint with others, to make sure it can be suitable for different screen sizes. Safe area is also applied to fit the guide. Margins are kept around it.
 
 - Color: M-Track use a set of color scheme which makes sure the color match looks great both in individual and combination, and suitable with light and dark modes.
 
+![Alt text](design-specification/color-pattern.png)
+
   - Other colors for special used:
 
-    #FD003A: used for highlight points and notifications dot.
-
+    #FD003A:![Alt text](design-specification/red-color.png) used for highlight points and notifications dot.
+    
+    #FFFFFF:![Alt text](design-specification/white-color.png) used for text.
+    
 - Dark mode: to correspond with iOS 13, dark mode is also designed for our app. As background changed to dark, the color used is to ensure the users can see the contents still clearly with the same brightness. Two screens are given to show the example dark mode in the mockup.
 
+![Alt text](design-specification/dark-mode.png)
+
 - Terminology: in the app, as the guide mentioned, we provide short but accurate text hint or description to make users feel comfortable. Language which might sound patronizing is avoided.
+
+![Alt text](design-specification/terminology.png)
 
 - Typography: M-Track uses standard fonts provided by Apple, which is SF pro text with regular and semibold types.
 
 - App icon: the app icon uses the truck to show the fast parcel delivery. the color matches with the theme colors and corresponds to what the guideline mentions. Here provides an App store version.
 
+![Alt text](design-specification/app-icon.png)
+
 - Tables: M-Track has several lists which uses tables views. We use the customized table styles but also following the guides using the plain design and keep every row aligned.
 
-## App mockup and hierarchy
+![Alt text](design-specification/tables.png)
 
+## App mockup and hierarchy
+https://github.com/JassiLin/m-track/blob/f69cb5c03873c20075c6d2ae1da2852e97cdb2ef/design-specification/M-Track_mockup_with_hierarchy.pdf
 
 ## Scope & limitations
 Due to function feasibility, some indicated before are unable to be implemented.
